@@ -6,7 +6,7 @@ interface Props {
 };
 
 const ProductModal: FC<Props> = (props) => {
-    const triggerId: string = props?.triggerId ?? 'addToCartModal';
+    const triggerId: string = props?.triggerId ?? 'productModal';
 
     const [item, setItem] = useState(null);
 
