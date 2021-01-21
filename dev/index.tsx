@@ -1,5 +1,6 @@
-import React, {FC} from 'react'
-import { render } from "react-dom";
+import React, {FC} from 'https://cdn.skypack.dev/pin/react@v17.0.1-tOtrZxBRexARODgO0jli/min/react.js';
+import { render } from "https://cdn.skypack.dev/pin/react-dom@v17.0.1-DtIXT56q6U8PbgLMrBhE/min/react-dom.js";
+
 
 import ProductModal from '../src'
 
@@ -14,7 +15,7 @@ const TestComponent: FC<Props> = (props) => {
 
   return (
       <div>
-          <ProductModal triggerId={'helloWorld'} addToCart={addToCart} />
+          <ProductModal triggerId={''} addToCart={addToCart} />
       </div>
   );
 };

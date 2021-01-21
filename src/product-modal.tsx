@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect } from 'https://cdn.skypack.dev/pin/react@v17.0.1-tOtrZxBRexARODgO0jli/min/react.js';
 
 interface Props { 
     triggerId?: string;
@@ -6,7 +6,7 @@ interface Props {
 };
 
 const ProductModal: FC<Props> = (props) => {
-    const triggerId: string = props?.triggerId ?? 'productModal';
+    const triggerId: string = props?.triggerId && props.triggerId !== '' ? props.triggerId : 'productModal';
 
     const [item, setItem] = useState(null);
 
