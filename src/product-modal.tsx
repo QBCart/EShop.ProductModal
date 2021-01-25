@@ -27,6 +27,7 @@ const ProductModal: FC<Props> = (props) => {
       newItem.id = triggerItem.id;
       newItem.Name = triggerItem.Name;
       newItem.SalesPrice = triggerItem.SalesPrice;
+      newItem.SalesDesc = triggerItem.SalesDesc;
       newItem.Quantity = 1;
 
       setItem(newItem);
@@ -45,7 +46,7 @@ const ProductModal: FC<Props> = (props) => {
         {item ? (
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title">Add To Cart</h5>
+              <h5 className="modal-title">{item.SalesDesc}</h5>
               <button
                 type="button"
                 className="close"
@@ -56,8 +57,7 @@ const ProductModal: FC<Props> = (props) => {
               </button>
             </div>
             <div className="modal-body">
-              <div>Item Name: {item.Name}</div>
-              <div>Item ID: {item.id}</div>
+              <div>SKU: {item.Name}</div>
               <div>Item Price: {item.SalesPrice}</div>
               <div>Item Quantity: {item.Quantity} </div>
               <input
