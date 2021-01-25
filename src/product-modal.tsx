@@ -57,33 +57,123 @@ const ProductModal: FC<Props> = (props) => {
               </button>
             </div>
             <div className="modal-body">
-              <div>SKU: {item.Name}</div>
-              <div>Item Price: {item.SalesPrice}</div>
-              <div>Item Quantity: {item.Quantity} </div>
-              <input
-                type="number"
-                min="1"
-                value={item.Quantity}
-                onChange={setQuantity}
-              ></input>
-              <button
-                onClick={() => {
-                  props.addToCart(item);
-                }}
-                data-dismiss="modal"
-              >
-                Add To Cart
-              </button>
-            </div>
-            <a href={`${item.Href}`}>Visit Full Product Page</a>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
+              <div className="container">
+                <div className="row">
+                  <div className="col">
+                    <div
+                      id="carouselExampleIndicators"
+                      className="carousel slide"
+                      data-ride="carousel"
+                    >
+                      <ol className="carousel-indicators">
+                        <li
+                          data-target="#carouselExampleIndicators"
+                          data-slide-to="0"
+                          className="active"
+                        ></li>
+                        <li
+                          data-target="#carouselExampleIndicators"
+                          data-slide-to="1"
+                        ></li>
+                        <li
+                          data-target="#carouselExampleIndicators"
+                          data-slide-to="2"
+                        ></li>
+                      </ol>
+                      <div className="carousel-inner">
+                        <div className="carousel-item active">
+                          <img
+                            className="d-block w-60"
+                            src="https://i.imgur.com/I86rTVl.jpg"
+                            alt="First slide"
+                          />
+                        </div>
+                        <div className="carousel-item">
+                          <img
+                            className="d-block w-60"
+                            src="https://i.imgur.com/I86rTVl.jpg"
+                            alt="Second slide"
+                          />
+                        </div>
+                        <div className="carousel-item">
+                          <img
+                            className="d-block w-60"
+                            src="https://i.imgur.com/I86rTVl.jpg"
+                            alt="Third slide"
+                          />
+                        </div>
+                      </div>
+                      <a
+                        className="carousel-control-prev"
+                        href="#carouselExampleIndicators"
+                        role="button"
+                        data-slide="prev"
+                      >
+                        <span
+                          className="carousel-control-prev-icon"
+                          aria-hidden="true"
+                        ></span>
+                        <span className="sr-only">Previous</span>
+                      </a>
+                      <a
+                        className="carousel-control-next"
+                        href="#carouselExampleIndicators"
+                        role="button"
+                        data-slide="next"
+                      >
+                        <span
+                          className="carousel-control-next-icon"
+                          aria-hidden="true"
+                        ></span>
+                        <span className="sr-only">Next</span>
+                      </a>
+                    </div>
+                  </div>
+                  <div className="col">
+                    <div>
+                      <div>SKU: {item.Name}</div>
+                      <div>Item Price: {item.SalesPrice}</div>
+                      <div>Item Quantity: {item.Quantity} </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="modal-footer">
+                <div className="row">
+                  <div className="col">
+                      <input
+                        type="number"
+                        min="1"
+                        value={item.Quantity}
+                        onChange={setQuantity}
+                      ></input>
+                  </div>
+                  <div className="col">
+                    <button
+                      onClick={() => {
+                        props.addToCart(item);
+                      }}
+                      data-dismiss="modal"
+                    >
+                      Add To Cart
+                    </button>
+                  </div>
+                  <div className="col">
+                    <a href={`${item.Href}`}>
+                      <button>Visit Full Product Page</button>
+                    </a>
+                  </div>
+                  <div className="col">
+                    <button
+                      type="button"
+                      className="btn btn-secondary"
+                      data-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         ) : (
