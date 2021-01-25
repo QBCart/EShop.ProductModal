@@ -59,11 +59,12 @@ const ProductModal: FC<Props> = (props) => {
             <div className="modal-body">
               <div className="container">
                 <div className="row">
-                  <div className="col">
+                  <div className="col-12 col-lg-6">
                     <div
                       id="carouselExampleIndicators"
                       className="carousel slide"
                       data-ride="carousel"
+                      data-interval="false"
                     >
                       <ol className="carousel-indicators">
                         <li
@@ -83,21 +84,21 @@ const ProductModal: FC<Props> = (props) => {
                       <div className="carousel-inner">
                         <div className="carousel-item active">
                           <img
-                            className="d-block w-60"
+                            className="d-block w-40"
                             src="https://i.imgur.com/I86rTVl.jpg"
                             alt="First slide"
                           />
                         </div>
                         <div className="carousel-item">
                           <img
-                            className="d-block w-60"
+                            className="d-block w-40"
                             src="https://i.imgur.com/I86rTVl.jpg"
                             alt="Second slide"
                           />
                         </div>
                         <div className="carousel-item">
                           <img
-                            className="d-block w-60"
+                            className="d-block w-40"
                             src="https://i.imgur.com/I86rTVl.jpg"
                             alt="Third slide"
                           />
@@ -129,7 +130,7 @@ const ProductModal: FC<Props> = (props) => {
                       </a>
                     </div>
                   </div>
-                  <div className="col">
+                  <div className="col-12 col-lg-6">
                     <div>
                       <div>SKU: {item.Name}</div>
                       <div>Item Price: {item.SalesPrice}</div>
@@ -138,41 +139,45 @@ const ProductModal: FC<Props> = (props) => {
                   </div>
                 </div>
               </div>
-              <div className="modal-footer">
-                <div className="row">
-                  <div className="col">
-                      <input
-                        type="number"
-                        min="1"
-                        value={item.Quantity}
-                        onChange={setQuantity}
-                      ></input>
-                  </div>
-                  <div className="col">
-                    <button
-                      onClick={() => {
-                        props.addToCart(item);
-                      }}
+              <div className="modal-footer flex-row d-flex justify-content-between">
+                <div className="w-50 d-flex justify-content-start">
+                              <label>QTY:</label>
+                              <input
+                                type="number"
+                                min="1"
+                                value={item.Quantity}
+                                onChange={setQuantity}
+                                className="w-25"
+                              ></input>
+                              <button
+                                onClick={() => {
+                                  props.addToCart(item);
+                                }}
+                                type="button"
+                                className="btn btn-success"
+                                data-dismiss="modal"
+                              >
+                                Add To Cart
+                              </button>
+                    </div>
+                    <div className="w-50 d-flex justify-content-end">
+                    <a href={`${item.Href}`}
+                      className="btn btn-secondary"
+                      // data-toggle="tooltip"
+                      // data-placement="bottom" 
+                      // title="Navigate to this Item's full Product Page"
                       data-dismiss="modal"
                     >
-                      Add To Cart
-                    </button>
-                  </div>
-                  <div className="col">
-                    <a href={`${item.Href}`}>
-                      <button>Visit Full Product Page</button>
+                      Visit Page
                     </a>
-                  </div>
-                  <div className="col">
                     <button
                       type="button"
                       className="btn btn-secondary"
-                      data-dismiss="modal"
+                      
                     >
                       Close
                     </button>
-                  </div>
-                </div>
+                    </div>
               </div>
             </div>
           </div>
