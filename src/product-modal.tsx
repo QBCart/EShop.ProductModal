@@ -141,20 +141,20 @@ const ProductModal: FC<Props> = (props) => {
               </div>
               <div className="modal-footer flex-row d-flex justify-content-between">
                 <div className="w-50 d-flex justify-content-start">
-                              <label>QTY:</label>
+                              <label className="my-auto">QTY:</label>
                               <input
                                 type="number"
                                 min="1"
                                 value={item.Quantity}
                                 onChange={setQuantity}
-                                className="w-25"
+                                className="w-25 ml-1"
                               ></input>
                               <button
                                 onClick={() => {
                                   props.addToCart(item);
                                 }}
                                 type="button"
-                                className="btn btn-success"
+                                className="btn btn-success ml-1"
                                 data-dismiss="modal"
                               >
                                 Add To Cart
@@ -172,7 +172,7 @@ const ProductModal: FC<Props> = (props) => {
                     </a>
                     <button
                       type="button"
-                      className="btn btn-secondary"
+                      className="btn btn-secondary ml-1"
                       
                     >
                       Close
