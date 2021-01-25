@@ -26,7 +26,6 @@ env:
 # Set Jobs #
 ############
 jobs:
-
   releases:
     # Name the Job
     name: CD
@@ -37,7 +36,6 @@ jobs:
     # Load Steps #
     ##############
     steps:
-
       #################
       # Checkout Code #
       #################
@@ -66,17 +64,17 @@ jobs:
         with:
           node-version: ${{ env.node_version }}
           registry-url: https://npm.pkg.github.com/
-          scope: "@qbcart"
+          scope: '@qbcart'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.QBC_GITHUB_PACKAGES }}
-          
+
       ################
       # Install Deps #
       ################
       - name: Install Deps
         shell: bash
         run: npm install
-      
+
       #################
       # Build Package #
       #################
@@ -103,7 +101,7 @@ jobs:
           npm publish
         env:
           ver: ${{ env.new_version }}
-      
+
       #########################
       # Create GitHub Release #
       #########################
@@ -118,4 +116,3 @@ jobs:
           prerelease: ${{ contains(env.new_version, 'alpha') || contains(env.new_version, 'beta') }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        

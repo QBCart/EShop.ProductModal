@@ -23,7 +23,6 @@ on:
 # Set Jobs #
 ############
 jobs:
-
   tests:
     # Name the Job
     name: CI
@@ -34,7 +33,6 @@ jobs:
     # Load Steps #
     ##############
     steps:
-
       #################
       # Checkout Code #
       #################
@@ -48,7 +46,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'
-      
+
       ################
       # Install Deps #
       ################
@@ -62,7 +60,7 @@ jobs:
       - name: Build Project
         shell: bash
         run: npm run build
-      
+
       #############
       # Lint Code #
       #############
