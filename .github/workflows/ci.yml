@@ -62,6 +62,13 @@ jobs:
       - name: Build Project
         shell: bash
         run: npm run build
+      
+      #############
+      # Lint Code #
+      #############
+      - name: Lint Code
+        shell: bash
+        run: npm run lint
 
       #############
       # Run Tests #

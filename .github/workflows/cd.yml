@@ -84,6 +84,13 @@ jobs:
         shell: bash
         run: npm run build:npm
 
+      #############
+      # Run Tests #
+      #############
+      - name: Run Tests
+        shell: bash
+        run: npm run test:ci
+
       ###################
       # Publish Package #
       ###################
