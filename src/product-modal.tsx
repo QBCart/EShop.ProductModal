@@ -34,7 +34,6 @@ const ProductModal: FC<Props> = (props) => {
       newItem.images = triggerItem.Images;
       newItem.Specs = triggerItem.Specs;
       newItem.Quantity = 1;
-      // images = [`https://qbcstoragemns4oocsxwl6w.z13.web.core.windows.net/images/responsive/${triggerItem.id}`];
 
       setItem(newItem);
     });
@@ -45,8 +44,6 @@ const ProductModal: FC<Props> = (props) => {
       setItem({ ...item, Quantity: parseInt(e.target.value) });
     }
   };
-
-  // let images: string[] = [`https://qbcstoragemns4oocsxwl6w.z13.web.core.windows.net/images/responsive/${item?.id}`, `https://qbcstoragemns4oocsxwl6w.z13.web.core.windows.net/images/responsive/${item?.id}`];
 
   return (
     <div className="modal" tabIndex={-1} id={triggerId}>
@@ -74,21 +71,24 @@ const ProductModal: FC<Props> = (props) => {
                       data-ride="carousel"
                       data-interval="false"
                     >
-                      <ol className="carousel-indicators">
-                        <li
-                          data-target="#carouselExampleIndicators"
-                          data-slide-to="0"
-                          className="active"
-                        ></li>
-                        <li
-                          data-target="#carouselExampleIndicators"
-                          data-slide-to="1"
-                        ></li>
-                        <li
-                          data-target="#carouselExampleIndicators"
-                          data-slide-to="2"
-                        ></li>
-                      </ol>
+                      { item.images && item.images.length > 1 
+                        ? <ol className="carousel-indicators">
+                            <li
+                              data-target="#carouselExampleIndicators"
+                              data-slide-to="0"
+                              className="active"
+                            ></li>
+                            { item.images.slice(1).map((img, index) => {
+                              return(
+                                <li
+                                  data-target="#carouselExampleIndicators"
+                                  data-slide-to={index + 1}
+                                ></li>
+                              )
+                            })}
+                          </ol>
+                        : null 
+                      }
                       <div className="carousel-inner">
                         <div className="carousel-item active">
                           <img
@@ -138,11 +138,6 @@ const ProductModal: FC<Props> = (props) => {
                     </div>
                   </div>
                   <div className="col-12 col-lg-6">
-                    {/* <div>
-                      <div>SKU: {item.Name}</div>
-                      <div>Item Price: {item.SalesPrice}</div>
-                      <div>Item Quantity: {item.Quantity} </div>
-                    </div> */}
                     <ul
                       className="nav nav-pills mb-3"
                       id="pills-tab"
