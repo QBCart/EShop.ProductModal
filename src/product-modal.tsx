@@ -244,17 +244,6 @@ const ProductModal: FC<Props> = (props) => {
                 >
                   <span className="material-icons">add_shopping_cart</span>
                 </button>
-
-                {/* <a
-                    href={`${item.Href}`}
-                    className="btn btn-secondary"
-                    // data-toggle="tooltip"
-                    // data-placement="bottom"
-                    // title="Navigate to this Item's full Product Page"
-                    data-dismiss="modal"
-                  >
-                    Visit Page
-                  </a> */}
               </div>
             </div>
           </div>
