@@ -31,6 +31,7 @@ const ProductModal: FC<Props> = (props) => {
       newItem.SalesDesc = triggerItem.SalesDesc;
       // assumes there exists an in-depth product description... I chose 'FullDesc'
       newItem.FullDesc = triggerItem.FullDesc ?? triggerItem.SalesDesc;
+      newItem.images = triggerItem.Images;
       newItem.Specs = triggerItem.Specs;
       newItem.Quantity = 1;
       // images = [`https://qbcstoragemns4oocsxwl6w.z13.web.core.windows.net/images/responsive/${triggerItem.id}`];
@@ -45,8 +46,7 @@ const ProductModal: FC<Props> = (props) => {
     }
   };
 
-  let images: string[] = [`https://qbcstoragemns4oocsxwl6w.z13.web.core.windows.net/images/responsive/${item?.id}`, `https://qbcstoragemns4oocsxwl6w.z13.web.core.windows.net/images/responsive/${item?.id}`];
-
+  // let images: string[] = [`https://qbcstoragemns4oocsxwl6w.z13.web.core.windows.net/images/responsive/${item?.id}`, `https://qbcstoragemns4oocsxwl6w.z13.web.core.windows.net/images/responsive/${item?.id}`];
 
   return (
     <div className="modal" tabIndex={-1} id={triggerId}>
@@ -54,7 +54,7 @@ const ProductModal: FC<Props> = (props) => {
         {item ? (
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title">{item.SalesDesc}</h5>
+              <h5 className="modal-title">{item.Name}</h5>
               <button
                 type="button"
                 className="close"
@@ -93,24 +93,23 @@ const ProductModal: FC<Props> = (props) => {
                         <div className="carousel-item active">
                           <img
                             className="img-fluid"
-                            src={images? images[0]: null}
+                            src={item.images ? item.images[0] : null}
                             alt="First slide"
                           />
                         </div>
-                        {images && images.length > 1 ?
-                          images.slice(1).map((img)=> {
-                            return (
-                              <div className="carousel-item">
-                                <img
-                                  className="img-fluid"
-                                  src={img}
-                                  alt={item.FullName}
-                                />
-                              </div>
-                            )
-                          }) : 
-                          null
-                        }
+                        {item.images && item.images.length > 1
+                          ? item.images.slice(1).map((img) => {
+                              return (
+                                <div className="carousel-item">
+                                  <img
+                                    className="img-fluid"
+                                    src={img}
+                                    alt={item.FullName}
+                                  />
+                                </div>
+                              );
+                            })
+                          : null}
                       </div>
                       <a
                         className="carousel-control-prev"
@@ -233,25 +232,25 @@ const ProductModal: FC<Props> = (props) => {
                 </div>
               </div>
               <div className="modal-footer">
-              <input
-                    type="number"
-                    min="1"
-                    value={item.Quantity}
-                    onChange={setQuantity}
-                    className="quantity-input form-control-lg mr-1"
-                  ></input>
-                  <button
-                    onClick={() => {
-                      props.addToCart(item);
-                    }}
-                    type="button"
-                    className="btn btn-success"
-                    data-dismiss="modal"
-                  >
-                    <span className="material-icons">add_shopping_cart</span>
-                  </button>
-              
-                  {/* <a
+                <input
+                  type="number"
+                  min="1"
+                  value={item.Quantity}
+                  onChange={setQuantity}
+                  className="quantity-input form-control-lg mr-1"
+                ></input>
+                <button
+                  onClick={() => {
+                    props.addToCart(item);
+                  }}
+                  type="button"
+                  className="btn btn-success"
+                  data-dismiss="modal"
+                >
+                  <span className="material-icons">add_shopping_cart</span>
+                </button>
+
+                {/* <a
                     href={`${item.Href}`}
                     className="btn btn-secondary"
                     // data-toggle="tooltip"
@@ -261,7 +260,6 @@ const ProductModal: FC<Props> = (props) => {
                   >
                     Visit Page
                   </a> */}
-                
               </div>
             </div>
           </div>
