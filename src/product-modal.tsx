@@ -32,7 +32,7 @@ const ProductModal: FC<Props> = (props) => {
       // assumes there exists an in-depth product description... I chose 'FullDesc'
       newItem.FullDesc = triggerItem.FullDesc ?? triggerItem.SalesDesc;
       newItem.images = triggerItem.Images;
-      newItem.Specs = triggerItem.Specs;
+      newItem.specs = triggerItem.Specs;
       newItem.Quantity = 1;
 
       setItem(newItem);
@@ -208,18 +208,11 @@ const ProductModal: FC<Props> = (props) => {
                           role="tabpanel"
                           aria-labelledby="pills-specs-tab"
                         >
-                          Product Specs - It is a long established fact that a
-                          reader will be distracted by the readable content of a
-                          page when looking at its layout. The point of using
-                          Lorem Ipsum is that it has a more-or-less normal
-                          distribution of letters, as opposed to using 'Content
-                          here, content here', making it look like readable
-                          English. Many desktop publishing packages and web page
-                          editors now use Lorem Ipsum as their default model
-                          text, and a search for 'lorem ipsum' will uncover many
-                          web sites still in their infancy. Various versions
-                          have evolved over the years, sometimes by accident,
-                          sometimes on purpose (injected humour and the like).
+                          { item.specs.map((textline) => {
+                            return(
+                              <div>{textline}</div>
+                            )})
+                          }
                         </div>
                       </div>
                     </div>
