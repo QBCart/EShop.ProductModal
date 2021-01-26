@@ -27,8 +27,13 @@ const ProductModal: FC<Props> = (props) => {
       newItem.id = triggerItem.id;
       newItem.Name = triggerItem.Name;
       newItem.SalesPrice = triggerItem.SalesPrice;
+      // assumes SalesDesc is the best property for the item name/title
       newItem.SalesDesc = triggerItem.SalesDesc;
+      // assumes there exists an in-depth product description... I chose 'FullDesc'
+      newItem.FullDesc = triggerItem.FullDesc ?? triggerItem.SalesDesc;
+      newItem.Specs = triggerItem.Specs;
       newItem.Quantity = 1;
+      // images = [`https://qbcstoragemns4oocsxwl6w.z13.web.core.windows.net/images/responsive/${triggerItem.id}`];
 
       setItem(newItem);
     });
@@ -39,6 +44,9 @@ const ProductModal: FC<Props> = (props) => {
       setItem({ ...item, Quantity: parseInt(e.target.value) });
     }
   };
+
+  let images: string[] = [`https://qbcstoragemns4oocsxwl6w.z13.web.core.windows.net/images/responsive/${item?.id}`, `https://qbcstoragemns4oocsxwl6w.z13.web.core.windows.net/images/responsive/${item?.id}`];
+
 
   return (
     <div className="modal" tabIndex={-1} id={triggerId}>
@@ -84,25 +92,25 @@ const ProductModal: FC<Props> = (props) => {
                       <div className="carousel-inner">
                         <div className="carousel-item active">
                           <img
-                            className="d-block w-40"
-                            src="https://i.imgur.com/I86rTVl.jpg"
+                            className="img-fluid"
+                            src={images? images[0]: null}
                             alt="First slide"
                           />
                         </div>
-                        <div className="carousel-item">
-                          <img
-                            className="d-block w-40"
-                            src="https://i.imgur.com/I86rTVl.jpg"
-                            alt="Second slide"
-                          />
-                        </div>
-                        <div className="carousel-item">
-                          <img
-                            className="d-block w-40"
-                            src="https://i.imgur.com/I86rTVl.jpg"
-                            alt="Third slide"
-                          />
-                        </div>
+                        {images && images.length > 1 ?
+                          images.slice(1).map((img)=> {
+                            return (
+                              <div className="carousel-item">
+                                <img
+                                  className="img-fluid"
+                                  src={img}
+                                  alt={item.FullName}
+                                />
+                              </div>
+                            )
+                          }) : 
+                          null
+                        }
                       </div>
                       <a
                         className="carousel-control-prev"
@@ -167,8 +175,19 @@ const ProductModal: FC<Props> = (props) => {
                           Specs
                         </a>
                       </li>
+                      <li className="nav-item" role="presentation">
+                        <a
+                          className="nav-link"
+                          href={item.Href}
+                          role="tab"
+                          aria-controls="pills-specs"
+                          aria-selected="false"
+                        >
+                          Visit Page
+                        </a>
+                      </li>
                     </ul>
-                    <div className="scrollable">
+                    <div className="scroll-box">
                       <div className="tab-content" id="pills-tabContent">
                         <div
                           className="tab-pane fade show active"
@@ -213,29 +232,26 @@ const ProductModal: FC<Props> = (props) => {
                   </div>
                 </div>
               </div>
-              <div className="modal-footer flex-row d-flex justify-content-between">
-                <div className="w-50 d-flex justify-content-start">
-                  <label className="my-auto">QTY:</label>
-                  <input
+              <div className="modal-footer">
+              <input
                     type="number"
                     min="1"
                     value={item.Quantity}
                     onChange={setQuantity}
-                    className="w-25 ml-1"
+                    className="quantity-input form-control-lg mr-1"
                   ></input>
                   <button
                     onClick={() => {
                       props.addToCart(item);
                     }}
                     type="button"
-                    className="btn btn-success ml-1"
+                    className="btn btn-success"
                     data-dismiss="modal"
                   >
-                    Add To Cart
+                    <span className="material-icons">add_shopping_cart</span>
                   </button>
-                </div>
-                <div className="w-50 d-flex justify-content-end">
-                  <a
+              
+                  {/* <a
                     href={`${item.Href}`}
                     className="btn btn-secondary"
                     // data-toggle="tooltip"
@@ -244,11 +260,8 @@ const ProductModal: FC<Props> = (props) => {
                     data-dismiss="modal"
                   >
                     Visit Page
-                  </a>
-                  <button type="button" className="btn btn-secondary ml-1">
-                    Close
-                  </button>
-                </div>
+                  </a> */}
+                
               </div>
             </div>
           </div>

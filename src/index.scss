@@ -15,7 +15,15 @@
   background-color: #444;
 }
 
-.scrollable {
-  height: 200px;
-  overflow: scroll;
+.scroll-box {
+  height: 75%;
+  margin-bottom: 60px;
+  overflow: auto;
+  border: 1px solid lightgray;
+  border-radius: 2px;
+  padding: 12px;
+}
+
+.quantity-input {
+  width: 110px !important;
 }
