@@ -46,8 +46,14 @@ const ProductModal: FC<Props> = (props) => {
   };
 
   return (
-    <div className="modal" tabIndex={-1} id={triggerId}>
-      <div className="modal-dialog modal-xl modal-lg">
+    <div
+      className="modal fade"
+      id={triggerId}
+      tabIndex={-1}
+      aria-labelledby={`${triggerId}Label`}
+      aria-hidden="true"
+    >
+      <div className="modal-dialog modal-dialog-scrollable modal-xl modal-lg">
         {item ? (
           <div className="modal-content">
             <div className="modal-header">
@@ -64,33 +70,32 @@ const ProductModal: FC<Props> = (props) => {
             <div className="modal-body">
               <div className="container">
                 <div className="row">
-                  <div className="col-12 col-lg-6">
+                  <div className="col-12 col-lg-4">
                     <div
                       id="carouselExampleIndicators"
                       className="carousel slide"
                       data-ride="carousel"
                       data-interval="false"
                     >
-                      { item.images && item.images.length > 1 
-                        ? <ol className="carousel-indicators">
-                            <li
-                              data-target="#carouselExampleIndicators"
-                              data-slide-to="0"
-                              className="active"
-                            ></li>
-                            { item.images.slice(1).map((img, index) => {
-                              return(
-                                <li
-                                  data-target="#carouselExampleIndicators"
-                                  data-slide-to={index + 1}
-                                ></li>
-                              )
-                            })}
-                          </ol>
-                        : null 
-                      }
+                      {item.images && item.images.length > 1 ? (
+                        <ol className="carousel-indicators">
+                          <li
+                            data-target="#carouselExampleIndicators"
+                            data-slide-to="0"
+                            className="active"
+                          ></li>
+                          {item.images.slice(1).map((img, index) => {
+                            return (
+                              <li
+                                data-target="#carouselExampleIndicators"
+                                data-slide-to={index + 1}
+                              ></li>
+                            );
+                          })}
+                        </ol>
+                      ) : null}
                       <div className="carousel-inner">
-                        <div className="carousel-item active">
+                        <div className="carousel-item active text-center">
                           <img
                             className="img-fluid"
                             src={item.images ? item.images[0] : null}
@@ -100,7 +105,7 @@ const ProductModal: FC<Props> = (props) => {
                         {item.images && item.images.length > 1
                           ? item.images.slice(1).map((img) => {
                               return (
-                                <div className="carousel-item">
+                                <div className="carousel-item text-center">
                                   <img
                                     className="img-fluid"
                                     src={img}
@@ -137,23 +142,23 @@ const ProductModal: FC<Props> = (props) => {
                       </a>
                     </div>
                   </div>
-                  <div className="col-12 col-lg-6">
+                  <div className="col-12 col-lg-8">
                     <ul
-                      className="nav nav-pills mb-3"
+                      className="nav-pill-scroll-box-header nav nav-pills mb-3"
                       id="pills-tab"
                       role="tablist"
                     >
                       <li className="nav-item" role="presentation">
                         <a
                           className="nav-link active"
-                          id="pills-description-tab"
+                          id="pills-overview-tab"
                           data-toggle="pill"
-                          href="#pills-description"
+                          href="#pills-overview"
                           role="tab"
-                          aria-controls="pills-description"
+                          aria-controls="pills-overview"
                           aria-selected="true"
                         >
-                          Description
+                          Overview
                         </a>
                       </li>
                       <li className="nav-item" role="presentation">
@@ -181,26 +186,18 @@ const ProductModal: FC<Props> = (props) => {
                         </a>
                       </li>
                     </ul>
-                    <div className="scroll-box">
+                    <div className="nav-pill-scroll-box">
                       <div className="tab-content" id="pills-tabContent">
                         <div
                           className="tab-pane fade show active"
-                          id="pills-description"
+                          id="pills-overview"
                           role="tabpanel"
-                          aria-labelledby="pills-description-tab"
+                          aria-labelledby="pills-overview-tab"
                         >
-                          Product Description - Lorem Ipsum is simply dummy text
-                          of the printing and typesetting industry. Lorem Ipsum
-                          has been the industry's standard dummy text ever since
-                          the 1500s, when an unknown printer took a galley of
-                          type and scrambled it to make a type specimen book. It
-                          has survived not only five centuries, but also the
-                          leap into electronic typesetting, remaining
-                          essentially unchanged. It was popularised in the 1960s
-                          with the release of Letraset sheets containing Lorem
-                          Ipsum passages, and more recently with desktop
-                          publishing software like Aldus PageMaker including
-                          versions of Lorem Ipsum.
+                          <h3>{item.SalesDesc}</h3>
+                          <h4>Price: {item.SalesPrice}</h4>
+                          <h4>Details:</h4>
+                          <p>{item.FullDesc}</p>
                         </div>
                         <div
                           className="tab-pane fade"
@@ -208,43 +205,62 @@ const ProductModal: FC<Props> = (props) => {
                           role="tabpanel"
                           aria-labelledby="pills-specs-tab"
                         >
-                          { item.specs.map((textline) => {
-                            return(
-                              <div>{textline}</div>
-                            )})
-                          }
+                          {item.specs.map((textline) => {
+                            return <div>{textline}</div>;
+                          })}
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="modal-footer">
-                <input
-                  type="number"
-                  min="1"
-                  value={item.Quantity}
-                  onChange={setQuantity}
-                  className="quantity-input form-control-lg mr-1"
-                ></input>
-                <button
-                  onClick={() => {
-                    props.addToCart(item);
-                  }}
-                  type="button"
-                  className="btn btn-success"
-                  data-dismiss="modal"
-                >
-                  <span className="material-icons">add_shopping_cart</span>
-                </button>
-              </div>
+            </div>
+            <div className="modal-footer">
+              <input
+                type="number"
+                min="1"
+                value={item.Quantity}
+                onChange={setQuantity}
+                className="quantity-input form-control-lg mr-1"
+              ></input>
+              <button
+                onClick={() => {
+                  props.addToCart(item);
+                }}
+                type="button"
+                className="btn btn-success"
+                data-dismiss="modal"
+              >
+                <span className="material-icons">add_shopping_cart</span>
+              </button>
             </div>
           </div>
         ) : (
-          <div className="modal-content"></div>
+          <div className="modal-content">
+            <div className="modal-body"></div>
+          </div>
         )}
       </div>
     </div>
+    //   <div className="modal fade" id="scrollModal" tabIndex={-1} aria-labelledby="scrollModalLabel" aria-hidden="true">
+    //     <div className="modal-dialog modal-dialog-scrollable">
+    //       <div className="modal-content">
+    //         <div className="modal-header">
+    //           <h5 className="modal-title" id="scrollModalLabel">Modal title</h5>
+    //           <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+    //             <span aria-hidden="true">&times;</span>
+    //           </button>
+    //         </div>
+    //         <div className="modal-body">
+    //         Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+    //         </div>
+    //         <div className="modal-footer">
+    //           <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+    //           <button type="button" className="btn btn-primary">Save changes</button>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
   );
 };
 

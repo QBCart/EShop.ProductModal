@@ -15,9 +15,8 @@
   background-color: #444;
 }
 
-.scroll-box {
-  height: 75%;
-  margin-bottom: 60px;
+.nav-pill-scroll-box {
+  height: 90%;
   overflow: auto;
   border: 1px solid lightgray;
   border-radius: 2px;
@@ -26,4 +25,20 @@
 
 .quantity-input {
   width: 110px !important;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) {
+  .nav-pill-scroll-box {
+    overflow: visible;
+    border-top: 1px solid lightgray;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    border-radius: 0;
+    padding-bottom: 0;
+  }
+  .modal-footer {
+    padding: 10px;
+  }
 }
