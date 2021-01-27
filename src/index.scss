@@ -15,6 +15,16 @@
   background-color: #444;
 }
 
+.nav-pills .nav-link {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.nav-pill-scroll-box-header {
+  border-bottom: 2px solid #007bff;
+}
+
 .nav-pill-scroll-box {
   overflow: auto;
   border: 1px solid lightgray;
@@ -28,7 +38,7 @@
 
 .add-space {
   display: block;
-  margin: 4px auto;
+  margin: 8px 0 0 0;
   background-color: lightgray;
 }
 
@@ -36,11 +46,7 @@
 @media (max-width: 991.98px) {
   .nav-pill-scroll-box {
     overflow: visible;
-    border-top: 1px solid lightgray;
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
-    border-radius: 0;
+    border: none;
     padding-bottom: 0;
   }
   .modal-footer {
@@ -48,6 +54,12 @@
   }
   .add-space {
     display: none;
+  }
+  .carousel {
+    height: 200px;
+  }
+  .img-fluid {
+    height: 200px;
   }
 }
 
