@@ -4,7 +4,7 @@ import React, {
   useEffect
 } from 'https://cdn.skypack.dev/pin/react@v17.0.1-tOtrZxBRexARODgO0jli/min/react.js';
 
-import ProductModalItem from './product-modal-item'
+import ProductModalItem from './product-modal-item';
 
 interface Props {
   triggerId?: string;
@@ -28,6 +28,7 @@ const ProductModal: FC<Props> = (props) => {
       newItem.Href = triggerItem.Href;
       newItem.id = triggerItem.id;
       newItem.Name = triggerItem.Name;
+      newItem.FullName = triggerItem.FullName;
       newItem.SalesPrice = triggerItem.SalesPrice;
       newItem.SalesDesc = triggerItem.SalesDesc;
       newItem.FullDesc = triggerItem.FullDesc;
@@ -205,7 +206,7 @@ const ProductModal: FC<Props> = (props) => {
                           role="tabpanel"
                           aria-labelledby="pills-specs-tab"
                         >
-                          {item.specs.map((textline) => {
+                          {item.Specs.map((textline) => {
                             return <div>{textline}</div>;
                           })}
                         </div>
