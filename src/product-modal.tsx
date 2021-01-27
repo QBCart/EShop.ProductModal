@@ -17,12 +17,12 @@ const ProductModal: FC<Props> = (props) => {
       ? props.triggerId
       : 'productModal';
 
-  const [item, setItem] = useState(null);
+  const [item, setItem] = useState<ProductModalItem>(null);
 
   useEffect(() => {
     $(`#${triggerId}`).on('shown.bs.modal', function (e) {
       //@ts-ignore
-      const triggerItem = $(e.relatedTarget).data('item');
+      const triggerItem: ProductModalItem = $(e.relatedTarget).data('item');
 
       let newItem = { ...item };
       newItem.Href = triggerItem.Href;
