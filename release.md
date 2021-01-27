@@ -2,7 +2,7 @@
 
 # New
 
-- added skypack npm streaming support
+- styled product modal
 
 # Fixes
 
