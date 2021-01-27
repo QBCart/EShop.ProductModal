@@ -38,6 +38,7 @@
 
 .add-space {
   display: block;
+  width: auto;
   margin: 8px 0 0 0;
   background-color: lightgray;
 }
@@ -77,7 +78,6 @@
   }
   .add-space {
     height: 200px;
-    width: 200px;
   }
   .nav-pill-scroll-box {
     height: 350px;
@@ -94,7 +94,6 @@
   }
   .add-space {
     height: 300px;
-    width: 300px;
   }
   .nav-pill-scroll-box {
     height: 550px;

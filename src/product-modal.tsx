@@ -57,17 +57,6 @@ const ProductModal: FC<Props> = (props) => {
       <div className="modal-dialog modal-dialog-scrollable modal-xl modal-lg">
         {item ? (
           <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">{item.Name}</h5>
-              <button
-                type="button"
-                className="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
             <div className="modal-body">
               <div className="container">
                 <div className="row">
@@ -196,7 +185,8 @@ const ProductModal: FC<Props> = (props) => {
                           role="tabpanel"
                           aria-labelledby="pills-overview-tab"
                         >
-                          <h3>{item.SalesDesc}</h3>
+                          <h3>Product ID: {item.Name}</h3>
+                          <h4>Description: {item.SalesDesc}</h4>
                           <h4>Price: {item.SalesPrice}</h4>
                           <h4>Details:</h4>
                           <p>{item.FullDesc}</p>
@@ -218,23 +208,34 @@ const ProductModal: FC<Props> = (props) => {
               </div>
             </div>
             <div className="modal-footer">
-              <input
-                type="number"
-                min="1"
-                value={item.Quantity}
-                onChange={setQuantity}
-                className="quantity-input form-control-lg mr-1"
-              ></input>
-              <button
-                onClick={() => {
-                  props.addToCart(item);
-                }}
-                type="button"
-                className="btn btn-success"
-                data-dismiss="modal"
-              >
-                <span className="material-icons">add_shopping_cart</span>
-              </button>
+              <div className="col-6 d-flex justify-content-start">
+                <input
+                  type="number"
+                  min="1"
+                  value={item.Quantity}
+                  onChange={setQuantity}
+                  className="quantity-input form-control-lg ml-2 mr-1"
+                ></input>
+                <button
+                  onClick={() => {
+                    props.addToCart(item);
+                  }}
+                  type="button"
+                  className="btn btn-success"
+                  data-dismiss="modal"
+                >
+                  <span className="material-icons">add_shopping_cart</span>
+                </button>
+              </div>
+              <div className="col-6 d-flex justify-content-end">
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  data-dismiss="modal"
+                >
+                  <span className="material-icons">close</span>
+                </button>
+              </div>
             </div>
           </div>
         ) : (
