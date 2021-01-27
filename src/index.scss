@@ -16,7 +16,6 @@
 }
 
 .nav-pill-scroll-box {
-  height: 90%;
   overflow: auto;
   border: 1px solid lightgray;
   border-radius: 2px;
@@ -27,8 +26,14 @@
   width: 110px !important;
 }
 
+.add-space {
+  display: block;
+  margin: 4px auto;
+  background-color: lightgray;
+}
+
 // Small devices (landscape phones, 768px and below)
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
   .nav-pill-scroll-box {
     overflow: visible;
     border-top: 1px solid lightgray;
@@ -41,12 +46,45 @@
   .modal-footer {
     padding: 10px;
   }
+  .add-space {
+    display: none;
+  }
 }
 
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
   .modal-dialog-scrollable .modal-body {
     overflow: visible;
     overflow-y: hidden;
+  }
+  .carousel {
+    height: 200px;
+  }
+  .img-fluid {
+    height: 200px;
+  }
+  .add-space {
+    height: 200px;
+    width: 200px;
+  }
+  .nav-pill-scroll-box {
+    height: 350px;
+  }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .carousel {
+    height: 300px;
+  }
+  .img-fluid {
+    height: 300px;
+  }
+  .add-space {
+    height: 300px;
+    width: 300px;
+  }
+  .nav-pill-scroll-box {
+    height: 550px;
   }
 }

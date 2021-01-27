@@ -142,6 +142,7 @@ const ProductModal: FC<Props> = (props) => {
                         <span className="sr-only">Next</span>
                       </a>
                     </div>
+                    <div className="row add-space"></div>
                   </div>
                   <div className="col-12 col-lg-8">
                     <ul
