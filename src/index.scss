@@ -1,8 +1,8 @@
-.carousel-control-prev-icon {
+.carousel-control-prev-icon .carousel-prev {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='808080' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
 }
 
-.carousel-control-next-icon {
+.carousel-control-next-icon .carousel-next {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='808080' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
 }
 
@@ -15,14 +15,15 @@
   background-color: #444;
 }
 
+.nav-pill-scroll-box-header {
+  border-bottom: 2px solid #007bff;
+}
+
 .nav-pills .nav-link {
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-}
-.nav-pill-scroll-box-header {
-  border-bottom: 2px solid #007bff;
 }
 
 .nav-pill-scroll-box {
@@ -43,37 +44,37 @@
   background-color: lightgray;
 }
 
-// Small devices (landscape phones, 768px and below)
+// Small devices (landscape phones, 992px and below)
 @media (max-width: 991.98px) {
   .nav-pill-scroll-box {
     overflow: visible;
     border: none;
     padding-bottom: 0;
   }
-  .modal-footer {
+  .modal-footer .product-modal-footer {
     padding: 10px;
   }
   .add-space {
     display: none;
   }
-  .carousel {
+  .carousel .product-modal-carousel {
     height: 200px;
   }
-  .img-fluid {
+  .img-fluid .product-modal-image {
     height: 200px;
   }
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
-  .modal-dialog-scrollable .modal-body {
+  .modal-dialog-scrollable .modal-body .product-modal-body {
     overflow: visible;
     overflow-y: hidden;
   }
-  .carousel {
+  .carousel .product-modal-carousel {
     height: 200px;
   }
-  .img-fluid {
+  .img-fluid .product-modal-image {
     height: 200px;
   }
   .add-space {
@@ -86,10 +87,10 @@
 
 // X-Large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
-  .carousel {
+  .carousel .product-modal-carousel {
     height: 300px;
   }
-  .img-fluid {
+  .img-fluid .product-modal-image {
     height: 300px;
   }
   .add-space {

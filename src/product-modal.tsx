@@ -57,13 +57,13 @@ const ProductModal: FC<Props> = (props) => {
       <div className="modal-dialog modal-dialog-scrollable modal-xl modal-lg">
         {item ? (
           <div className="modal-content">
-            <div className="modal-body">
+            <div className="modal-body product-modal-body">
               <div className="container">
                 <div className="row">
                   <div className="col-12 col-lg-4">
                     <div
                       id="carouselExampleIndicators"
-                      className="carousel slide"
+                      className="carousel slide product-modal-carousel"
                       data-ride="carousel"
                       data-interval="false"
                     >
@@ -87,7 +87,7 @@ const ProductModal: FC<Props> = (props) => {
                       <div className="carousel-inner">
                         <div className="carousel-item active text-center">
                           <img
-                            className="img-fluid"
+                            className="img-fluid product-modal-image"
                             src={item.Images ? item.Images[0] : null}
                             alt="First slide"
                           />
@@ -97,7 +97,7 @@ const ProductModal: FC<Props> = (props) => {
                               return (
                                 <div className="carousel-item text-center">
                                   <img
-                                    className="img-fluid"
+                                    className="img-fluid product-modal-image"
                                     src={img}
                                     alt={item.FullName}
                                   />
@@ -107,7 +107,7 @@ const ProductModal: FC<Props> = (props) => {
                           : null}
                       </div>
                       <a
-                        className="carousel-control-prev"
+                        className="carousel-control-prev carousel-prev"
                         href="#carouselExampleIndicators"
                         role="button"
                         data-slide="prev"
@@ -119,7 +119,7 @@ const ProductModal: FC<Props> = (props) => {
                         <span className="sr-only">Previous</span>
                       </a>
                       <a
-                        className="carousel-control-next"
+                        className="carousel-control-next carousel-next"
                         href="#carouselExampleIndicators"
                         role="button"
                         data-slide="next"
@@ -154,7 +154,7 @@ const ProductModal: FC<Props> = (props) => {
                       </li>
                       <li className="nav-item" role="presentation">
                         <a
-                          className="nav-link"
+                          className="nav-link .scroll-box-tabs"
                           id="pills-specs-tab"
                           data-toggle="pill"
                           href="#pills-specs"
@@ -167,7 +167,7 @@ const ProductModal: FC<Props> = (props) => {
                       </li>
                       <li className="nav-item" role="presentation">
                         <a
-                          className="nav-link"
+                          className="nav-link .scroll-box-tabs"
                           href={item.Href}
                           role="tab"
                           aria-controls="pills-specs"
@@ -207,7 +207,7 @@ const ProductModal: FC<Props> = (props) => {
                 </div>
               </div>
             </div>
-            <div className="modal-footer">
+            <div className="modal-footer product-modal-footer">
               <div className="col-6 d-flex justify-content-start">
                 <input
                   type="number"
