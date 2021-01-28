@@ -6,6 +6,8 @@ import React, {
 
 import ProductModalItem from './product-modal-item';
 
+import toUSCurrency from './currency';
+
 interface Props {
   triggerId?: string;
   addToCart: any;
@@ -187,7 +189,7 @@ const ProductModal: FC<Props> = (props) => {
                         >
                           <h3>Product ID: {item.Name}</h3>
                           <h4>Description: {item.SalesDesc}</h4>
-                          <h4>Price: {item.SalesPrice}</h4>
+                          <h4>Price: {toUSCurrency(item.SalesPrice)}</h4>
                           <h4>Details:</h4>
                           <p>{item.FullDesc}</p>
                         </div>
