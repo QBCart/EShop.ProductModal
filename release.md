@@ -2,11 +2,11 @@
 
 # New
 
-- styled product modal
+- none
 
 # Fixes
 
-- none
+- replaced global bootsrap style references with properly scoped classes - implemented currency.ts
 
 # Breaking
 
