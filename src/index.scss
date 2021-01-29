@@ -1,19 +1,110 @@
-.carousel-control-prev-icon .carousel-prev {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='808080' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+///////////////////////////
+//// MODAL BODY STYLES ////
+///////////////////////////
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  #product-modal-body {
+    overflow: visible;
+    overflow-y: hidden;
+  }
 }
 
-.carousel-control-next-icon .carousel-next {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='808080' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #product-modal-body {
+    overflow: visible;
+    overflow-y: hidden;
+  }
+}
+
+// Small to medium devices (landscape phones, 992px and below)
+@media (max-width: 991.98px) {
+  #product-modal-body {
+    overflow: visible;
+    overflow-y: auto;
+  }
+}
+
+/////////////////////////
+//// CAROUSEL STYLES ////
+/////////////////////////
+
+#carousel-next,
+#carousel-prev {
+  filter: invert(100%);
 }
 
 .carousel-indicators li {
   background-color: #999;
-  background-color: rgba(70, 70, 70, 0.25);
+  background-color: rgba(70, 70, 70, 0.25) !important;
 }
 
 .carousel-indicators .active {
-  background-color: #444;
+  background-color: #444 !important;
 }
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .product-modal-carousel {
+    height: 300px !important;
+  }
+  #product-modal-img {
+    height: 300px;
+  }
+}
+// Large devices (desktops, 992px to 1200px)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .product-modal-carousel {
+    height: 200px !important;
+  }
+  #product-modal-img {
+    height: 200px;
+  }
+}
+// Small to medium devices (landscape phones, 992px and below)
+@media (max-width: 991.98px) {
+  .product-modal-carousel {
+    height: 200px !important;
+  }
+  #product-modal-img {
+    height: 200px;
+  }
+}
+
+/////////////////////////
+//// ADDSPACE STYLES ////
+/////////////////////////
+
+.add-space {
+  display: block;
+  width: auto;
+  margin: 8px 0 0 0;
+  background-color: lightgray;
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .add-space {
+    height: 300px;
+  }
+}
+// Large devices (desktops, 992px to 1200px)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .add-space {
+    height: 200px;
+  }
+}
+// Small to medium devices (landscape phones, 992px and below)
+@media (max-width: 991.98px) {
+  .add-space {
+    display: none;
+  }
+}
+
+//////////////////////////
+//// SCROLLBOX STYLES ////
+//////////////////////////
 
 .nav-pill-scroll-box-header {
   border-bottom: 2px solid #007bff;
@@ -26,77 +117,46 @@
   border-bottom-right-radius: 0;
 }
 
-.nav-pill-scroll-box {
-  overflow: auto;
-  border: 1px solid lightgray;
-  border-radius: 2px;
-  padding: 12px;
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .nav-pill-scroll-box {
+    overflow-y: auto;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    padding: 12px;
+    height: 550px;
+  }
 }
-
-.quantity-input {
-  width: 110px !important;
+// Large devices (desktops, 992px to 1200px)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .nav-pill-scroll-box {
+    overflow-y: auto;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    padding: 12px;
+    height: 350px;
+  }
 }
-
-.add-space {
-  display: block;
-  width: auto;
-  margin: 8px 0 0 0;
-  background-color: lightgray;
-}
-
-// Small devices (landscape phones, 992px and below)
+// Small to medium devices (landscape phones, 992px and below)
 @media (max-width: 991.98px) {
   .nav-pill-scroll-box {
     overflow: visible;
     border: none;
     padding-bottom: 0;
   }
-  .modal-footer .product-modal-footer {
+}
+
+///////////////////////
+//// FOOTER STYLES ////
+///////////////////////
+
+#product-modal-quantity-input {
+  width: 110px;
+}
+
+// Small to medium devices (landscape phones, 992px and below)
+@media (max-width: 991.98px) {
+  #product-modal-footer {
     padding: 10px;
-  }
-  .add-space {
-    display: none;
-  }
-  .carousel .product-modal-carousel {
-    height: 200px;
-  }
-  .img-fluid .product-modal-image {
-    height: 200px;
-  }
-}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-  .modal-dialog-scrollable .modal-body .product-modal-body {
-    overflow: visible;
-    overflow-y: hidden;
-  }
-  .carousel .product-modal-carousel {
-    height: 200px;
-  }
-  .img-fluid .product-modal-image {
-    height: 200px;
-  }
-  .add-space {
-    height: 200px;
-  }
-  .nav-pill-scroll-box {
-    height: 350px;
-  }
-}
-
-// X-Large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-  .carousel .product-modal-carousel {
-    height: 300px;
-  }
-  .img-fluid .product-modal-image {
-    height: 300px;
-  }
-  .add-space {
-    height: 300px;
-  }
-  .nav-pill-scroll-box {
-    height: 550px;
   }
 }
