@@ -6,7 +6,7 @@
 
 # Fixes
 
-- replaced global bootsrap style references with properly scoped classes - implemented currency.ts
+- scss - fixed bugs due to scope of type references & CSS hierarchies
 
 # Breaking
 
