@@ -9,7 +9,7 @@ interface Props {}
 
 const TestComponent: FC<Props> = (props) => {
   const addToCart = (item) => {
-    console.log(item.Name);
+    console.log(item);
   };
 
   return (

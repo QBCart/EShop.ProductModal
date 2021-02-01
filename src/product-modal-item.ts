@@ -8,6 +8,6 @@ interface ProductModalItem {
   FullDesc: string;
   Images: string[];
   Specs: string[];
-  Quantity: number;
+  Quantity: any;
 }
 export default ProductModalItem;
