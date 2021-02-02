@@ -21,7 +21,9 @@ const InvalidInputModal: FC<Props> = (props) => {
         <div className="modal-content invalid-modal">
           <div className="modal-header invalid-header d-flex justify-content-start">
             <h5 className="modal-title" id="exampleModalLabel">
-              <span className="material-icons" id="invalid-icon">error_outline</span>
+              <span className="material-icons" id="invalid-icon">
+                error_outline
+              </span>
             </h5>
             <div className="invalid-title">Invalid Input</div>
           </div>

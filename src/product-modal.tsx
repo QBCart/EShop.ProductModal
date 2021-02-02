@@ -238,6 +238,7 @@ const ProductModal: FC<Props> = (props) => {
                   <input
                     type="number"
                     step="1"
+                    min="1"
                     onChange={setQuantity}
                     value={item.Quantity}
                     className="form-control-lg ml-2 mr-1"
