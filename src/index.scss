@@ -160,3 +160,27 @@
     padding: 10px;
   }
 }
+
+.invalid-modal {
+  border: 2px solid black;
+}
+
+.invalid-header {
+  padding: 0.5rem 1rem;
+  color: #dc3545;
+  background-color: darkslategray;
+  border-bottom: 2px solid black;
+  border-top-left-radius: 2px !important;
+  border-top-right-radius: 2px !important;
+}
+
+#invalid-icon {
+  font-size: 30px;
+  vertical-align: text-top;
+}
+
+.invalid-title {
+  font-size: 24px;
+  margin-left: 5px;
+  color: lightgray;
+}

@@ -4,6 +4,9 @@ import React, {
   useEffect
 } from 'https://cdn.skypack.dev/pin/react@v17.0.1-tOtrZxBRexARODgO0jli/min/react.js';
 
+import AddToCartToast from './components/addToCartToast';
+import InvalidInputModal from './components/InvalidInputModal';
+
 import ProductModalItem from './product-modal-item';
 
 import toUSCurrency from './currency';
@@ -61,7 +64,8 @@ const ProductModal: FC<Props> = (props) => {
       //@ts-ignore
       $('.toast').toast('show');
     } else {
-      alert('invalid item quantity');
+      //@ts-ignore
+      $(`#invalid-input`).modal('show');
     }
   };
 
@@ -267,28 +271,8 @@ const ProductModal: FC<Props> = (props) => {
           )}
         </div>
       </div>
-      {/* toast */}
-      <div aria-live="polite" aria-atomic="true">
-        <div
-          className="toast"
-          data-delay="800"
-          style={{ position: 'absolute', top: '10%', right: '10%' }}
-        >
-          <div className="toast-header">
-            <button
-              type="button"
-              className="ml-2 mb-1 close"
-              data-dismiss="toast"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div className="toast-body">
-            Item has been successfully added to your cart!
-          </div>
-        </div>
-      </div>
+      <AddToCartToast />
+      <InvalidInputModal />
     </div>
   );
 };

@@ -1,0 +1,46 @@
+import React, {
+  FC
+} from 'https://cdn.skypack.dev/pin/react@v17.0.1-tOtrZxBRexARODgO0jli/min/react.js';
+
+interface Props {}
+
+const InvalidInputModal: FC<Props> = (props) => {
+  const closeModal = () => {
+    //@ts-ignore
+    $(`#invalid-input`).modal('hide');
+  };
+  return (
+    <div
+      className="modal fade"
+      id="invalid-input"
+      tabIndex={-1}
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div className="modal-dialog modal-dialog-centered">
+        <div className="modal-content invalid-modal">
+          <div className="modal-header invalid-header d-flex justify-content-start">
+            <h5 className="modal-title" id="exampleModalLabel">
+              <span className="material-icons" id="invalid-icon">error_outline</span>
+            </h5>
+            <div className="invalid-title">Invalid Input</div>
+          </div>
+          <div className="modal-body">
+            Quantity must be a positive whole number.
+          </div>
+          <div className="modal-footer">
+            <button
+              onClick={closeModal}
+              type="button"
+              className="btn btn-secondary"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default InvalidInputModal;
