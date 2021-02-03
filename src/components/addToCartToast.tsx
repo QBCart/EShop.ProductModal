@@ -4,7 +4,7 @@ import React, {
 
 interface Props {
   companyStorageUrl: string;
-};
+}
 
 const AddToCartToast: FC<Props> = (props) => {
   return (
@@ -15,12 +15,18 @@ const AddToCartToast: FC<Props> = (props) => {
     >
       <div
         className="toast  d-flex align-items-center"
-        data-delay="8000"
+        data-delay="1000"
         style={{ position: 'relative', bottom: '50%', left: '50%' }}
       >
         <div className="toast-body">
-          <img src={`${props.companyStorageUrl}images/favicon.ico`} alt="company logo" width="18"></img>
-          <strong className="ml-1 mr-auto">Item has been added to your cart!</strong>
+          <img
+            src={`${props.companyStorageUrl}images/favicon.ico`}
+            alt="company logo"
+            width="18"
+          ></img>
+          <strong className="ml-1 mr-auto">
+            Item has been added to your cart!
+          </strong>
         </div>
         <button
           type="button"

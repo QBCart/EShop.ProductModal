@@ -28,7 +28,7 @@ const InvalidInputModal: FC<Props> = (props) => {
             <div className="invalid-title">Invalid Input</div>
           </div>
           <div className="modal-body">
-            Quantity must be a positive whole number.
+            Quantity must be a positive whole number greater than zero.
           </div>
           <div className="modal-footer">
             <button

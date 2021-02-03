@@ -92,14 +92,14 @@ const ProductModal: FC<Props> = (props) => {
                         data-ride="carousel"
                         data-interval="false"
                       >
-                        {item.Images && item.Images.length > 1 ? (
+                        {item.Images && item.Images.length > 0 ? (
                           <ol className="carousel-indicators">
                             <li
                               data-target="#carouselExampleIndicators"
                               data-slide-to="0"
                               className="active"
                             ></li>
-                            {item.Images.slice(1).map((img, index) => {
+                            {item.Images.map((img, index) => {
                               return (
                                 <li
                                   data-target="#carouselExampleIndicators"
@@ -113,17 +113,21 @@ const ProductModal: FC<Props> = (props) => {
                           <div className="carousel-item active text-center">
                             <img
                               id="product-modal-img"
-                              src={item.Images ? item.Images[0] : null}
+                              src={
+                                item.Images
+                                  ? `${props.companyStorageUrl}images/responsive/${item.id}`
+                                  : null
+                              }
                               alt="First slide"
                             />
                           </div>
-                          {item.Images && item.Images.length > 1
-                            ? item.Images.slice(1).map((img) => {
+                          {item.Images && item.Images.length > 0
+                            ? item.Images.map((img) => {
                                 return (
                                   <div className="carousel-item text-center">
                                     <img
                                       id="product-modal-img"
-                                      src={img}
+                                      src={`${props.companyStorageUrl}images/related/${item.id}/responsive/${img}`}
                                       alt={item.FullName}
                                     />
                                   </div>
