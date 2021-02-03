@@ -14,6 +14,7 @@ import toUSCurrency from './currency';
 interface Props {
   triggerId?: string;
   addToCart: any;
+  companyStorageUrl: string;
 }
 
 const ProductModal: FC<Props> = (props) => {
@@ -272,7 +273,7 @@ const ProductModal: FC<Props> = (props) => {
           )}
         </div>
       </div>
-      <AddToCartToast />
+      <AddToCartToast companyStorageUrl={props.companyStorageUrl} />
       <InvalidInputModal />
     </div>
   );

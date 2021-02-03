@@ -14,7 +14,7 @@ const TestComponent: FC<Props> = (props) => {
 
   return (
     <div>
-      <ProductModal triggerId={''} addToCart={addToCart} />
+      <ProductModal triggerId={''} addToCart={addToCart} companyStorageUrl={'https://qbcstoragemns4oocsxwl6w.z13.web.core.windows.net/'}/>
     </div>
   );
 };
