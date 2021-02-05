@@ -2,11 +2,11 @@
 
 # New
 
-- none
+- Added invalid input modal & addtocart toast
 
 # Fixes
 
-- scss - fixed bugs due to scope of type references & CSS hierarchies
+- fixed issue where user had trouble manually setting input value for item quantities
 
 # Breaking
 
