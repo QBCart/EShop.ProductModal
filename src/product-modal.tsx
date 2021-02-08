@@ -228,19 +228,18 @@ const ProductModal: FC<Props> = (props) => {
                             role="tabpanel"
                             aria-labelledby="pills-specs-tab"
                           >
-                            {
-                            item.Specs && item.Specs.length > 0 
-                              ? item.Specs.map((textline) => {
+                            {item.Specs && item.Specs.length > 0 ? (
+                              item.Specs.map((textline) => {
                                 return <div>{textline}</div>;
                               })
-                              : <div>
+                            ) : (
+                              <div>
                                 <h3>Sorry, we have no specs!</h3>
                                 <div>
                                   The specs for this item are not yet available.
                                 </div>
                               </div>
-                            
-                            }
+                            )}
                           </div>
                         </div>
                       </div>
