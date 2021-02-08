@@ -2,11 +2,11 @@
 
 # New
 
-- Added invalid input modal & addtocart toast
+- Added alternate view for empty spec sheet
 
 # Fixes
 
-- fixed issue where user had trouble manually setting input value for item quantities
+- Specs is an optional dep, & will no longer break the product modal, if null, empty, or undefined
 
 # Breaking
 
