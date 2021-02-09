@@ -71,7 +71,7 @@ const ProductModal: FC<Props> = (props) => {
   };
 
   return (
-    <div>
+    <div id="product-modal">
       <div
         className="modal fade"
         id={triggerId}
@@ -110,23 +110,32 @@ const ProductModal: FC<Props> = (props) => {
                           </ol>
                         ) : null}
                         <div className="carousel-inner">
-                          <div className="carousel-item active text-center">
-                            <img
-                              id="product-modal-img"
-                              src={`${props.companyStorageUrl}images/responsive/${item.id}`}
-                              alt="First slide"
-                            />
+                          <div
+                            className="carousel-item active"
+                            style={{
+                              height: '300px',
+                              width: '100%',
+                              backgroundImage: `url(${props.companyStorageUrl}images/responsive/${item.id})`,
+                              backgroundSize: 'contain',
+                              backgroundPosition: 'center',
+                              backgroundRepeat: 'no-repeat'
+                            }}
+                          >
                           </div>
                           {item.Images && item.Images.length > 0
                             ? item.Images.map((img) => {
                                 return (
-                                  <div className="carousel-item text-center">
-                                    <img
-                                      id="product-modal-img"
-                                      src={`${props.companyStorageUrl}images/related/${item.id}/responsive/${img}`}
-                                      alt={item.FullName}
-                                    />
-                                  </div>
+                                  <div
+                                    className="carousel-item"
+                                    style={{
+                                      height: '300px',
+                                      width: '100%',
+                                      backgroundImage: `url(${props.companyStorageUrl}images/related/${item.id}/responsive/${img})`,
+                                      backgroundSize: 'contain',
+                                      backgroundPosition: 'center',
+                                      backgroundRepeat: 'no-repeat'
+                                    }}
+                                  ></div>
                                 );
                               })
                             : null}

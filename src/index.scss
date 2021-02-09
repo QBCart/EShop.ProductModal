@@ -4,7 +4,7 @@
 
 // X-Large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
-  #product-modal-body {
+  #product-modal #product-modal-body {
     overflow: visible;
     overflow-y: hidden;
   }
@@ -12,7 +12,7 @@
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  #product-modal-body {
+  #product-modal #product-modal-body {
     overflow: visible;
     overflow-y: hidden;
   }
@@ -20,7 +20,7 @@
 
 // Small to medium devices (landscape phones, 992px and below)
 @media (max-width: 991.98px) {
-  #product-modal-body {
+  #product-modal #product-modal-body {
     overflow: visible;
     overflow-y: auto;
   }
@@ -30,44 +30,44 @@
 //// CAROUSEL STYLES ////
 /////////////////////////
 
-#carousel-next,
-#carousel-prev {
+#product-modal #carousel-next,
+#product-modal #carousel-prev {
   filter: invert(100%);
 }
 
-.carousel-indicators li {
+#product-modal .carousel-indicators li {
   background-color: #999;
   background-color: rgba(70, 70, 70, 0.25) !important;
 }
 
-.carousel-indicators .active {
+#product-modal .carousel-indicators .active {
   background-color: #444 !important;
 }
 
 // X-Large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
-  .product-modal-carousel {
+  #product-modal .product-modal-carousel {
     height: 300px !important;
   }
-  #product-modal-img {
+  #product-modal #product-modal-img {
     height: 300px;
   }
 }
 // Large devices (desktops, 992px to 1200px)
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  .product-modal-carousel {
+  #product-modal .product-modal-carousel {
     height: 200px !important;
   }
-  #product-modal-img {
+  #product-modal #product-modal-img {
     height: 200px;
   }
 }
 // Small to medium devices (landscape phones, 992px and below)
 @media (max-width: 991.98px) {
-  .product-modal-carousel {
+  #product-modal .product-modal-carousel {
     height: 200px !important;
   }
-  #product-modal-img {
+  #product-modal #product-modal-img {
     height: 200px;
   }
 }
@@ -76,7 +76,7 @@
 //// ADDSPACE STYLES ////
 /////////////////////////
 
-.add-space {
+#product-modal .add-space {
   display: block;
   width: auto;
   margin: 8px 0 0 0;
@@ -85,19 +85,19 @@
 
 // X-Large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
-  .add-space {
+  #product-modal .add-space {
     height: 300px;
   }
 }
 // Large devices (desktops, 992px to 1200px)
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  .add-space {
+  #product-modal .add-space {
     height: 200px;
   }
 }
 // Small to medium devices (landscape phones, 992px and below)
 @media (max-width: 991.98px) {
-  .add-space {
+  #product-modal .add-space {
     display: none;
   }
 }
@@ -106,11 +106,11 @@
 //// SCROLLBOX STYLES ////
 //////////////////////////
 
-.nav-pill-scroll-box-header {
+#product-modal .nav-pill-scroll-box-header {
   border-bottom: 2px solid #007bff;
 }
 
-.nav-pills .nav-link {
+#product-modal .nav-pills .nav-link {
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
   border-bottom-left-radius: 0;
@@ -119,7 +119,7 @@
 
 // X-Large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
-  .nav-pill-scroll-box {
+  #product-modal .nav-pill-scroll-box {
     overflow-y: auto;
     border: 1px solid lightgray;
     border-radius: 2px;
@@ -129,7 +129,7 @@
 }
 // Large devices (desktops, 992px to 1200px)
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  .nav-pill-scroll-box {
+  #product-modal .nav-pill-scroll-box {
     overflow-y: auto;
     border: 1px solid lightgray;
     border-radius: 2px;
@@ -139,7 +139,7 @@
 }
 // Small to medium devices (landscape phones, 992px and below)
 @media (max-width: 991.98px) {
-  .nav-pill-scroll-box {
+  #product-modal .nav-pill-scroll-box {
     overflow: visible;
     border: none;
     padding-bottom: 0;
@@ -150,22 +150,22 @@
 //// FOOTER STYLES ////
 ///////////////////////
 
-#product-modal-quantity-input {
+#product-modal #product-modal-quantity-input {
   width: 110px;
 }
 
 // Small to medium devices (landscape phones, 992px and below)
 @media (max-width: 991.98px) {
-  #product-modal-footer {
+  #product-modal #product-modal-footer {
     padding: 10px;
   }
 }
 
-.invalid-modal {
+#product-modal .invalid-modal {
   border: 2px solid black;
 }
 
-.invalid-header {
+#product-modal .invalid-header {
   padding: 0.5rem 1rem;
   color: #dc3545;
   background-color: darkslategray;
@@ -174,12 +174,12 @@
   border-top-right-radius: 2px !important;
 }
 
-#invalid-icon {
+#product-modal #invalid-icon {
   font-size: 30px;
   vertical-align: text-top;
 }
 
-.invalid-title {
+#product-modal .invalid-title {
   font-size: 24px;
   margin-left: 5px;
   color: lightgray;
