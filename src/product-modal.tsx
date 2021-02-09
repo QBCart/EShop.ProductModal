@@ -113,11 +113,7 @@ const ProductModal: FC<Props> = (props) => {
                           <div className="carousel-item active text-center">
                             <img
                               id="product-modal-img"
-                              src={
-                                item.Images
-                                  ? `${props.companyStorageUrl}images/responsive/${item.id}`
-                                  : null
-                              }
+                              src={`${props.companyStorageUrl}images/responsive/${item.id}`}
                               alt="First slide"
                             />
                           </div>
