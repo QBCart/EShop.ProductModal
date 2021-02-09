@@ -2,11 +2,11 @@
 
 # New
 
-- none
+- improved carousel image sizing logic & fixed styles to match newer bootstrap version
 
 # Fixes
 
-- removed check on initial carousel image
+- fixed outdated styles that were causing the footer layout to be broken
 
 # Breaking
 
