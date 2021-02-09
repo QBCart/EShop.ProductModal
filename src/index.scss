@@ -4,7 +4,7 @@
 
 // X-Large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
-  #product-modal #product-modal-body {
+  #product-modal .modal-body {
     overflow: visible;
     overflow-y: hidden;
   }
@@ -12,7 +12,7 @@
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  #product-modal #product-modal-body {
+  #product-modal .modal-body {
     overflow: visible;
     overflow-y: hidden;
   }
@@ -20,11 +20,12 @@
 
 // Small to medium devices (landscape phones, 992px and below)
 @media (max-width: 991.98px) {
-  #product-modal #product-modal-body {
+  #product-modal .modal-body {
     overflow: visible;
     overflow-y: auto;
   }
 }
+
 
 /////////////////////////
 //// CAROUSEL STYLES ////
@@ -44,33 +45,41 @@
   background-color: #444 !important;
 }
 
+#product-modal .carousel-item {
+  width: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 // X-Large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
-  #product-modal .product-modal-carousel {
+  #product-modal .carousel .slide {
     height: 300px !important;
   }
-  #product-modal #product-modal-img {
+  #product-modal .carousel-item {
     height: 300px;
   }
 }
 // Large devices (desktops, 992px to 1200px)
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  #product-modal .product-modal-carousel {
+  #product-modal .carousel .slide {
     height: 200px !important;
   }
-  #product-modal #product-modal-img {
+  #product-modal .carousel-item {
     height: 200px;
   }
 }
 // Small to medium devices (landscape phones, 992px and below)
 @media (max-width: 991.98px) {
-  #product-modal .product-modal-carousel {
+  #product-modal .carousel .slide {
     height: 200px !important;
   }
-  #product-modal #product-modal-img {
+  #product-modal .carousel-item {
     height: 200px;
   }
 }
+
 
 /////////////////////////
 //// ADDSPACE STYLES ////
@@ -101,6 +110,7 @@
     display: none;
   }
 }
+
 
 //////////////////////////
 //// SCROLLBOX STYLES ////
@@ -146,26 +156,37 @@
   }
 }
 
+
 ///////////////////////
 //// FOOTER STYLES ////
 ///////////////////////
 
-#product-modal #product-modal-quantity-input {
+#product-modal .modal-footer {
+flex-wrap: nowrap;
+}
+
+#product-modal .form-control-lg {
   width: 110px;
 }
 
 // Small to medium devices (landscape phones, 992px and below)
+
 @media (max-width: 991.98px) {
-  #product-modal #product-modal-footer {
+  #product-modal .modal-footer {
     padding: 10px;
   }
 }
 
-#product-modal .invalid-modal {
+
+//////////////////////////////
+//// Invalid Modal Stlyes ////
+//////////////////////////////
+
+.invalid-modal {
   border: 2px solid black;
 }
 
-#product-modal .invalid-header {
+.invalid-header {
   padding: 0.5rem 1rem;
   color: #dc3545;
   background-color: darkslategray;
@@ -174,12 +195,12 @@
   border-top-right-radius: 2px !important;
 }
 
-#product-modal #invalid-icon {
+#invalid-icon {
   font-size: 30px;
   vertical-align: text-top;
 }
 
-#product-modal .invalid-title {
+.invalid-title {
   font-size: 24px;
   margin-left: 5px;
   color: lightgray;

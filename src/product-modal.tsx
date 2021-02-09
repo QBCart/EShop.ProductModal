@@ -71,7 +71,7 @@ const ProductModal: FC<Props> = (props) => {
   };
 
   return (
-    <div id="product-modal">
+    <div>
       <div
         className="modal fade"
         id={triggerId}
@@ -79,16 +79,20 @@ const ProductModal: FC<Props> = (props) => {
         aria-labelledby={`${triggerId}Label`}
         aria-hidden="true"
       >
-        <div className="modal-dialog modal-dialog-scrollable modal-xl modal-lg">
+        <div
+          id="product-modal"
+          className="modal-dialog modal-dialog-scrollable modal-xl modal-lg"
+        >
           {item ? (
             <div className="modal-content">
-              <div className="modal-body" id="product-modal-body">
+              <div className="modal-body">
                 <div className="container">
                   <div className="row">
                     <div className="col-12 col-lg-4">
+                      {/* begin Carousel Section */}
                       <div
                         id="carouselExampleIndicators"
-                        className="carousel slide product-modal-carousel"
+                        className="carousel slide"
                         data-ride="carousel"
                         data-interval="false"
                       >
@@ -112,29 +116,14 @@ const ProductModal: FC<Props> = (props) => {
                         <div className="carousel-inner">
                           <div
                             className="carousel-item active"
-                            style={{
-                              height: '300px',
-                              width: '100%',
-                              backgroundImage: `url(${props.companyStorageUrl}images/responsive/${item.id})`,
-                              backgroundSize: 'contain',
-                              backgroundPosition: 'center',
-                              backgroundRepeat: 'no-repeat'
-                            }}
-                          >
-                          </div>
+                            style={{ backgroundImage: `url(${props.companyStorageUrl}images/responsive/${item.id})` }}
+                          ></div>
                           {item.Images && item.Images.length > 0
                             ? item.Images.map((img) => {
                                 return (
                                   <div
                                     className="carousel-item"
-                                    style={{
-                                      height: '300px',
-                                      width: '100%',
-                                      backgroundImage: `url(${props.companyStorageUrl}images/related/${item.id}/responsive/${img})`,
-                                      backgroundSize: 'contain',
-                                      backgroundPosition: 'center',
-                                      backgroundRepeat: 'no-repeat'
-                                    }}
+                                    style={{ backgroundImage: `url(${props.companyStorageUrl}images/related/${item.id}/responsive/${img})` }}
                                   ></div>
                                 );
                               })
@@ -167,8 +156,10 @@ const ProductModal: FC<Props> = (props) => {
                           <span className="sr-only">Next</span>
                         </a>
                       </div>
+                      {/* begin Add Space Section */}
                       <div className="row add-space"></div>
                     </div>
+                    {/* begin Scroll Box Section */}
                     <div className="col-12 col-lg-8">
                       <ul
                         className="nav-pill-scroll-box-header nav nav-pills mb-3"
@@ -252,7 +243,8 @@ const ProductModal: FC<Props> = (props) => {
                   </div>
                 </div>
               </div>
-              <div className="modal-footer" id="product-modal-footer">
+              {/* begin Footer Section */}
+              <div className="modal-footer">
                 <div className="col-6 d-flex justify-content-start">
                   <input
                     type="number"
@@ -261,7 +253,6 @@ const ProductModal: FC<Props> = (props) => {
                     onChange={setQuantity}
                     value={item.Quantity}
                     className="form-control-lg ml-2 mr-1"
-                    id="product-modal-quantity-input"
                   ></input>
                   <button
                     onClick={() => {
