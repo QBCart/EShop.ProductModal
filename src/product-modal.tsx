@@ -116,14 +116,18 @@ const ProductModal: FC<Props> = (props) => {
                         <div className="carousel-inner">
                           <div
                             className="carousel-item active"
-                            style={{ backgroundImage: `url(${props.companyStorageUrl}images/responsive/${item.id})` }}
+                            style={{
+                              backgroundImage: `url(${props.companyStorageUrl}images/responsive/${item.id})`
+                            }}
                           ></div>
                           {item.Images && item.Images.length > 0
                             ? item.Images.map((img) => {
                                 return (
                                   <div
                                     className="carousel-item"
-                                    style={{ backgroundImage: `url(${props.companyStorageUrl}images/related/${item.id}/responsive/${img})` }}
+                                    style={{
+                                      backgroundImage: `url(${props.companyStorageUrl}images/related/${item.id}/responsive/${img})`
+                                    }}
                                   ></div>
                                 );
                               })
