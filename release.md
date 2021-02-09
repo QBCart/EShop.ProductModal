@@ -2,11 +2,11 @@
 
 # New
 
-- Added alternate view for empty spec sheet
+- none
 
 # Fixes
 
-- Specs is an optional dep, & will no longer break the product modal, if null, empty, or undefined
+- removed check on initial carousel image
 
 # Breaking
 
