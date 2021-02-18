@@ -11,6 +11,7 @@ const InvalidInputModal: FC<Props> = (props) => {
   return (
     <div
       className="modal fade"
+      data-backdrop="static"
       id="qbc-eshop-product-modal-invalid-input"
       tabIndex={-1}
       aria-labelledby="exampleModalLabel"
