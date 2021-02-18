@@ -2,11 +2,12 @@
 
 # New
 
-- improved carousel image sizing logic & fixed styles to match newer bootstrap version
+- namespaced internal IDs
+- removed ability to change product modal ID
 
 # Fixes
 
-- fixed outdated styles that were causing the footer layout to be broken
+- none
 
 # Breaking
 
