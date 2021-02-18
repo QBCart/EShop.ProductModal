@@ -19,7 +19,7 @@
   "homepage": "https://github.com/QBCart/QBC.EShop.ProductModal#readme",
   "scripts": {
     "start": "npm run format && snowpack dev --config snowpack.dev.config.js",
-    "build": "snowpack build",
+    "build": "npm run format && snowpack build",
     "build:npm": "snowpack build && cp package.json build && cp README.md build",
     "format": "prettier --write .",
     "lint": "prettier --check .",
