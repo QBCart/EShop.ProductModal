@@ -12,23 +12,25 @@ import ProductModalItem from './product-modal-item';
 import toUSCurrency from './currency';
 
 interface Props {
-  triggerId?: string;
   addToCart: any;
   companyStorageUrl: string;
 }
 
 const ProductModal: FC<Props> = (props) => {
-  const triggerId: string =
-    props?.triggerId && props.triggerId !== ''
-      ? props.triggerId
-      : 'productModal';
+  const triggerId = 'qbc-eshop-product-modal';
 
   const [item, setItem] = useState<ProductModalItem>(null);
 
   useEffect(() => {
+
+
+    
+
     $(`#${triggerId}`).on('shown.bs.modal', function (e) {
-      //@ts-ignore
+      // @ts-ignore
       const triggerItem: ProductModalItem = $(e.relatedTarget).data('item');
+
+
 
       let newItem = { ...item };
       newItem.Href = triggerItem.Href;
