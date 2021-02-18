@@ -2,8 +2,7 @@
 
 # New
 
-- namespaced internal IDs
-- removed ability to change product modal ID
+- published Typescript Definitions
 
 # Fixes
 
