@@ -2,11 +2,10 @@
   "name": "@qbcart/qbc-eshop-product-modal",
   "version": "1.0.0",
   "description": "The product modal used by each QBC.EShop endpoint.",
-  "keywords": [
-    "qbcart",
-    "web-component",
-    "lit-temp",
-    "typescript"
+  "author": "QbCart Inc.",
+  "contributors": [
+    "Allan Mobley",
+    "Michael Shea"
   ],
   "main": "index.js",
   "module": "index.js",
@@ -14,11 +13,6 @@
     "type": "git",
     "url": "git+https://github.com/QBCart/QBC.EShop.ProductModal.git"
   },
-  "author": "QbCart Inc.",
-  "contributors": [
-    "Allan Mobley",
-    "Michael Shea"
-  ],
   "bugs": {
     "url": "https://github.com/QBCart/QBC.EShop.ProductModal/issues"
   },
