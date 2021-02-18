@@ -80,10 +80,10 @@
 }
 
 /////////////////////////
-//// ADDSPACE STYLES ////
+//// ADSPACE STYLES ////
 /////////////////////////
 
-#qbc-eshop-product-modal .add-space {
+#qbc-eshop-product-modal .ad-space {
   display: block;
   width: auto;
   margin: 8px 0 0 0;
@@ -92,19 +92,19 @@
 
 // X-Large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
-  #qbc-eshop-product-modal .add-space {
+  #qbc-eshop-product-modal .ad-space {
     height: 300px;
   }
 }
 // Large devices (desktops, 992px to 1200px)
 @media (min-width: 992px) and (max-width: 1199.98px) {
-  #qbc-eshop-product-modal .add-space {
+  #qbc-eshop-product-modal .ad-space {
     height: 200px;
   }
 }
 // Small to medium devices (landscape phones, 992px and below)
 @media (max-width: 991.98px) {
-  #qbc-eshop-product-modal .add-space {
+  #qbc-eshop-product-modal .ad-space {
     display: none;
   }
 }

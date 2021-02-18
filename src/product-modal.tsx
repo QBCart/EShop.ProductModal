@@ -152,7 +152,7 @@ const ProductModal: FC<Props> = (props) => {
                         </a>
                       </div>
                       {/* begin Add Space Section */}
-                      <div className="row add-space"></div>
+                      <div className="row ad-space"></div>
                     </div>
                     {/* begin Scroll Box Section */}
                     <div className="col-12 col-lg-8">
