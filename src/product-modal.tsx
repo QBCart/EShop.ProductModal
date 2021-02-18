@@ -60,7 +60,7 @@ const ProductModal: FC<Props> = (props) => {
 
       $('#qbc-eshop-product-modal-toast').toast('show');
     } else {
-      $(`#invalid-input`).modal('show');
+      $(`#qbc-eshop-product-modal-invalid-input`).modal('show');
     }
   };
 

@@ -6,13 +6,12 @@ interface Props {}
 
 const InvalidInputModal: FC<Props> = (props) => {
   const closeModal = () => {
-    //@ts-ignore
-    $(`#invalid-input`).modal('hide');
+    $(`#qbc-eshop-product-modal-invalid-input`).modal('hide');
   };
   return (
     <div
       className="modal fade"
-      id="invalid-input"
+      id="qbc-eshop-product-modal-invalid-input"
       tabIndex={-1}
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
