@@ -23,7 +23,7 @@ const ProductModal: FC<Props> = (props) => {
 
   useEffect(() => {
     $(`#${triggerId}`).on('shown.bs.modal', function (e) {
-      // @ts-ignore
+      
       const triggerItem: ProductModalItem = $(e.relatedTarget).data('item');
 
       let newItem = { ...item };
@@ -56,12 +56,12 @@ const ProductModal: FC<Props> = (props) => {
       const newItem = { ...item };
       newItem.Quantity = quantityInt;
       props.addToCart(newItem);
-      //@ts-ignore
+      
       $(`#${triggerId}`).modal('hide');
-      //@ts-ignore
+      
       $('.toast').toast('show');
     } else {
-      //@ts-ignore
+     
       $(`#invalid-input`).modal('show');
     }
   };
