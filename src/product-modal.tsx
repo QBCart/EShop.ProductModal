@@ -10,6 +10,7 @@ import InvalidInputModal from './components/InvalidInputModal';
 import ProductModalItem from './product-modal-item';
 
 import toUSCurrency from './currency';
+import { ChangeEvent } from 'react';
 
 interface Props {
   addToCart: any;
@@ -19,13 +20,14 @@ interface Props {
 const ProductModal: FC<Props> = (props) => {
   const triggerId = 'qbc-eshop-product-modal';
 
-  const [item, setItem] = useState<ProductModalItem>(null);
+  const [item, setItem] = useState<ProductModalItem>();
 
   useEffect(() => {
-    $(`#${triggerId}`).on('shown.bs.modal', function (e) {
+    $(`#${triggerId}`).on('shown.bs.modal', function (e: Event) {
+      // @ts-ignore
       const triggerItem: ProductModalItem = $(e.relatedTarget).data('item');
 
-      let newItem = { ...item };
+      let newItem = { ...item! };
       newItem.Href = triggerItem.Href;
       newItem.id = triggerItem.id;
       newItem.Name = triggerItem.Name;
@@ -41,12 +43,12 @@ const ProductModal: FC<Props> = (props) => {
     });
   }, []);
 
-  const setQuantity = (e) => {
-    setItem({ ...item, Quantity: e.target.value });
+  const setQuantity = (e: ChangeEvent<HTMLInputElement>) => {
+    setItem({ ...item!, Quantity: e.target.value });
   };
 
   const submitToCart = () => {
-    let quantityInt = Number(item.Quantity);
+    let quantityInt = Number(item!.Quantity);
     if (
       typeof quantityInt === 'number' &&
       quantityInt % 1 === 0 &&
