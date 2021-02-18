@@ -73,10 +73,7 @@ const ProductModal: FC<Props> = (props) => {
         aria-labelledby={`${triggerId}Label`}
         aria-hidden="true"
       >
-        <div
-          id="product-modal"
-          className="modal-dialog modal-dialog-scrollable modal-xl modal-lg"
-        >
+        <div className="modal-dialog modal-dialog-scrollable modal-xl modal-lg">
           {item ? (
             <div className="modal-content">
               <div className="modal-body">
