@@ -14,7 +14,8 @@ const AddToCartToast: FC<Props> = (props) => {
       style={{ position: 'fixed', top: '50%', right: '50%' }}
     >
       <div
-        className="toast  d-flex align-items-center"
+        id="qbc-eshop-product-modal-toast"
+        className="toast d-flex align-items-center"
         data-delay="1000"
         style={{ position: 'relative', bottom: '50%', left: '50%' }}
       >

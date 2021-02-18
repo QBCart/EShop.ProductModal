@@ -23,7 +23,6 @@ const ProductModal: FC<Props> = (props) => {
 
   useEffect(() => {
     $(`#${triggerId}`).on('shown.bs.modal', function (e) {
-      
       const triggerItem: ProductModalItem = $(e.relatedTarget).data('item');
 
       let newItem = { ...item };
@@ -56,12 +55,11 @@ const ProductModal: FC<Props> = (props) => {
       const newItem = { ...item };
       newItem.Quantity = quantityInt;
       props.addToCart(newItem);
-      
+
       $(`#${triggerId}`).modal('hide');
-      
-      $('.toast').toast('show');
+
+      $('#qbc-eshop-product-modal-toast').toast('show');
     } else {
-     
       $(`#invalid-input`).modal('show');
     }
   };
