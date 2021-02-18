@@ -177,11 +177,11 @@
 //// Invalid Modal Stlyes ////
 //////////////////////////////
 
-.invalid-modal {
+#qbc-eshop-product-modal-invalid-input .modal-content {
   border: 2px solid black;
 }
 
-.invalid-header {
+#qbc-eshop-product-modal-invalid-input .modal-header {
   padding: 0.5rem 1rem;
   color: #dc3545;
   background-color: darkslategray;
@@ -190,12 +190,12 @@
   border-top-right-radius: 2px !important;
 }
 
-#invalid-icon {
+#qbc-eshop-product-modal-invalid-input .material-icons {
   font-size: 30px;
   vertical-align: text-top;
 }
 
-.invalid-title {
+#qbc-eshop-product-modal-invalid-input .invalid-title {
   font-size: 24px;
   margin-left: 5px;
   color: lightgray;
