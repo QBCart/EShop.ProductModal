@@ -99,6 +99,7 @@ const ProductModal: FC<Props> = (props) => {
                             {item.Images.map((img, index) => {
                               return (
                                 <li
+                                  key={`${item.id}-carousel-indicator-${index}`}
                                   data-target="#carouselExampleIndicators"
                                   data-slide-to={index + 1}
                                 ></li>
@@ -114,9 +115,10 @@ const ProductModal: FC<Props> = (props) => {
                             }}
                           ></div>
                           {item.Images && item.Images.length > 0
-                            ? item.Images.map((img) => {
+                            ? item.Images.map((img, index) => {
                                 return (
                                   <div
+                                    key={`${item.id}-carousel-img-${index}`}
                                     className="carousel-item"
                                     style={{
                                       backgroundImage: `url(${props.companyStorageUrl}images/related/${item.id}/responsive/${img})`
@@ -222,8 +224,14 @@ const ProductModal: FC<Props> = (props) => {
                             aria-labelledby="pills-specs-tab"
                           >
                             {item.Specs && item.Specs.length > 0 ? (
-                              item.Specs.map((textline) => {
-                                return <div>{textline}</div>;
+                              item.Specs.map((textline, index) => {
+                                return (
+                                  <div
+                                    key={`${item.id}-specs-textline-${index}`}
+                                  >
+                                    {textline}
+                                  </div>
+                                );
                               })
                             ) : (
                               <div>
