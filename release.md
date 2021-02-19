@@ -2,11 +2,11 @@
 
 # New
 
-- published Typescript Definitions
+- none
 
 # Fixes
 
-- none
+- added logic to provide map keys for react
 
 # Breaking
 
