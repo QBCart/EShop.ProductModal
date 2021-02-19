@@ -51,12 +51,6 @@
   background-repeat: no-repeat;
 }
 
-#qbc-eshop-product-modal .carousel-item img {
-  max-height: 200px;
-  width: auto;
-  max-width: 336px;
-}
-
 // X-Large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   #qbc-eshop-product-modal .carousel .slide {
@@ -64,10 +58,6 @@
   }
   #qbc-eshop-product-modal .carousel-item {
     height: 300px;
-  }
-  #qbc-eshop-product-modal .carousel-item img {
-    max-height: 300px;
-    max-width: 336px;
   }
 }
 // Large devices (desktops, 992px to 1200px)
@@ -77,10 +67,6 @@
   }
   #qbc-eshop-product-modal .carousel-item {
     height: 200px;
-  }
-  #qbc-eshop-product-modal .carousel-item img {
-    max-height: 200px;
-    max-width: 226px;
   }
 }
 // Small to medium devices (landscape phones, 992px and below)

@@ -124,16 +124,14 @@ const ProductModal: FC<Props> = (props) => {
                         </ol>
                       ) : null}
                       <div className="carousel-inner">
-                        <div className="carousel-item active d-flex align-items-center justify-content-center">
-                          <img
-                            className="img-fluid"
-                            src={
-                              item?.id
-                                ? `${props.companyStorageUrl}images/responsive/${item.id}`
-                                : `${props.companyStorageUrl}images/white-space.jpg`
-                            }
-                          />
-                        </div>
+                        <div
+                          className="carousel-item active"
+                          style={{
+                            backgroundImage: item?.id
+                              ? `url(${props.companyStorageUrl}images/responsive/${item.id})`
+                              : ''
+                          }}
+                        ></div>
                         {item?.Images && item.Images.length > 0
                           ? item.Images.map((img, index) => {
                               return (
