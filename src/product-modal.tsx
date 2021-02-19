@@ -43,6 +43,23 @@ const ProductModal: FC<Props> = (props) => {
     });
   }, []);
 
+  useEffect(() => {
+    $(`#${triggerId}`).on('hidden.bs.modal', function (e: Event) {
+      setItem({
+        Href: '',
+        id: '',
+        Name: '',
+        FullName: '',
+        SalesPrice: 0,
+        SalesDesc: '',
+        FullDesc: '',
+        Images: [],
+        Specs: [],
+        Quantity: 1
+      });
+    });
+  }, []);
+
   const setQuantity = (e: ChangeEvent<HTMLInputElement>) => {
     setItem({ ...item!, Quantity: e.target.value });
   };
@@ -108,12 +125,17 @@ const ProductModal: FC<Props> = (props) => {
                           </ol>
                         ) : null}
                         <div className="carousel-inner">
-                          <div
-                            className="carousel-item active"
-                            style={{
-                              backgroundImage: `url(${props.companyStorageUrl}images/responsive/${item.id})`
-                            }}
-                          ></div>
+                          {item.id ? (
+                            <div
+                              className="carousel-item active"
+                              style={{
+                                backgroundImage: `url(${props.companyStorageUrl}images/responsive/${item.id})`
+                              }}
+                            ></div>
+                          ) : <div
+                              className="carousel-item active"
+                            ></div>
+                          }
                           {item.Images && item.Images.length > 0
                             ? item.Images.map((img, index) => {
                                 return (
