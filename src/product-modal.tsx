@@ -7,9 +7,9 @@ import React, {
 import AddToCartToast from './components/addToCartToast';
 import InvalidInputModal from './components/InvalidInputModal';
 
-import ProductModalItem from './product-modal-item';
+import ProductModalItem from './types/product-modal-item';
 
-import toUSCurrency from './currency';
+import toUSCurrency from './utils/currency';
 import { ChangeEvent } from 'react';
 
 interface Props {
