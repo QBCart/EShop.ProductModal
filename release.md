@@ -2,11 +2,11 @@
 
 # New
 
-- none
+- added submitToCart option for items outside of product modal
 
 # Fixes
 
-- added logic to provide map keys for react
+- none
 
 # Breaking
 

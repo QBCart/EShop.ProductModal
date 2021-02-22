@@ -47,13 +47,13 @@ const ProductModal: FC<Props> = (props) => {
     $('.qbc-eshop-product-modal-submit-to-cart').on('click', function (e) {
       // @ts-ignore
       const triggerItem: ProductModalItem = $(e.currentTarget).data('item');
-      
+
       triggerItem.Quantity = $(
         // @ts-ignore
         `#${$(e.currentTarget).data('qty-id')}`
       ).val() as number;
-      
-      submitToCart(triggerItem)
+
+      submitToCart(triggerItem);
     });
   }, []);
 
