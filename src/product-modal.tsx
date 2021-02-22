@@ -64,7 +64,7 @@ const ProductModal: FC<Props> = (props) => {
     setItem({ ...item!, Quantity: e.target.value });
   };
 
-  const submitToCart = () => {
+  const submitToCart = (item?: ProductModalItem) => {
     let quantityInt = Number(item!.Quantity);
     if (
       typeof quantityInt === 'number' &&
@@ -277,7 +277,7 @@ const ProductModal: FC<Props> = (props) => {
                 ></input>
                 <button
                   onClick={() => {
-                    submitToCart();
+                    submitToCart(item);
                   }}
                   type="button"
                   className="btn btn-success"
