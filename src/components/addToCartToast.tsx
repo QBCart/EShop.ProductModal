@@ -3,7 +3,7 @@ import React, {
 } from 'https://cdn.skypack.dev/pin/react@v17.0.1-tOtrZxBRexARODgO0jli/min/react.js';
 
 interface Props {
-  companyStorageUrl: string;
+  imagesStorageUrl: string;
 }
 
 const AddToCartToast: FC<Props> = (props) => {
@@ -21,7 +21,7 @@ const AddToCartToast: FC<Props> = (props) => {
       >
         <div className="toast-body">
           <img
-            src={`${props.companyStorageUrl}images/favicon.ico`}
+            src={`${props.imagesStorageUrl}images/favicon.ico`}
             alt="company logo"
             width="18"
           ></img>

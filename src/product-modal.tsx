@@ -14,7 +14,7 @@ import { ChangeEvent } from 'react';
 
 interface Props {
   addToCart: any;
-  companyStorageUrl: string;
+  imagesStorageUrl: string;
 }
 
 const ProductModal: FC<Props> = (props) => {
@@ -128,7 +128,7 @@ const ProductModal: FC<Props> = (props) => {
                           className="carousel-item active"
                           style={{
                             backgroundImage: item?.id
-                              ? `url(${props.companyStorageUrl}images/responsive/${item.id})`
+                              ? `url(${props.imagesStorageUrl}images/responsive/${item.id})`
                               : ''
                           }}
                         ></div>
@@ -139,7 +139,7 @@ const ProductModal: FC<Props> = (props) => {
                                   key={`${item.id}-carousel-img-${index}`}
                                   className="carousel-item"
                                   style={{
-                                    backgroundImage: `url(${props.companyStorageUrl}images/related/${item.id}/responsive/${img})`
+                                    backgroundImage: `url(${props.imagesStorageUrl}images/related/${item.id}/responsive/${img})`
                                   }}
                                 ></div>
                               );
@@ -298,7 +298,7 @@ const ProductModal: FC<Props> = (props) => {
           </div>
         </div>
       </div>
-      <AddToCartToast companyStorageUrl={props.companyStorageUrl} />
+      <AddToCartToast imagesStorageUrl={props.imagesStorageUrl} />
       <InvalidInputModal />
     </div>
   );

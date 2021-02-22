@@ -16,7 +16,7 @@ const TestComponent: FC<Props> = (props) => {
     <div>
       <ProductModal
         addToCart={addToCart}
-        companyStorageUrl={
+        imagesStorageUrl={
           'https://qbcstoragemns4oocsxwl6w.z13.web.core.windows.net/'
         }
       />
