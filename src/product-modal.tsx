@@ -44,6 +44,20 @@ const ProductModal: FC<Props> = (props) => {
   }, []);
 
   useEffect(() => {
+    $('.qbc-eshop-product-modal-submit-to-cart').on('click', function (e) {
+      // @ts-ignore
+      const triggerItem: ProductModalItem = $(e.currentTarget).data('item');
+      
+      triggerItem.Quantity = $(
+        // @ts-ignore
+        `#${$(e.currentTarget).data('qty-id')}`
+      ).val() as number;
+      
+      submitToCart(triggerItem)
+    });
+  }, []);
+
+  useEffect(() => {
     $(`#${triggerId}`).on('hidden.bs.modal', function (e: Event) {
       setItem({
         Href: '',
