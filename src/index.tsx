@@ -1,2 +1,4 @@
 import ProductModal from './product-modal';
-export default ProductModal;
+import ProductModalItem from './types/product-modal-item';
+
+export { ProductModal, ProductModalItem };
