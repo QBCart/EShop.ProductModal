@@ -2,7 +2,8 @@
 
 # New
 
-- added submitToCart option for items outside of product modal
+- Added global types and utils
+- Updated deps
 
 # Fixes
 
