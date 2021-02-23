@@ -1,5 +1,5 @@
 {
-  "name": "@qbcart/qbc-eshop-product-modal",
+  "name": "@qbcart/eshop-product-modal",
   "version": "1.0.0",
   "description": "The product modal used by each QBC.EShop endpoint.",
   "author": "QbCart Inc.",
@@ -11,12 +11,12 @@
   "module": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/QBCart/QBC.EShop.ProductModal.git"
+    "url": "git+https://github.com/QBCart/EShop.ProductModal.git"
   },
   "bugs": {
-    "url": "https://github.com/QBCart/QBC.EShop.ProductModal/issues"
+    "url": "https://github.com/QBCart/EShop.ProductModal/issues"
   },
-  "homepage": "https://github.com/QBCart/QBC.EShop.ProductModal#readme",
+  "homepage": "https://github.com/QBCart/EShop.ProductModal#readme",
   "scripts": {
     "start": "npm run format && snowpack dev --config snowpack.dev.config.js",
     "build": "npm run format && snowpack build && tsc",
