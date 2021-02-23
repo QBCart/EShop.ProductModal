@@ -6,11 +6,10 @@ import React, {
 
 import AddToCartToast from './components/addToCartToast';
 import InvalidInputModal from './components/InvalidInputModal';
-
-import ProductModalItem from './types/product-modal-item';
-
+import { ItemInventory } from '@qbcart/types';
 import { toUSCurrency } from '@qbcart/utils';
 import { ChangeEvent } from 'react';
+import ProductModalItem from './types/product-modal-item';
 
 interface Props {
   addToCart: any;
@@ -25,19 +24,20 @@ const ProductModal: FC<Props> = (props) => {
   useEffect(() => {
     $(`#${triggerId}`).on('shown.bs.modal', function (e: Event) {
       // @ts-ignore
-      const triggerItem: ProductModalItem = $(e.relatedTarget).data('item');
+      const triggerItem: ItemInventory = $(e.relatedTarget).data('item');
 
-      let newItem = { ...item! };
-      newItem.Href = triggerItem.Href;
-      newItem.id = triggerItem.id;
-      newItem.Name = triggerItem.Name;
-      newItem.FullName = triggerItem.FullName;
-      newItem.SalesPrice = triggerItem.SalesPrice;
-      newItem.SalesDesc = triggerItem.SalesDesc;
-      newItem.FullDesc = triggerItem.FullDesc;
-      newItem.Images = triggerItem.Images;
-      newItem.Specs = triggerItem.Specs;
-      newItem.Quantity = 1;
+      let newItem: ProductModalItem = {
+        id: triggerItem.id,
+        name: triggerItem.Name,
+        fullName: triggerItem.FullName,
+        salesPrice: triggerItem.SalesPrice,
+        salesDesc: triggerItem.SalesDesc,
+        fullDesc: triggerItem.FullDesc,
+        images: triggerItem.Images,
+        specs: triggerItem.Specs,
+        href: triggerItem.Href,
+        quantity: 1
+      };
 
       setItem(newItem);
     });
@@ -45,48 +45,55 @@ const ProductModal: FC<Props> = (props) => {
 
   useEffect(() => {
     $('.qbc-eshop-product-modal-submit-to-cart').on('click', function (e) {
-      // @ts-ignore
-      const triggerItem: ProductModalItem = $(e.currentTarget).data('item');
+      const triggerItem: ItemInventory = $(e.currentTarget).data('item');
 
-      triggerItem.Quantity = $(
-        // @ts-ignore
-        `#${$(e.currentTarget).data('qty-id')}`
-      ).val() as number;
+      let addToCartItem: ProductModalItem = {
+        id: triggerItem.id,
+        name: triggerItem.Name,
+        fullName: triggerItem.FullName,
+        salesPrice: triggerItem.SalesPrice,
+        salesDesc: triggerItem.SalesDesc,
+        fullDesc: triggerItem.FullDesc,
+        images: triggerItem.Images,
+        specs: triggerItem.Specs,
+        href: triggerItem.Href,
+        quantity: $(`#${$(e.currentTarget).data('qty-id')}`).val() as number
+      };
 
-      submitToCart(triggerItem);
+      submitToCart(addToCartItem);
     });
   }, []);
 
   useEffect(() => {
     $(`#${triggerId}`).on('hidden.bs.modal', function (e: Event) {
       setItem({
-        Href: '',
         id: '',
-        Name: '',
-        FullName: '',
-        SalesPrice: 0,
-        SalesDesc: '',
-        FullDesc: '',
-        Images: [],
-        Specs: [],
-        Quantity: 1
+        name: '',
+        fullName: '',
+        salesPrice: 0,
+        salesDesc: '',
+        fullDesc: '',
+        images: [],
+        specs: [],
+        href: '',
+        quantity: 1
       });
     });
   }, []);
 
   const setQuantity = (e: ChangeEvent<HTMLInputElement>) => {
-    setItem({ ...item!, Quantity: e.target.value });
+    setItem({ ...item!, quantity: e.target.value });
   };
 
   const submitToCart = (item?: ProductModalItem) => {
-    let quantityInt = Number(item!.Quantity);
+    let quantityInt = Number(item!.quantity);
     if (
       typeof quantityInt === 'number' &&
       quantityInt % 1 === 0 &&
       quantityInt > 0
     ) {
       const newItem = { ...item };
-      newItem.Quantity = quantityInt;
+      newItem.quantity = quantityInt;
       props.addToCart(newItem);
 
       $(`#${triggerId}`).modal('hide');
@@ -119,14 +126,14 @@ const ProductModal: FC<Props> = (props) => {
                       data-ride="carousel"
                       data-interval="false"
                     >
-                      {item?.Images && item.Images.length > 0 ? (
+                      {item?.images && item.images.length > 0 ? (
                         <ol className="carousel-indicators">
                           <li
                             data-target="#carouselExampleIndicators"
                             data-slide-to="0"
                             className="active"
                           ></li>
-                          {item.Images.map((img, index) => {
+                          {item.images.map((img, index) => {
                             return (
                               <li
                                 key={`${item.id}-carousel-indicator-${index}`}
@@ -146,8 +153,8 @@ const ProductModal: FC<Props> = (props) => {
                               : ''
                           }}
                         ></div>
-                        {item?.Images && item.Images.length > 0
-                          ? item.Images.map((img, index) => {
+                        {item?.images && item.images.length > 0
+                          ? item.images.map((img, index) => {
                               return (
                                 <div
                                   key={`${item.id}-carousel-img-${index}`}
@@ -226,7 +233,7 @@ const ProductModal: FC<Props> = (props) => {
                       <li className="nav-item" role="presentation">
                         <a
                           className="nav-link .scroll-box-tabs"
-                          href={item?.Href}
+                          href={item?.href}
                           role="tab"
                           aria-controls="pills-specs"
                           aria-selected="false"
@@ -243,11 +250,11 @@ const ProductModal: FC<Props> = (props) => {
                           role="tabpanel"
                           aria-labelledby="pills-overview-tab"
                         >
-                          <h3>Product ID: {item?.Name}</h3>
-                          <h4>Description: {item?.SalesDesc}</h4>
-                          <h4>Price: {toUSCurrency(item?.SalesPrice || 0)}</h4>
+                          <h3>Product ID: {item?.name}</h3>
+                          <h4>Description: {item?.salesDesc}</h4>
+                          <h4>Price: {toUSCurrency(item?.salesPrice || 0)}</h4>
                           <h4>Details:</h4>
-                          <p>{item?.FullDesc}</p>
+                          <p>{item?.fullDesc}</p>
                         </div>
                         <div
                           className="tab-pane fade"
@@ -255,8 +262,8 @@ const ProductModal: FC<Props> = (props) => {
                           role="tabpanel"
                           aria-labelledby="pills-specs-tab"
                         >
-                          {item?.Specs && item.Specs.length > 0 ? (
-                            item.Specs.map((textline, index) => {
+                          {item?.specs && item.specs.length > 0 ? (
+                            item.specs.map((textline, index) => {
                               return (
                                 <div key={`${item.id}-specs-textline-${index}`}>
                                   {textline}
@@ -286,7 +293,7 @@ const ProductModal: FC<Props> = (props) => {
                   step="1"
                   min="1"
                   onChange={setQuantity}
-                  value={item?.Quantity}
+                  value={item?.quantity}
                   className="form-control-lg ml-2 mr-1"
                 ></input>
                 <button
