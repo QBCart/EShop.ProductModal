@@ -27,6 +27,7 @@
     "test:ci": "echo \"All Good\" && exit 0"
   },
   "dependencies": {
+    "@qbcart/utils": "^1.0.0-alpha.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },

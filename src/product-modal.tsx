@@ -9,7 +9,7 @@ import InvalidInputModal from './components/InvalidInputModal';
 
 import ProductModalItem from './types/product-modal-item';
 
-import toUSCurrency from './utils/currency';
+import { toUSCurrency } from '@qbcart/utils';
 import { ChangeEvent } from 'react';
 
 interface Props {
