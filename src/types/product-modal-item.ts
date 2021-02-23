@@ -1,13 +1,13 @@
 interface ProductModalItem {
-  Href: string;
   id: string;
-  Name: string;
-  FullName: string;
-  SalesPrice: number;
-  SalesDesc: string;
-  FullDesc: string;
-  Images: string[];
-  Specs: string[];
-  Quantity: any;
+  name: string;
+  fullName: string;
+  salesPrice: number;
+  salesDesc: string;
+  fullDesc: string;
+  images: string[];
+  specs: string[];
+  quantity: any;
+  href: string;
 }
 export default ProductModalItem;
