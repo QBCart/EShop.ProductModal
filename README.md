@@ -4,6 +4,6 @@
 
 # EShop Product Modal
 
-The product modal used by each QBC.EShop endpoint.
+The product modal used in QBC.EShop pages.
 
 ###### Copyright (c) 2020 QBCart Inc. All rights reserved.

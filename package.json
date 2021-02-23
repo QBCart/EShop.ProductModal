@@ -1,7 +1,7 @@
 {
   "name": "@qbcart/eshop-product-modal",
   "version": "1.0.0",
-  "description": "The product modal used by each QBC.EShop endpoint.",
+  "description": "The product modal used in QBC.EShop pages.",
   "author": "QbCart Inc.",
   "contributors": [
     "Allan Mobley",
