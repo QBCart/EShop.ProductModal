@@ -2,7 +2,7 @@
 
 # New
 
-- Added global types and utils
+- Exported ProductModelItem interface
 - Updated deps
 
 # Fixes
