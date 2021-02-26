@@ -2,12 +2,11 @@
 
 # New
 
-- Exported ProductModelItem interface
-- Updated deps
+- none
 
 # Fixes
 
-- none
+- fixed ESM build issue
 
 # Breaking
 
