@@ -9,7 +9,7 @@ import InvalidInputModal from './components/InvalidInputModal';
 import { ItemInventory } from '@qbcart/types';
 import { toUSCurrency } from '@qbcart/utils';
 import { ChangeEvent } from 'react';
-import ProductModalItem from './types/product-modal-item';
+import ProductModalItem from './product-modal-item';
 
 interface Props {
   addToCart: any;
