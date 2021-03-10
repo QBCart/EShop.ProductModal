@@ -11,7 +11,7 @@ import { ChangeEvent } from 'react';
 import ProductModalItem from './product-modal-item';
 
 interface Props {
-  addToCart: any;
+  addToCart: (item: ProductModalItem) => boolean;
   imagesStorageUrl: string;
 }
 
@@ -84,20 +84,23 @@ const ProductModal: FC<Props> = (props) => {
     setItem({ ...item!, quantity: e.target.value });
   };
 
-  const submitToCart = (item?: ProductModalItem) => {
+  const submitToCart = async (item: ProductModalItem) => {
     let quantityInt = Number(item!.quantity);
     if (
       typeof quantityInt === 'number' &&
       quantityInt % 1 === 0 &&
       quantityInt > 0
     ) {
-      const newItem = { ...item };
+      const newItem: ProductModalItem = { ...item };
       newItem.quantity = quantityInt;
-      props.addToCart(newItem);
+      const resOk = await props.addToCart(newItem);
+      if(resOk) {
+        console.log('addToCart Success Message Returned')
+        $(`#${triggerId}`).modal('hide');
+      } else {
+        console.log('addToCart Failure Message Returned')
+      };
 
-      $(`#${triggerId}`).modal('hide');
-
-      $('#qbc-eshop-product-modal-toast').toast('show');
     } else {
       $(`#qbc-eshop-product-modal-invalid-input`).modal('show');
     }

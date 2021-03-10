@@ -6,6 +6,7 @@ import React, {
 import { render } from 'https://cdn.skypack.dev/pin/react-dom@v17.0.1-DtIXT56q6U8PbgLMrBhE/min/react-dom.js';
 
 import ProductModal from '../src/index';
+import AddToCartTest from './addToCartTest'
 
 interface Props {}
 
@@ -16,8 +17,7 @@ const TestComponent: FC<Props> = (props) => {
 
   return (
     <div>
-      <ProductModal
-        addToCart={addToCart}
+      <AddToCartTest
         imagesStorageUrl={
           'https://qbcimages4e2rfby2glfmo.z13.web.core.windows.net/'
         }
