@@ -4,7 +4,6 @@ import React, {
   useEffect
 } from 'https://cdn.skypack.dev/pin/react@v17.0.1-tOtrZxBRexARODgO0jli/min/react.js';
 
-import AddToCartToast from './components/addToCartToast';
 import InvalidInputModal from './components/InvalidInputModal';
 import { ItemInventory } from '@qbcart/types';
 import { toUSCurrency } from '@qbcart/utils';
@@ -319,7 +318,6 @@ const ProductModal: FC<Props> = (props) => {
           </div>
         </div>
       </div>
-      <AddToCartToast imagesStorageUrl={props.imagesStorageUrl} />
       <InvalidInputModal />
     </div>
   );
