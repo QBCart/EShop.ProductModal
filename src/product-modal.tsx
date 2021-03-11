@@ -11,14 +11,14 @@ import { ChangeEvent } from 'react';
 import ProductModalItem from './product-modal-item';
 
 interface Props {
-  addToCart: (item: ProductModalItem) => boolean;
+  addToCart: (item: ProductModalItem) => Promise<boolean>;
   imagesStorageUrl: string;
 }
 
 const ProductModal: FC<Props> = (props) => {
   const triggerId = 'qbc-eshop-product-modal';
 
-  const [item, setItem] = useState<ProductModalItem>();
+  const [item, setItem] = useState<ProductModalItem>(()=> initItemState());
 
   useEffect(() => {
     $(`#${triggerId}`).on('shown.bs.modal', function (e: Event) {
@@ -65,20 +65,24 @@ const ProductModal: FC<Props> = (props) => {
 
   useEffect(() => {
     $(`#${triggerId}`).on('hidden.bs.modal', function (e: Event) {
-      setItem({
-        id: '',
-        name: '',
-        fullName: '',
-        salesPrice: 0,
-        salesDesc: '',
-        fullDesc: '',
-        images: [],
-        specs: [],
-        href: '',
-        quantity: 1
-      });
+      setItem(initItemState());
     });
   }, []);
+
+  function initItemState() {
+    return {
+      id: '',
+      name: '',
+      fullName: '',
+      salesPrice: 0,
+      salesDesc: '',
+      fullDesc: '',
+      images: [],
+      specs: [],
+      href: '',
+      quantity: 1
+    } as ProductModalItem
+  }; 
 
   const setQuantity = (e: ChangeEvent<HTMLInputElement>) => {
     setItem({ ...item!, quantity: e.target.value });
@@ -99,6 +103,9 @@ const ProductModal: FC<Props> = (props) => {
         $(`#${triggerId}`).modal('hide');
       } else {
         console.log('addToCart Failure Message Returned')
+      $(`.invalid-title`).text('Failed to Add Item')
+      $(`.invalid-modal-body`).text('There was an issue adding this item to your cart. Please try again.')
+      $(`#qbc-eshop-product-modal-invalid-input`).modal('show')
       };
 
     } else {
@@ -128,7 +135,7 @@ const ProductModal: FC<Props> = (props) => {
                       data-ride="carousel"
                       data-interval="false"
                     >
-                      {item?.images && item.images.length > 0 ? (
+                      {item.images && item.images.length > 0 ? (
                         <ol className="carousel-indicators">
                           <li
                             data-target="#carouselExampleIndicators"
@@ -150,12 +157,12 @@ const ProductModal: FC<Props> = (props) => {
                         <div
                           className="carousel-item active"
                           style={{
-                            backgroundImage: item?.id
+                            backgroundImage: item.id
                               ? `url(${props.imagesStorageUrl}images/responsive/${item.id})`
                               : ''
                           }}
                         ></div>
-                        {item?.images && item.images.length > 0
+                        {item.images && item.images.length > 0
                           ? item.images.map((img, index) => {
                               return (
                                 <div
@@ -235,7 +242,7 @@ const ProductModal: FC<Props> = (props) => {
                       <li className="nav-item" role="presentation">
                         <a
                           className="nav-link .scroll-box-tabs"
-                          href={item?.href}
+                          href={item.href}
                           role="tab"
                           aria-controls="pills-specs"
                           aria-selected="false"
@@ -252,11 +259,11 @@ const ProductModal: FC<Props> = (props) => {
                           role="tabpanel"
                           aria-labelledby="pills-overview-tab"
                         >
-                          <h3>Product ID: {item?.name}</h3>
-                          <h4>Description: {item?.salesDesc}</h4>
-                          <h4>Price: {toUSCurrency(item?.salesPrice || 0)}</h4>
+                          <h3>Product ID: {item.name}</h3>
+                          <h4>Description: {item.salesDesc}</h4>
+                          <h4>Price: {toUSCurrency(item.salesPrice || 0)}</h4>
                           <h4>Details:</h4>
-                          <p>{item?.fullDesc}</p>
+                          <p>{item.fullDesc}</p>
                         </div>
                         <div
                           className="tab-pane fade"
@@ -264,7 +271,7 @@ const ProductModal: FC<Props> = (props) => {
                           role="tabpanel"
                           aria-labelledby="pills-specs-tab"
                         >
-                          {item?.specs && item.specs.length > 0 ? (
+                          {item.specs && item.specs.length > 0 ? (
                             item.specs.map((textline, index) => {
                               return (
                                 <div key={`${item.id}-specs-textline-${index}`}>
@@ -295,7 +302,7 @@ const ProductModal: FC<Props> = (props) => {
                   step="1"
                   min="1"
                   onChange={setQuantity}
-                  value={item?.quantity}
+                  value={item.quantity}
                   className="form-control-lg ml-2 mr-1"
                 ></input>
                 <button
