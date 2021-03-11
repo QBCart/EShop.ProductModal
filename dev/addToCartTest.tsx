@@ -13,7 +13,7 @@ interface Props {
 const AddToCartTest: FC<Props> = (props) => {
   const addToCart = async (item: ProductModalItem) => {
     try {
-      throw ''
+      throw '';
       console.log('addToCart Succeeded!');
       console.log(item);
       return true;

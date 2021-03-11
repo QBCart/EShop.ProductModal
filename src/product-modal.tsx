@@ -112,9 +112,9 @@ const ProductModal: FC<Props> = (props) => {
       }
     } else {
       $(`.invalid-title`).text('Invalid Input');
-        $(`.invalid-modal-body`).html(
-          'Quantity must be a positive whole number greater than zero.'
-        );
+      $(`.invalid-modal-body`).html(
+        'Quantity must be a positive whole number greater than zero.'
+      );
       $(`#qbc-eshop-product-modal-invalid-input`).modal('show');
     }
   };
