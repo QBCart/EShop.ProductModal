@@ -12,8 +12,8 @@ interface Props {
 
 const AddToCartTest: FC<Props> = (props) => {
   const addToCart = async (item: ProductModalItem) => {
-    return false;
     try {
+      throw ''
       console.log('addToCart Succeeded!');
       console.log(item);
       return true;
@@ -26,7 +26,7 @@ const AddToCartTest: FC<Props> = (props) => {
   return (
     <ProductModal
       addToCart={addToCart}
-      imagesStorageUrl={ props.imagesStorageUrl }
+      imagesStorageUrl={props.imagesStorageUrl}
     />
   );
 };

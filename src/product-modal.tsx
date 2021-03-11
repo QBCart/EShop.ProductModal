@@ -18,7 +18,7 @@ interface Props {
 const ProductModal: FC<Props> = (props) => {
   const triggerId = 'qbc-eshop-product-modal';
 
-  const [item, setItem] = useState<ProductModalItem>(()=> initItemState());
+  const [item, setItem] = useState<ProductModalItem>(() => initItemState());
 
   useEffect(() => {
     $(`#${triggerId}`).on('shown.bs.modal', function (e: Event) {
@@ -81,8 +81,8 @@ const ProductModal: FC<Props> = (props) => {
       specs: [],
       href: '',
       quantity: 1
-    } as ProductModalItem
-  }; 
+    } as ProductModalItem;
+  }
 
   const setQuantity = (e: ChangeEvent<HTMLInputElement>) => {
     setItem({ ...item!, quantity: e.target.value });
@@ -98,17 +98,23 @@ const ProductModal: FC<Props> = (props) => {
       const newItem: ProductModalItem = { ...item };
       newItem.quantity = quantityInt;
       const resOk = await props.addToCart(newItem);
-      if(resOk) {
-        console.log('addToCart Success Message Returned')
+
+      if (resOk) {
+        console.log('addToCart Success Message Returned');
         $(`#${triggerId}`).modal('hide');
       } else {
-        console.log('addToCart Failure Message Returned')
-      $(`.invalid-title`).text('Failed to Add Item')
-      $(`.invalid-modal-body`).text('There was an issue adding this item to your cart. Please try again.')
-      $(`#qbc-eshop-product-modal-invalid-input`).modal('show')
-      };
-
+        console.log('addToCart Failure Message Returned');
+        $(`.invalid-title`).text('Failed to Add Item');
+        $(`.invalid-modal-body`).text(
+          'There was an issue adding this item to your cart. Please try again.'
+        );
+        $(`#qbc-eshop-product-modal-invalid-input`).modal('show');
+      }
     } else {
+      $(`.invalid-title`).text('Invalid Input');
+        $(`.invalid-modal-body`).html(
+          'Quantity must be a positive whole number greater than zero.'
+        );
       $(`#qbc-eshop-product-modal-invalid-input`).modal('show');
     }
   };

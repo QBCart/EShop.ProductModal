@@ -6,7 +6,7 @@ import React, {
 import { render } from 'https://cdn.skypack.dev/pin/react-dom@v17.0.1-DtIXT56q6U8PbgLMrBhE/min/react-dom.js';
 
 import ProductModal from '../src/index';
-import AddToCartTest from './addToCartTest'
+import AddToCartTest from './addToCartTest';
 
 interface Props {}
 
