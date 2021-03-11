@@ -2,7 +2,7 @@
 
 # New
 
-- none
+- updated AddToCart logic
 
 # Fixes
 
