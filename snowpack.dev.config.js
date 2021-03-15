@@ -11,5 +11,6 @@ module.exports = {
   buildOptions: {},
   plugins: [
     ['@snowpack/plugin-sass', { compilerOptions: { loadPath: 'node_modules' } }]
-  ]
+  ],
+  routes: [{ src: '/items', dest: '/items.json' }]
 };
