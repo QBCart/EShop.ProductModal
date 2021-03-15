@@ -1,7 +1,7 @@
 import * as React from './skypack';
 import { FC, useState, useEffect, ChangeEvent } from './skypack';
 
-import InvalidInputModal from './components/InvalidInputModal';
+import InvalidInputModal from './components/invalid-input-modal';
 import type { ItemInventory } from '@qbcart/types';
 import { toUSCurrency } from '@qbcart/utils';
 import type ProductModalItem from './product-modal-item';
