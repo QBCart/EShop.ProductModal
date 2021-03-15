@@ -3,12 +3,15 @@ module.exports = {
   mount: {
     src: { url: '/', resolve: true, static: false }
   },
-  devOptions: {
-    open: 'none'
+  packageOptions: {
+    source: 'local'
   },
+  devOptions: {},
   buildOptions: {
-    clean: true,
-    metaUrlPath: '.'
+    out: 'dist'
+  },
+  optimize: {
+    target: 'es2020'
   },
   plugins: [
     ['@snowpack/plugin-sass', { compilerOptions: { loadPath: 'node_modules' } }]

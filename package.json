@@ -19,11 +19,11 @@
   },
   "homepage": "https://github.com/QBCart/EShop.ProductModal#readme",
   "scripts": {
-    "start": "npm run format && snowpack dev --config snowpack.dev.config.js && tsc",
-    "build": "npm run format && snowpack build && tsc",
-    "build:npm": "snowpack build && tsc && cp package.json build && cp README.md build",
-    "format": "prettier --write .",
-    "lint": "prettier --check .",
+    "start": "snowpack dev --config snowpack.dev.config.js",
+    "build": "snowpack build && tsc",
+    "lint": "echo \"All Good\" && exit 0",
+    "format:check": "prettier --check .",
+    "format:fix": "prettier --write .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:ci": "echo \"All Good\" && exit 0"
   },
@@ -39,10 +39,20 @@
     "@types/jquery": "^3.5.5",
     "@types/react": "^17.0.1",
     "@types/react-dom": "^17.0.1",
+    "husky": "^4.3.8",
+    "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
-    "resolve": "^1.20.0",
-    "rimraf": "^3.0.2",
     "snowpack": "^3.0.12",
     "typescript": "^4.1.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "!.*": [
+      "prettier --write ."
+    ]
   }
 }
