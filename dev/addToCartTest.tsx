@@ -3,7 +3,6 @@ import type { FC } from './skypack';
 import { useLocalDB } from '@qbcart/eshop-local-db';
 
 import ProductModal from '../src/index';
-import type ProductModalItem from '../src/product-modal-item';
 
 interface Props {
   imagesStorageUrl: string;
