@@ -1,14 +1,10 @@
-import React, {
-  FC,
-  useState,
-  useEffect
-} from 'https://cdn.skypack.dev/pin/react@v17.0.1-tOtrZxBRexARODgO0jli/min/react.js';
+import * as React from './skypack';
+import { FC, useState, useEffect, ChangeEvent } from './skypack';
 
 import InvalidInputModal from './components/InvalidInputModal';
-import { ItemInventory } from '@qbcart/types';
+import type { ItemInventory } from '@qbcart/types';
 import { toUSCurrency } from '@qbcart/utils';
-import { ChangeEvent } from 'react';
-import ProductModalItem from './product-modal-item';
+import type ProductModalItem from './product-modal-item';
 
 interface Props {
   addToCart: (item: ProductModalItem) => Promise<boolean>;

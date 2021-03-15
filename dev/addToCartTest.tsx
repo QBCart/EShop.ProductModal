@@ -1,10 +1,8 @@
-// React import is needed by snowpack even though typescript suggests otherwise
-import React, {
-  FC
-} from 'https://cdn.skypack.dev/pin/react@v17.0.1-tOtrZxBRexARODgO0jli/min/react.js';
+import * as React from './skypack';
+import type { FC } from './skypack';
 
 import ProductModal from '../src/index';
-import ProductModalItem from '../src/product-modal-item';
+import type ProductModalItem from '../src/product-modal-item';
 
 interface Props {
   imagesStorageUrl: string;
@@ -13,7 +11,7 @@ interface Props {
 const AddToCartTest: FC<Props> = (props) => {
   const addToCart = async (item: ProductModalItem) => {
     try {
-      throw '';
+      // throw '';
       console.log('addToCart Succeeded!');
       console.log(item);
       return true;

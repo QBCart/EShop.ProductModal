@@ -1,29 +1,13 @@
-import React, {
-  FC
-  // @ts-ignore
-} from 'https://cdn.skypack.dev/pin/react@v17.0.1-tOtrZxBRexARODgO0jli/min/react.js';
-// @ts-ignore
-import { render } from 'https://cdn.skypack.dev/pin/react-dom@v17.0.1-DtIXT56q6U8PbgLMrBhE/min/react-dom.js';
+import * as React from './skypack';
+import { render } from './skypack';
 
-import ProductModal from '../src/index';
 import AddToCartTest from './addToCartTest';
 
-interface Props {}
-
-const TestComponent: FC<Props> = (props) => {
-  const addToCart = (item) => {
-    console.log(item);
-  };
-
-  return (
-    <div>
-      <AddToCartTest
-        imagesStorageUrl={
-          'https://qbcimages4e2rfby2glfmo.z13.web.core.windows.net/'
-        }
-      />
-    </div>
-  );
-};
-
-render(<TestComponent />, document.getElementById('cart'));
+render(
+  <AddToCartTest
+    imagesStorageUrl={
+      'https://qbcimages4e2rfby2glfmo.z13.web.core.windows.net/'
+    }
+  />,
+  document.getElementById('cart')
+);
