@@ -2,9 +2,7 @@ import React, {
   FC
 } from 'https://cdn.skypack.dev/pin/react@v17.0.1-tOtrZxBRexARODgO0jli/min/react.js';
 
-interface Props {}
-
-const InvalidInputModal: FC<Props> = (props) => {
+const InvalidInputModal: FC = () => {
   const closeModal = () => {
     $(`#qbc-eshop-product-modal-invalid-input`).modal('hide');
   };
