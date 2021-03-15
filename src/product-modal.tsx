@@ -1,105 +1,56 @@
 import * as React from './skypack';
 import { FC, useState, useEffect, ChangeEvent } from './skypack';
+import { useItem } from '@qbcart/eshop-local-db';
 
 import InvalidInputModal from './components/invalid-input-modal';
-import type { ItemInventory } from '@qbcart/types';
 import { toUSCurrency } from '@qbcart/utils';
-import type ProductModalItem from './product-modal-item';
 
 interface Props {
-  addToCart: (item: ProductModalItem) => Promise<boolean>;
+  addToCart: (id: string, quantity: number) => Promise<boolean>;
   imagesStorageUrl: string;
 }
 
 const ProductModal: FC<Props> = (props) => {
   const triggerId = 'qbc-eshop-product-modal';
 
-  const [item, setItem] = useState<ProductModalItem>(() => initItemState());
+  const [item, changeItem] = useItem('');
+  const [quantity, setQuantity] = useState('1');
 
   useEffect(() => {
     $(`#${triggerId}`).on('shown.bs.modal', function (e: Event) {
       // @ts-ignore
-      const triggerItem: ItemInventory = $(e.relatedTarget).data('item');
-
-      let newItem: ProductModalItem = {
-        id: triggerItem.id,
-        name: triggerItem.Name,
-        fullName: triggerItem.FullName,
-        salesPrice: triggerItem.SalesPrice,
-        salesDesc: triggerItem.SalesDesc,
-        fullDesc: triggerItem.FullDesc,
-        images: triggerItem.Images,
-        specs: triggerItem.Specs,
-        href: triggerItem.Href,
-        quantity: 1
-      };
-
-      setItem(newItem);
+      changeItem($(e.relatedTarget).data('id'));
     });
   }, []);
 
   useEffect(() => {
     $('.qbc-eshop-product-modal-submit-to-cart').on('click', function (e) {
-      const triggerItem: ItemInventory = $(e.currentTarget).data('item');
-
-      let addToCartItem: ProductModalItem = {
-        id: triggerItem.id,
-        name: triggerItem.Name,
-        fullName: triggerItem.FullName,
-        salesPrice: triggerItem.SalesPrice,
-        salesDesc: triggerItem.SalesDesc,
-        fullDesc: triggerItem.FullDesc,
-        images: triggerItem.Images,
-        specs: triggerItem.Specs,
-        href: triggerItem.Href,
-        quantity: $(`#${$(e.currentTarget).data('qty-id')}`).val() as number
-      };
-
-      submitToCart(addToCartItem);
+      submitToCart(
+        $(e.currentTarget).data('id'),
+        $(`#${$(e.currentTarget).data('qty-id')}`).val() as string
+      );
     });
   }, []);
 
   useEffect(() => {
     $(`#${triggerId}`).on('hidden.bs.modal', function (e: Event) {
-      setItem(initItemState());
+      changeItem('');
+      setQuantity('1');
     });
   }, []);
 
-  function initItemState() {
-    return {
-      id: '',
-      name: '',
-      fullName: '',
-      salesPrice: 0,
-      salesDesc: '',
-      fullDesc: '',
-      images: [],
-      specs: [],
-      href: '',
-      quantity: 1
-    } as ProductModalItem;
-  }
-
-  const setQuantity = (e: ChangeEvent<HTMLInputElement>) => {
-    setItem({ ...item!, quantity: e.target.value });
-  };
-
-  const submitToCart = async (item: ProductModalItem) => {
-    let quantityInt = Number(item!.quantity);
+  const submitToCart = async (id: string, quantity: string) => {
+    let quantityInt = Number(quantity);
     if (
       typeof quantityInt === 'number' &&
       quantityInt % 1 === 0 &&
       quantityInt > 0
     ) {
-      const newItem: ProductModalItem = { ...item };
-      newItem.quantity = quantityInt;
-      const resOk = await props.addToCart(newItem);
+      const resOk = await props.addToCart(id, quantityInt);
 
       if (resOk) {
-        console.log('addToCart Success Message Returned');
         $(`#${triggerId}`).modal('hide');
       } else {
-        console.log('addToCart Failure Message Returned');
         $(`.invalid-title`).text('Failed to Add Item');
         $(`.invalid-modal-body`).text(
           'There was an issue adding this item to your cart. Please try again.'
@@ -137,14 +88,14 @@ const ProductModal: FC<Props> = (props) => {
                       data-ride="carousel"
                       data-interval="false"
                     >
-                      {item.images && item.images.length > 0 ? (
+                      {item?.Images && item.Images.length > 0 ? (
                         <ol className="carousel-indicators">
                           <li
                             data-target="#carouselExampleIndicators"
                             data-slide-to="0"
                             className="active"
                           ></li>
-                          {item.images.map((img, index) => {
+                          {item.Images.map((img, index) => {
                             return (
                               <li
                                 key={`${item.id}-carousel-indicator-${index}`}
@@ -159,13 +110,13 @@ const ProductModal: FC<Props> = (props) => {
                         <div
                           className="carousel-item active"
                           style={{
-                            backgroundImage: item.id
+                            backgroundImage: item?.id
                               ? `url(${props.imagesStorageUrl}images/responsive/${item.id})`
                               : ''
                           }}
                         ></div>
-                        {item.images && item.images.length > 0
-                          ? item.images.map((img, index) => {
+                        {item?.Images && item.Images.length > 0
+                          ? item.Images.map((img, index) => {
                               return (
                                 <div
                                   key={`${item.id}-carousel-img-${index}`}
@@ -244,7 +195,7 @@ const ProductModal: FC<Props> = (props) => {
                       <li className="nav-item" role="presentation">
                         <a
                           className="nav-link .scroll-box-tabs"
-                          href={item.href}
+                          href={item?.Href}
                           role="tab"
                           aria-controls="pills-specs"
                           aria-selected="false"
@@ -261,11 +212,11 @@ const ProductModal: FC<Props> = (props) => {
                           role="tabpanel"
                           aria-labelledby="pills-overview-tab"
                         >
-                          <h3>Product ID: {item.name}</h3>
-                          <h4>Description: {item.salesDesc}</h4>
-                          <h4>Price: {toUSCurrency(item.salesPrice || 0)}</h4>
+                          <h3>Product ID: {item?.Name}</h3>
+                          <h4>Description: {item?.SalesDesc}</h4>
+                          <h4>Price: {toUSCurrency(item?.SalesPrice || 0)}</h4>
                           <h4>Details:</h4>
-                          <p>{item.fullDesc}</p>
+                          <p>{item?.FullDesc}</p>
                         </div>
                         <div
                           className="tab-pane fade"
@@ -273,8 +224,8 @@ const ProductModal: FC<Props> = (props) => {
                           role="tabpanel"
                           aria-labelledby="pills-specs-tab"
                         >
-                          {item.specs && item.specs.length > 0 ? (
-                            item.specs.map((textline, index) => {
+                          {item?.Specs && item.Specs.length > 0 ? (
+                            item.Specs.map((textline, index) => {
                               return (
                                 <div key={`${item.id}-specs-textline-${index}`}>
                                   {textline}
@@ -303,13 +254,13 @@ const ProductModal: FC<Props> = (props) => {
                   type="number"
                   step="1"
                   min="1"
-                  onChange={setQuantity}
-                  value={item.quantity}
+                  onChange={(e) => setQuantity(e.target.value)}
+                  value={quantity}
                   className="form-control-lg ml-2 mr-1"
                 ></input>
                 <button
                   onClick={() => {
-                    submitToCart(item);
+                    submitToCart(item?.id, quantity);
                   }}
                   type="button"
                   className="btn btn-success"
