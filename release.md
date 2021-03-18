@@ -2,11 +2,11 @@
 
 # New
 
-- updated AddToCart logic
+- uses localDB hooks for data access
 
 # Fixes
 
-- fixed ESM build issue
+- none
 
 # Breaking
 

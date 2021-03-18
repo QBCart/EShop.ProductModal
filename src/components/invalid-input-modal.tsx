@@ -1,10 +1,13 @@
-import React, {
-  FC
-} from 'https://cdn.skypack.dev/pin/react@v17.0.1-tOtrZxBRexARODgO0jli/min/react.js';
+/**
+ * @license
+ * Copyright (c) 2021 QBCart Inc. All rights reserved.
+ * This code can only be used and/or distributed with express permission.
+ */
 
-interface Props {}
+import { React } from '../skypack';
+import type { FC } from '../skypack';
 
-const InvalidInputModal: FC<Props> = (props) => {
+const InvalidInputModal: FC = () => {
   const closeModal = () => {
     $(`#qbc-eshop-product-modal-invalid-input`).modal('hide');
   };
