@@ -23,9 +23,10 @@ const ProductModal: FC<Props> = (props) => {
   const addToCart = useAddToCart(true);
 
   useEffect(() => {
-    $(`#${props.id}`).on('shown.bs.modal', function (e: Event) {
+    $(`#${props.id}-trigger`).on('show.bs.modal', function (e: Event) {
       // @ts-ignore
       changeItem($(e.relatedTarget).data('id'));
+      setQuantity('1');
     });
   }, []);
 
@@ -38,30 +39,21 @@ const ProductModal: FC<Props> = (props) => {
     });
   }, []);
 
-  useEffect(() => {
-    $(`#${props.id}`).on('hidden.bs.modal', function (e: Event) {
-      changeItem('');
-      setQuantity('1');
-    });
-  }, []);
-
   const submitToCart = async (id: string, quantity: string) => {
-    let quantityInt = Number(quantity);
+    const quantityInt = Number(quantity);
     if (
       typeof quantityInt === 'number' &&
       quantityInt % 1 === 0 &&
       quantityInt > 0
     ) {
-      const resOk = await addToCart(id, quantityInt);
+      const error = await addToCart(id, quantityInt);
 
-      if (resOk) {
-        $(`#${props.id}`).modal('hide');
-      } else {
+      if (error) {
         $(`.invalid-title`).text('Failed to Add Item');
-        $(`.invalid-modal-body`).text(
-          'There was an issue adding this item to your cart. Please try again.'
-        );
+        $(`.invalid-modal-body`).text(error);
         $(`#qbc-eshop-product-modal-invalid-input`).modal('show');
+      } else {
+        $(`#${props.id}-trigger`).modal('hide');
       }
     } else {
       $(`.invalid-title`).text('Invalid Input');
@@ -76,7 +68,7 @@ const ProductModal: FC<Props> = (props) => {
     <div>
       <div
         className="modal fade"
-        id={props.id}
+        id={`${props.id}-trigger`}
         tabIndex={-1}
         aria-hidden="true"
       >
