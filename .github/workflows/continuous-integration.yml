@@ -3,10 +3,7 @@ name: CI
 ####################
 # Start the job on #
 ####################
-on:
-  push:
-  pull_request:
-    branches: [main]
+on: push
 
 ###################
 # Set Global Envs #
@@ -21,8 +18,8 @@ jobs:
   ##############
   # Define Job #
   ##############
-  CI:
-    name: CI
+  continuos-integration:
+    name: Continuos Integration
     runs-on: ubuntu-latest
 
     ##############
@@ -52,27 +49,39 @@ jobs:
       # Install Deps #
       ################
       - name: Install Deps
+        working-directory: .
         shell: bash
         run: npm install
-
-      #################
-      # Build Project #
-      #################
-      - name: Build Project
-        shell: bash
-        run: npm run build
 
       #############
       # Lint Code #
       #############
       - name: Lint Code
+        working-directory: .
         shell: bash
         run: npm run lint
+
+      ################
+      # Check Format #
+      ################
+      - name: Check Format
+        working-directory: .
+        shell: bash
+        run: npm run format:check
+
+      #################
+      # Build Project #
+      #################
+      - name: Build Project
+        working-directory: .
+        shell: bash
+        run: npm run build
 
       #############
       # Run Tests #
       #############
       - name: Run Tests
+        working-directory: .
         shell: bash
         run: |
           npm run test:ci
