@@ -1,20 +1,21 @@
 import * as React from './skypack';
 import { FC, useState, useEffect, ChangeEvent } from './skypack';
-import { useItem } from '@qbcart/eshop-local-db';
+import { useInventoryItem, useAddToCart } from '@qbcart/eshop-local-db';
 
 import InvalidInputModal from './components/invalid-input-modal';
 import { toUSCurrency } from '@qbcart/utils';
 
 interface Props {
-  addToCart: (id: string, quantity: number) => Promise<boolean>;
   imagesStorageUrl: string;
 }
 
 const ProductModal: FC<Props> = (props) => {
   const triggerId = 'qbc-eshop-product-modal';
 
-  const [item, changeItem] = useItem('');
+  const [item, changeItem] = useInventoryItem('');
   const [quantity, setQuantity] = useState('1');
+
+  const addToCart = useAddToCart(true);
 
   useEffect(() => {
     $(`#${triggerId}`).on('shown.bs.modal', function (e: Event) {
@@ -46,7 +47,7 @@ const ProductModal: FC<Props> = (props) => {
       quantityInt % 1 === 0 &&
       quantityInt > 0
     ) {
-      const resOk = await props.addToCart(id, quantityInt);
+      const resOk = await addToCart(id, quantityInt);
 
       if (resOk) {
         $(`#${triggerId}`).modal('hide');
