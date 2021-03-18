@@ -4,7 +4,7 @@
  * This code can only be used and/or distributed with express permission.
  */
 
-import * as React from './skypack';
+import { React } from './skypack';
 import { FC, useState, useEffect, ChangeEvent } from './skypack';
 import {
   useInventoryItem,
