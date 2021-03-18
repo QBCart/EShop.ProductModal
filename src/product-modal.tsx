@@ -6,19 +6,18 @@ import InvalidInputModal from './components/invalid-input-modal';
 import { toUSCurrency } from '@qbcart/utils';
 
 interface Props {
+  id: string;
   imagesStorageUrl: string;
 }
 
 const ProductModal: FC<Props> = (props) => {
-  const triggerId = 'qbc-eshop-product-modal';
-
   const [item, changeItem] = useInventoryItem('');
   const [quantity, setQuantity] = useState('1');
 
   const addToCart = useAddToCart(true);
 
   useEffect(() => {
-    $(`#${triggerId}`).on('shown.bs.modal', function (e: Event) {
+    $(`#${props.id}`).on('shown.bs.modal', function (e: Event) {
       // @ts-ignore
       changeItem($(e.relatedTarget).data('id'));
     });
@@ -34,7 +33,7 @@ const ProductModal: FC<Props> = (props) => {
   }, []);
 
   useEffect(() => {
-    $(`#${triggerId}`).on('hidden.bs.modal', function (e: Event) {
+    $(`#${props.id}`).on('hidden.bs.modal', function (e: Event) {
       changeItem('');
       setQuantity('1');
     });
@@ -50,7 +49,7 @@ const ProductModal: FC<Props> = (props) => {
       const resOk = await addToCart(id, quantityInt);
 
       if (resOk) {
-        $(`#${triggerId}`).modal('hide');
+        $(`#${props.id}`).modal('hide');
       } else {
         $(`.invalid-title`).text('Failed to Add Item');
         $(`.invalid-modal-body`).text(
@@ -71,9 +70,8 @@ const ProductModal: FC<Props> = (props) => {
     <div>
       <div
         className="modal fade"
-        id={triggerId}
+        id={props.id}
         tabIndex={-1}
-        aria-labelledby={`${triggerId}Label`}
         aria-hidden="true"
       >
         <div className="modal-dialog modal-dialog-scrollable modal-xl modal-lg">
@@ -84,7 +82,7 @@ const ProductModal: FC<Props> = (props) => {
                   <div className="col-12 col-lg-4">
                     {/* begin Carousel Section */}
                     <div
-                      id="carouselExampleIndicators"
+                      id={`${props.id}-indicators`}
                       className="carousel slide"
                       data-ride="carousel"
                       data-interval="false"
@@ -92,7 +90,7 @@ const ProductModal: FC<Props> = (props) => {
                       {item?.Images && item.Images.length > 0 ? (
                         <ol className="carousel-indicators">
                           <li
-                            data-target="#carouselExampleIndicators"
+                            data-target={`#${props.id}-indicators`}
                             data-slide-to="0"
                             className="active"
                           ></li>
@@ -100,7 +98,7 @@ const ProductModal: FC<Props> = (props) => {
                             return (
                               <li
                                 key={`${item.id}-carousel-indicator-${index}`}
-                                data-target="#carouselExampleIndicators"
+                                data-target={`#${props.id}-indicators`}
                                 data-slide-to={index + 1}
                               ></li>
                             );
@@ -133,7 +131,7 @@ const ProductModal: FC<Props> = (props) => {
                       <a
                         className="carousel-control-prev"
                         id="carousel-prev"
-                        href="#carouselExampleIndicators"
+                        href={`#${props.id}-indicators`}
                         role="button"
                         data-slide="prev"
                       >
@@ -146,7 +144,7 @@ const ProductModal: FC<Props> = (props) => {
                       <a
                         className="carousel-control-next"
                         id="carousel-prev"
-                        href="#carouselExampleIndicators"
+                        href={`#${props.id}-indicators`}
                         role="button"
                         data-slide="next"
                       >
