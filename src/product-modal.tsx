@@ -6,7 +6,11 @@
 
 import * as React from './skypack';
 import { FC, useState, useEffect, ChangeEvent } from './skypack';
-import { useInventoryItem, useAddToCart } from '@qbcart/eshop-local-db';
+import {
+  useInventoryItem,
+  useAddToCart,
+  useCustomPrice
+} from '@qbcart/eshop-local-db';
 
 import InvalidInputModal from './components/invalid-input-modal';
 import { toUSCurrency } from '@qbcart/utils';
@@ -19,13 +23,15 @@ interface Props {
 const ProductModal: FC<Props> = (props) => {
   const [item, changeItem] = useInventoryItem('');
   const [quantity, setQuantity] = useState('1');
-
+  const [customPrice, changeCustomPrice] = useCustomPrice('');
   const addToCart = useAddToCart(true);
 
   useEffect(() => {
     $(`#${props.id}-trigger`).on('show.bs.modal', function (e: Event) {
       // @ts-ignore
-      changeItem($(e.relatedTarget).data('id'));
+      const id = $(e.relatedTarget).data('id');
+      changeItem(id);
+      changeCustomPrice(id);
       setQuantity('1');
     });
   }, []);
@@ -211,7 +217,12 @@ const ProductModal: FC<Props> = (props) => {
                         >
                           <h3>Product ID: {item?.Name}</h3>
                           <h4>Description: {item?.SalesDesc}</h4>
-                          <h4>Price: {toUSCurrency(item?.SalesPrice || 0)}</h4>
+                          <h4>
+                            Price:{' '}
+                            {toUSCurrency(
+                              customPrice?.price || item?.SalesPrice || 0
+                            )}
+                          </h4>
                           <h4>Details:</h4>
                           <p>{item?.FullDesc}</p>
                         </div>
