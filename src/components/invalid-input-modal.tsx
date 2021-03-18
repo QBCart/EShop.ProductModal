@@ -1,3 +1,9 @@
+/**
+ * @license
+ * Copyright (c) 2021 QBCart Inc. All rights reserved.
+ * This code can only be used and/or distributed with express permission.
+ */
+
 import * as React from '../skypack';
 import type { FC } from '../skypack';
 
