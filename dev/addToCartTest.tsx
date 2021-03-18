@@ -9,26 +9,9 @@ interface Props {
 }
 
 const AddToCartTest: FC<Props> = (props) => {
-  const localDB = useLocalDB(true, 'http://localhost:8080', true);
-  const addToCart = async (id: string, quantity: number) => {
-    try {
-      // throw '';
-      console.log('addToCart Succeeded!');
-      console.log(id);
-      console.log(quantity);
-      return true;
-    } catch {
-      console.log('addToCart Failed!');
-      return false;
-    }
-  };
+  const localDB = useLocalDB();
 
-  return (
-    <ProductModal
-      addToCart={addToCart}
-      imagesStorageUrl={props.imagesStorageUrl}
-    />
-  );
+  return <ProductModal imagesStorageUrl={props.imagesStorageUrl} />;
 };
 
 export default AddToCartTest;
