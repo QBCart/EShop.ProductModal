@@ -1,1 +1,12 @@
+@use '@qbcart/toast';
 @use '../src/index';
+
+body {
+  background: #eaeded;
+}
+.app-bar {
+  display: block;
+  height: 64px;
+  width: 100%;
+  background: black;
+}
