@@ -4,8 +4,7 @@
  * This code can only be used and/or distributed with express permission.
  */
 
-import { React } from './skypack';
-import { FC, useState, useEffect, ChangeEvent } from './skypack';
+import { React } from 'https://cdn.skypack.dev/@qbcart/eshop-skypack';
 import {
   useInventoryItem,
   useAddToCart,
@@ -20,39 +19,43 @@ interface Props {
   imagesStorageUrl: string;
 }
 
-const ProductModal: FC<Props> = (props) => {
+const ProductModal: React.FC<Props> = (props: Props) => {
   const [item, changeItem] = useInventoryItem('');
-  const [quantity, setQuantity] = useState('1');
+  const [quantity, setQuantity] = React.useState('1');
   const [customPrice, changeCustomPrice] = useCustomPrice('');
   const addToCart = useAddToCart(true);
 
-  useEffect(() => {
-    $(`#${props.id}-trigger`).on('show.bs.modal', function (e: Event) {
-      // @ts-ignore
-      const id = $(e.relatedTarget).data('id');
-      changeItem(id);
-      changeCustomPrice(id);
-      setQuantity('1');
-    });
-  }, []);
+  const price = customPrice ?? item?.SalesPrice ?? 0;
 
-  useEffect(() => {
-    $('.qbc-eshop-product-modal-submit-to-cart').on('click', function (e) {
-      submitToCart(
-        $(e.currentTarget).data('id'),
-        $(`#${$(e.currentTarget).data('qty-id')}`).val() as string
-      );
-    });
-  }, []);
+  React.useEffect(() => {
+    $(`#${props.id}-trigger`).on(
+      'show.bs.modal',
+      function (e: JQueryEventObject) {
+        const id = $(e.relatedTarget).data('id');
+        changeItem(id);
+        changeCustomPrice(id);
+        setQuantity('1');
+      }
+    );
+  }, [changeCustomPrice, changeItem, props.id]);
 
-  const submitToCart = async (id: string, quantity: string) => {
+  // React.useEffect(() => {
+  //   $('.qbc-eshop-product-modal-submit-to-cart').on('click', function (e) {
+  //     submitToCart(
+  //       $(e.currentTarget).data('id'),
+  //       $(`#${$(e.currentTarget).data('qty-id')}`).val() as string
+  //     );
+  //   });
+  // }, []);
+
+  async function submitToCart(id: string, quantity: string) {
     const quantityInt = Number(quantity);
     if (
       typeof quantityInt === 'number' &&
       quantityInt % 1 === 0 &&
       quantityInt > 0
     ) {
-      const error = await addToCart(id, quantityInt);
+      const error = await addToCart(id, price, quantityInt);
 
       if (error) {
         $(`.invalid-title`).text('Failed to Add Item');
@@ -68,7 +71,7 @@ const ProductModal: FC<Props> = (props) => {
       );
       $(`#qbc-eshop-product-modal-invalid-input`).modal('show');
     }
-  };
+  }
 
   return (
     <div>
@@ -217,12 +220,7 @@ const ProductModal: FC<Props> = (props) => {
                         >
                           <h3>Product ID: {item?.Name}</h3>
                           <h4>Description: {item?.SalesDesc}</h4>
-                          <h4>
-                            Price:{' '}
-                            {toUSCurrency(
-                              customPrice?.price || item?.SalesPrice || 0
-                            )}
-                          </h4>
+                          <h4>Price: {toUSCurrency(price)}</h4>
                           <h4>Details:</h4>
                           <p>{item?.FullDesc}</p>
                         </div>
