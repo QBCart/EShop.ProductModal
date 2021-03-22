@@ -2,11 +2,11 @@
 
 # New
 
-- uses localDB hooks for data access
+- none
 
 # Fixes
 
-- none
+- use new skypack package
 
 # Breaking
 

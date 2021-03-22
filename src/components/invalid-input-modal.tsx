@@ -4,10 +4,9 @@
  * This code can only be used and/or distributed with express permission.
  */
 
-import { React } from '../skypack';
-import type { FC } from '../skypack';
+import { React } from 'https://cdn.skypack.dev/@qbcart/eshop-skypack';
 
-const InvalidInputModal: FC = () => {
+const InvalidInputModal: React.FC = () => {
   const closeModal = () => {
     $(`#qbc-eshop-product-modal-invalid-input`).modal('hide');
   };

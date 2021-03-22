@@ -1,2 +1,5 @@
 import mountProductModal from '../src/index';
-mountProductModal();
+import { mountToast, showToast } from '@qbcart/toast';
+
+mountToast();
+mountProductModal(showToast);
