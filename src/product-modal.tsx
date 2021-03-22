@@ -17,6 +17,7 @@ import { toUSCurrency } from '@qbcart/utils';
 interface Props {
   id: string;
   imagesStorageUrl: string;
+  showToast: (header: string, body: string, duration: number) => void;
 }
 
 const ProductModal: React.FC<Props> = (props: Props) => {
@@ -63,6 +64,11 @@ const ProductModal: React.FC<Props> = (props: Props) => {
         $(`#qbc-eshop-product-modal-invalid-input`).modal('show');
       } else {
         $(`#${props.id}-trigger`).modal('hide');
+        props.showToast(
+          'Cart',
+          '<h5 class="text-success">Item successfully added to cart</h5>',
+          3.5
+        );
       }
     } else {
       $(`.invalid-title`).text('Invalid Input');

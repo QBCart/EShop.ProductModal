@@ -8,7 +8,9 @@ import { React } from 'https://cdn.skypack.dev/@qbcart/eshop-skypack';
 import { render } from 'https://cdn.skypack.dev/@qbcart/eshop-skypack';
 import ProductModal from './product-modal';
 
-const mountProductModal = (): void => {
+const mountProductModal = (
+  showToast: (header: string, body: string, duration: number) => void
+): void => {
   const id = 'qbc-eshop-product-modal';
   const mountingDiv = document.getElementById(id);
 
@@ -16,6 +18,7 @@ const mountProductModal = (): void => {
     <ProductModal
       id={id}
       imagesStorageUrl={mountingDiv.dataset.imagesStorageUrl}
+      showToast={showToast}
     />,
     mountingDiv
   );
