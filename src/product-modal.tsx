@@ -9,7 +9,7 @@ import {
   useInventoryItem,
   useAddToCart,
   useCustomPrice
-} from '@qbcart/eshop-local-db';
+} from 'https://cdn.skypack.dev/@qbcart/eshop-local-db';
 
 import InvalidInputModal from './components/invalid-input-modal';
 import { toUSCurrency } from '@qbcart/utils';
