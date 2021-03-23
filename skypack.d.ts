@@ -6,3 +6,7 @@ declare module 'https://cdn.skypack.dev/@qbcart/eshop-skypack-deps' {
 declare module 'https://cdn.skypack.dev/@qbcart/eshop-local-db' {
   export * from '@qbcart/eshop-local-db';
 }
+
+declare module 'https://cdn.skypack.dev/@qbcart/toast' {
+  export * from '@qbcart/toast';
+}
