@@ -4,8 +4,10 @@
  * This code can only be used and/or distributed with express permission.
  */
 
-import { React } from 'https://cdn.skypack.dev/@qbcart/eshop-skypack';
-import { render } from 'https://cdn.skypack.dev/@qbcart/eshop-skypack';
+import {
+  React,
+  render
+} from 'https://cdn.skypack.dev/@qbcart/eshop-skypack-deps';
 import ProductModal from './product-modal';
 
 const mountProductModal = (

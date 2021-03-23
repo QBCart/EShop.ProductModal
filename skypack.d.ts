@@ -1,4 +1,4 @@
-declare module 'https://cdn.skypack.dev/@qbcart/eshop-skypack' {
+declare module 'https://cdn.skypack.dev/@qbcart/eshop-skypack-deps' {
   export { default as React } from 'react';
-  export { render } from 'react-dom';
+  export * from 'react-dom';
 }
