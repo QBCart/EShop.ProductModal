@@ -4,7 +4,7 @@
     "target": "esnext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "baseUrl": "./",
-    "rootDir": ".",
+    "rootDir": "src",
     "paths": {
       "https://cdn.skypack.dev/@qbcart/eshop-skypack": ["skypack.d.ts"]
     },
