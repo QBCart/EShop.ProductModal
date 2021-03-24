@@ -26,4 +26,4 @@ const mountProductModal = (
   );
 };
 
-export default mountProductModal;
+export { mountProductModal };

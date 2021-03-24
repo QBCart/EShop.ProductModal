@@ -6,7 +6,7 @@
 
 # Fixes
 
-- use new skypack package
+- Change non-default export to accommodate skypack ref.
 
 # Breaking
 
