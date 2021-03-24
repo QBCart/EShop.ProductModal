@@ -29,15 +29,12 @@ const ProductModal: React.FC<Props> = (props: Props) => {
   const price = customPrice ?? item?.SalesPrice ?? 0;
 
   React.useEffect(() => {
-    $(`#${props.id}-trigger`).on(
-      'show.bs.modal',
-      function (e: JQueryEventObject) {
-        const id = $(e.relatedTarget).data('id');
-        changeItem(id);
-        changeCustomPrice(id);
-        setQuantity('1');
-      }
-    );
+    $(`#${props.id}-view`).on('show.bs.modal', function (e: JQueryEventObject) {
+      const id = $(e.relatedTarget).data('id');
+      changeItem(id);
+      changeCustomPrice(id);
+      setQuantity('1');
+    });
   }, [changeCustomPrice, changeItem, props.id]);
 
   // React.useEffect(() => {
@@ -63,7 +60,7 @@ const ProductModal: React.FC<Props> = (props: Props) => {
         $(`.invalid-modal-body`).text(error);
         $(`#qbc-eshop-product-modal-invalid-input`).modal('show');
       } else {
-        $(`#${props.id}-trigger`).modal('hide');
+        $(`#${props.id}-view`).modal('hide');
         props.showToast(
           'Cart',
           '<h5 class="text-success">Item successfully added to cart</h5>',
@@ -83,7 +80,7 @@ const ProductModal: React.FC<Props> = (props: Props) => {
     <div>
       <div
         className="modal fade"
-        id={`${props.id}-trigger`}
+        id={`${props.id}-view`}
         tabIndex={-1}
         aria-hidden="true"
       >
