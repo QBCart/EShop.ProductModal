@@ -12,7 +12,10 @@ import {
 } from 'https://cdn.skypack.dev/@qbcart/eshop-local-db';
 
 import InvalidInputModal from './components/invalid-input-modal';
-import { toUSCurrency } from 'https://cdn.skypack.dev/@qbcart/utils';
+import {
+  toUSCurrency,
+  toWholeNumberGreaterThanZero
+} from 'https://cdn.skypack.dev/@qbcart/utils';
 
 interface Props {
   id: string;
@@ -38,12 +41,8 @@ const ProductModal: React.FC<Props> = (props: Props) => {
   }, [changeCustomPrice, changeItem, props.id]);
 
   async function submitToCart(id: string, quantity: string) {
-    const quantityInt = Number(quantity);
-    if (
-      typeof quantityInt === 'number' &&
-      quantityInt % 1 === 0 &&
-      quantityInt > 0
-    ) {
+    const quantityInt = toWholeNumberGreaterThanZero(quantity);
+    if (quantityInt) {
       const error = await addToCart(id, price, quantityInt);
 
       if (error) {
