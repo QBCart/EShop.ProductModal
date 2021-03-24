@@ -12,7 +12,7 @@ import {
 } from 'https://cdn.skypack.dev/@qbcart/eshop-local-db';
 
 import InvalidInputModal from './components/invalid-input-modal';
-import { toUSCurrency } from '@qbcart/utils';
+import { toUSCurrency } from 'https://cdn.skypack.dev/@qbcart/utils';
 
 interface Props {
   id: string;
