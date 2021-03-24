@@ -37,15 +37,6 @@ const ProductModal: React.FC<Props> = (props: Props) => {
     });
   }, [changeCustomPrice, changeItem, props.id]);
 
-  // React.useEffect(() => {
-  //   $('.qbc-eshop-product-modal-submit-to-cart').on('click', function (e) {
-  //     submitToCart(
-  //       $(e.currentTarget).data('id'),
-  //       $(`#${$(e.currentTarget).data('qty-id')}`).val() as string
-  //     );
-  //   });
-  // }, []);
-
   async function submitToCart(id: string, quantity: string) {
     const quantityInt = Number(quantity);
     if (
