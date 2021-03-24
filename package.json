@@ -2,6 +2,13 @@
   "name": "@qbcart/eshop-product-modal",
   "version": "1.0.0",
   "description": "The product modal used in QBC.EShop pages.",
+  "keywords": [
+    "skypack",
+    "deps",
+    "qbcart",
+    "eshop"
+  ],
+  "license": "MIT",
   "author": "QbCart Inc.",
   "contributors": [
     "Allan Mobley",
@@ -10,6 +17,9 @@
   "main": "index.js",
   "module": "index.js",
   "types": "types/index.d.ts",
+  "exports": {
+    "import": "./index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/QBCart/EShop.ProductModal.git"
