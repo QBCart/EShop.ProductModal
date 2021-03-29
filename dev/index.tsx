@@ -1,5 +1,4 @@
-import { mountProductModal } from '../src/index';
-import { mountToast, showToast } from 'https://cdn.skypack.dev/@qbcart/toast';
+import { mountProductModal } from 'product-modal';
+import { showToast } from '@qbcart/toast';
 
-mountToast();
 mountProductModal(showToast);
