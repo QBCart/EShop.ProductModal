@@ -16,6 +16,8 @@ import {
 import { toUSCurrency, toWholeNumberGreaterThanZero } from '@qbcart/utils';
 
 import StyledProductModalBody from './styled-components/styled-product-modal-body.js';
+import StyledProductModal from './styled-components/styled-product-modal.js';
+import StyledProductModalAdSpace from './styled-components/styled-product-modal-ad-space.js';
 
 interface Props {
   id: string;
@@ -70,7 +72,7 @@ const ProductModal: FC<Props> = (props: Props) => {
   }
 
   return (
-    <div
+    <StyledProductModal
       className="modal fade"
       id={`${props.id}-view`}
       tabIndex={-1}
@@ -158,7 +160,7 @@ const ProductModal: FC<Props> = (props: Props) => {
                     </a>
                   </div>
                   {/* begin Add Space Section */}
-                  <div className="row ad-space"></div>
+                  <StyledProductModalAdSpace className="row"></StyledProductModalAdSpace>
                 </div>
                 {/* begin Scroll Box Section */}
                 <div className="col-12 col-lg-8">
@@ -283,7 +285,7 @@ const ProductModal: FC<Props> = (props: Props) => {
           </div>
         </div>
       </div>
-    </div>
+    </StyledProductModal>
   );
 };
 
