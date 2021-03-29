@@ -18,8 +18,9 @@ module.exports = {
     'react': 'https://qbcdemo.z13.web.core.windows.net/deps/react.js',
     'react-dom': 'https://qbcdemo.z13.web.core.windows.net/deps/react-dom.js',
     'styled-components': 'https://qbcdemo.z13.web.core.windows.net/deps/styled-components.js',
-    '@qbcart/eshop-local-db': 'https://qbcdemo.z13.web.core.windows.net/eshop/local-db/index.js',
+    '@qbcart/eshop-local-db': 'https://qbcdemo.z13.web.core.windows.net/eshop/localdb/index.js',
     '@qbcart/utils': 'https://qbcdemo.z13.web.core.windows.net/utils/index.js',
+    '@qbcart/toast': 'https://qbcdemo.z13.web.core.windows.net/toast/index.js',
     'product-modal': 'https://qbcdemo.z13.web.core.windows.net/eshop/product-modal/index.js'
   }
 };
