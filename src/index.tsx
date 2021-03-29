@@ -1,25 +1,25 @@
 /**
  * @license
  * Copyright (c) 2021 QBCart Inc. All rights reserved.
- * This code can only be used and/or distributed with express permission.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source repo.
  */
 
-import {
-  React,
-  render
-} from 'https://cdn.skypack.dev/@qbcart/eshop-skypack-deps';
-import ProductModal from './product-modal';
+import React from 'react';
+import { render } from 'react-dom';
+import ProductModal from './product-modal.js';
 
 const mountProductModal = (
   showToast: (header: string, body: string, duration: number) => void
 ): void => {
   const id = 'qbc-eshop-product-modal';
-  const mountingDiv = document.getElementById(id);
+  const mountingDiv = document.getElementById(id)!;
 
   render(
     <ProductModal
       id={id}
-      imagesStorageUrl={mountingDiv.dataset.imagesStorageUrl}
+      imagesStorageUrl={mountingDiv.dataset.imagesStorageUrl!}
       showToast={showToast}
     />,
     mountingDiv
