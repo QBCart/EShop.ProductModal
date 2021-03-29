@@ -15,6 +15,8 @@ import {
 
 import { toUSCurrency, toWholeNumberGreaterThanZero } from '@qbcart/utils';
 
+import StyledProductModalBody from './styled-components/styled-product-modal-body.js';
+
 interface Props {
   id: string;
   imagesStorageUrl: string;
@@ -76,7 +78,7 @@ const ProductModal: FC<Props> = (props: Props) => {
     >
       <div className="modal-dialog modal-dialog-scrollable modal-xl modal-lg">
         <div className="modal-content">
-          <div className="modal-body">
+          <StyledProductModalBody className="modal-body">
             <div className="container">
               <div className="row">
                 <div className="col-12 col-lg-4">
@@ -245,7 +247,7 @@ const ProductModal: FC<Props> = (props: Props) => {
                 </div>
               </div>
             </div>
-          </div>
+          </StyledProductModalBody>
           {/* begin Footer Section */}
           <div className="modal-footer">
             <div className="col-6 d-flex justify-content-start">
