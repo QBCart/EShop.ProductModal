@@ -23,6 +23,16 @@ interface Props {
   id: string;
   imagesStorageUrl: string;
   showToast: (header: string, body: string, duration: number) => void;
+  showAlertModal: (
+    headerText: string,
+    bodyHTML: string,
+    headerTextColor?: string,
+    headerBackgroundColor?: string,
+    bodyTextColor?: string,
+    bodyBackgroundColor?: string,
+    iconName?: string,
+    iconColor?: string
+  ) => void;
 }
 
 const ProductModal: FC<Props> = (props: Props) => {
@@ -48,10 +58,15 @@ const ProductModal: FC<Props> = (props: Props) => {
       const error = await addToCart(id, price, quantityInt);
 
       if (error) {
-        // CALL ALERT MODAL AS FAILED TO ADD ITEM
-        // $(`.invalid-title`).text('Failed to Add Item');
-        // $(`.invalid-modal-body`).text(error);
-        // $(`#qbc-eshop-product-modal-invalid-input`).modal('show');
+        props.showAlertModal(
+          'Failed to Add Item',
+          '<h5>PLease try again. If the problem persists, Contact support.</h5>',
+          '',
+          '',
+          '',
+          '',
+          'warning_amber'
+        );
       } else {
         $(`#${props.id}-view`).modal('hide');
         props.showToast(
@@ -61,13 +76,15 @@ const ProductModal: FC<Props> = (props: Props) => {
         );
       }
     } else {
-      // CALL ALERT MODAL AS INVALID INPUT
-      // previous material icon name used is 'error_outline'   could also use 'report', 'report_gmailerrorred', 'warning', or 'warning_amber'
-      // $(`.invalid-title`).text('Invalid Input');
-      // $(`.invalid-modal-body`).html(
-      //   'Quantity must be a positive whole number greater than zero.'
-      // );
-      // $(`#qbc-eshop-product-modal-invalid-input`).modal('show');
+      props.showAlertModal(
+        'Invalid Input',
+        '<h5>Quantity must be a positive whole number greater than zero.</h5>',
+        '',
+        '',
+        '',
+        '',
+        'report_gmailerrorred'
+      );
     }
   }
 
