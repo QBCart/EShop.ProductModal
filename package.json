@@ -40,6 +40,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@qbcart/alert-modal": "^1.0.0",
     "@qbcart/eshop-local-db": "^1.0.0",
     "@qbcart/toast": "^2.0.0",
     "@qbcart/types": "^1.0.1",
