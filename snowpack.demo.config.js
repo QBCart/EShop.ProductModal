@@ -5,7 +5,6 @@
 /** @type {import("snowpack").SnowpackUserConfig } */
 module.exports = {
   mount: {
-    src: { url: '/src', resolve: true, static: false },
     dev: { url: '/', resolve: true, static: false }
   },
   plugins: [],
@@ -23,6 +22,6 @@ module.exports = {
     '@qbcart/utils': 'https://qbcdemo.z13.web.core.windows.net/utils/index.js',
     '@qbcart/toast': 'https://qbcdemo.z13.web.core.windows.net/toast/index.js',
     '@qbcart/alert-modal': 'https://qbcdemo.z13.web.core.windows.net/alert-modal/index.js',
-    'product-modal': './src/index'
+    'product-modal': 'https://qbcdemo.z13.web.core.windows.net/eshop/product-modal/index.js'
   }
 };
