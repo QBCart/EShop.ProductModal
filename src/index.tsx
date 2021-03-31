@@ -10,18 +10,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import ProductModal from './product-modal.js';
 
-const mountProductModal = (
-  showAlertModal: (
-    headerText: string,
-    bodyHTML: string,
-    headerTextColor?: string,
-    headerBackgroundColor?: string,
-    bodyTextColor?: string,
-    bodyBackgroundColor?: string,
-    iconName?: string,
-    iconColor?: string
-  ) => void
-): void => {
+(function () {
   const id = 'qbc-eshop-product-modal';
   const mountingDiv = document.getElementById(id)!;
 
@@ -29,10 +18,7 @@ const mountProductModal = (
     <ProductModal
       id={id}
       imagesStorageUrl={mountingDiv.dataset.imagesStorageUrl!}
-      showAlertModal={showAlertModal}
     />,
     mountingDiv
   );
-};
-
-export { mountProductModal };
+})();

@@ -23,16 +23,6 @@ import StyledProductModalAdSpace from './styled-components/styled-product-modal-
 interface Props {
   id: string;
   imagesStorageUrl: string;
-  showAlertModal: (
-    headerText: string,
-    bodyHTML: string,
-    headerTextColor?: string,
-    headerBackgroundColor?: string,
-    bodyTextColor?: string,
-    bodyBackgroundColor?: string,
-    iconName?: string,
-    iconColor?: string
-  ) => void;
 }
 
 const ProductModal: FC<Props> = (props: Props) => {
@@ -41,6 +31,7 @@ const ProductModal: FC<Props> = (props: Props) => {
   const [customPrice, changeCustomPrice] = useCustomPrice('');
   const addToCart = useAddToCart(true);
   const addToastAlert = useAddAlert(true);
+  const addModalAlert = useAddAlert(false);
 
   const price = customPrice ?? item?.SalesPrice ?? 0;
 
@@ -59,35 +50,30 @@ const ProductModal: FC<Props> = (props: Props) => {
       const error = await addToCart(id, price, quantityInt);
 
       if (error) {
-        props.showAlertModal(
-          'Failed to Add Item',
-          '<h5>PLease try again. If the problem persists, Contact support.</h5>',
-          '',
-          '',
-          '',
-          '',
-          'warning_amber'
-        );
+        addModalAlert({
+          headerText: 'Failed to Add Item',
+          htmlBody:
+            '<h5>Please try again. If the problem persists, contact support.</h5>',
+          iconName: 'warning_amber'
+        });
       } else {
         $(`#${props.id}-view`).modal('hide');
 
         addToastAlert({
           headerText: 'Cart',
           htmlBody:
-            '<h5 class="text-success">Item successfully added to cart</h5>',
+            '<h5 class="text-success">Item successfully added to cart!</h5>',
           duration: 3.5
         });
       }
     } else {
-      props.showAlertModal(
-        'Invalid Input',
-        '<h5>Quantity must be a positive whole number greater than zero.</h5>',
-        '',
-        '',
-        '',
-        '',
-        'report_gmailerrorred'
-      );
+      console.log('invalid input');
+      addModalAlert({
+        headerText: 'Invalid Input',
+        htmlBody:
+          '<h5>Quantity must be a positive whole number greater than zero.</h5>',
+        iconName: 'report_gmailerrorred'
+      });
     }
   }
 
