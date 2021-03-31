@@ -41,9 +41,9 @@
   "dependencies": {},
   "devDependencies": {
     "@qbcart/alert-modal": "^1.0.0",
-    "@qbcart/eshop-local-db": "^1.0.0",
-    "@qbcart/toast": "^2.0.0",
-    "@qbcart/types": "^1.0.1",
+    "@qbcart/eshop-local-db": "^1.1.0",
+    "@qbcart/toast": "^3.0.0",
+    "@qbcart/types": "^1.2.1",
     "@qbcart/utils": "^1.0.0",
     "@types/bootstrap": "^4.6.0",
     "@types/jquery": "^3.5.5",
