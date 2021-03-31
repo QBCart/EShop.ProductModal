@@ -10,7 +10,8 @@ import React, { FC, useState, useEffect } from 'react';
 import {
   useInventoryItem,
   useAddToCart,
-  useCustomPrice
+  useCustomPrice,
+  useAddAlert
 } from '@qbcart/eshop-local-db';
 
 import { toUSCurrency, toWholeNumberGreaterThanZero } from '@qbcart/utils';
@@ -22,7 +23,6 @@ import StyledProductModalAdSpace from './styled-components/styled-product-modal-
 interface Props {
   id: string;
   imagesStorageUrl: string;
-  showToast: (header: string, body: string, duration: number) => void;
   showAlertModal: (
     headerText: string,
     bodyHTML: string,
@@ -40,6 +40,7 @@ const ProductModal: FC<Props> = (props: Props) => {
   const [quantity, setQuantity] = useState('1');
   const [customPrice, changeCustomPrice] = useCustomPrice('');
   const addToCart = useAddToCart(true);
+  const addToastAlert = useAddAlert(true);
 
   const price = customPrice ?? item?.SalesPrice ?? 0;
 
@@ -69,11 +70,13 @@ const ProductModal: FC<Props> = (props: Props) => {
         );
       } else {
         $(`#${props.id}-view`).modal('hide');
-        props.showToast(
-          'Cart',
-          '<h5 class="text-success">Item successfully added to cart</h5>',
-          3.5
-        );
+
+        addToastAlert({
+          headerText: 'Cart',
+          htmlBody:
+            '<h5 class="text-success">Item successfully added to cart</h5>',
+          duration: 3.5
+        });
       }
     } else {
       props.showAlertModal(

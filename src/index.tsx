@@ -11,7 +11,6 @@ import { render } from 'react-dom';
 import ProductModal from './product-modal.js';
 
 const mountProductModal = (
-  showToast: (header: string, body: string, duration: number) => void,
   showAlertModal: (
     headerText: string,
     bodyHTML: string,
@@ -30,7 +29,6 @@ const mountProductModal = (
     <ProductModal
       id={id}
       imagesStorageUrl={mountingDiv.dataset.imagesStorageUrl!}
-      showToast={showToast}
       showAlertModal={showAlertModal}
     />,
     mountingDiv
