@@ -10,11 +10,10 @@ import React, { FC, useState, useEffect } from 'react';
 import {
   useInventoryItem,
   useAddToCart,
-  useCustomPrice,
-  useAddAlert
+  useCustomPrice
 } from '@qbcart/eshop-local-db';
 
-import { toUSCurrency, toWholeNumberGreaterThanZero } from '@qbcart/utils';
+import { toUSCurrency } from '@qbcart/utils';
 
 import StyledProductModalBody from './styled-components/styled-product-modal-body.js';
 import StyledProductModal from './styled-components/styled-product-modal.js';
@@ -30,8 +29,6 @@ const ProductModal: FC<Props> = (props: Props) => {
   const [quantity, setQuantity] = useState('1');
   const [customPrice, changeCustomPrice] = useCustomPrice('');
   const addToCart = useAddToCart(true);
-  const addToastAlert = useAddAlert(true);
-  const addModalAlert = useAddAlert(false);
 
   const price = customPrice ?? item?.SalesPrice ?? 0;
 
@@ -45,35 +42,8 @@ const ProductModal: FC<Props> = (props: Props) => {
   }, [changeCustomPrice, changeItem, props.id]);
 
   async function submitToCart(id: string, quantity: string) {
-    const quantityInt = toWholeNumberGreaterThanZero(quantity);
-    if (quantityInt) {
-      const error = await addToCart(id, price, quantityInt);
-
-      if (error) {
-        addModalAlert({
-          headerText: 'Failed to Add Item',
-          htmlBody:
-            '<h5>Please try again. If the problem persists, contact support.</h5>',
-          iconName: 'warning_amber'
-        });
-      } else {
-        $(`#${props.id}-view`).modal('hide');
-
-        addToastAlert({
-          headerText: 'Cart',
-          htmlBody:
-            '<h5 class="text-success">Item successfully added to cart!</h5>',
-          duration: 3.5
-        });
-      }
-    } else {
-      console.log('invalid input');
-      addModalAlert({
-        headerText: 'Invalid Input',
-        htmlBody:
-          '<h5>Quantity must be a positive whole number greater than zero.</h5>',
-        iconName: 'report_gmailerrorred'
-      });
+    if (await addToCart(id, price, quantity)) {
+      $(`#${props.id}-view`).modal('hide');
     }
   }
 
