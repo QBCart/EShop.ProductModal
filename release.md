@@ -2,9 +2,7 @@
 
 ### New
 
-- ESM now deployed to storage account
-- External css no longer necessary (i.e., styled components)
-- All deps are streamed
+- Removed internal reliance on alert hooks since LocalDB now handles it.
 
 ### Fixes
 
@@ -12,6 +10,6 @@
 
 ### Breaking
 
-- NPM package now only contains types.
+- none
 
 ###### Licensed under MIT - Copyright (c) 2021 QBCart Inc. All rights reserved.
