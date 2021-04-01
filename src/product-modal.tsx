@@ -7,11 +7,8 @@
  */
 
 import React, { FC, useState, useEffect } from 'react';
-import {
-  useInventoryItem,
-  useAddToCart,
-  useCustomPrice
-} from '@qbcart/eshop-local-db';
+// prettier-ignore
+import { useInventoryItem, useAddToCart, useCustomPrice } from '@qbcart/eshop-local-db';
 
 import { toUSCurrency } from '@qbcart/utils';
 
