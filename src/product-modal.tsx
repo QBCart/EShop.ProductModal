@@ -7,9 +7,9 @@
  */
 
 import React, { FC, useState, useEffect } from 'react';
-// prettier-ignore
-import { useInventoryItem, useAddToCart, useCustomPrice } from '@qbcart/eshop-local-db';
-
+import { useInventoryItem } from '@qbcart/eshop-inventory-hooks';
+import { useAddToCart } from '@qbcart/eshop-cart-hooks';
+import { useCustomPrice } from '@qbcart/eshop-user-data-hooks';
 import { toUSCurrency } from '@qbcart/utils';
 
 import StyledProductModalBody from './styled-components/styled-product-modal-body.js';
@@ -19,13 +19,17 @@ import StyledProductModalAdSpace from './styled-components/styled-product-modal-
 interface Props {
   id: string;
   imagesStorageUrl: string;
+  userLoggedIn: boolean;
 }
 
 const ProductModal: FC<Props> = (props: Props) => {
   const [item, changeItem] = useInventoryItem('');
   const [quantity, setQuantity] = useState('1');
-  const [customPrice, changeCustomPrice] = useCustomPrice('');
-  const addToCart = useAddToCart(true);
+  const [customPrice, changeCustomPrice] = useCustomPrice(
+    props.userLoggedIn,
+    ''
+  );
+  const addToCart = useAddToCart(props.userLoggedIn);
 
   const price = customPrice ?? item?.SalesPrice ?? 0;
 

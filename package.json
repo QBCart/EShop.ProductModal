@@ -38,16 +38,19 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:ci": "echo \"All Good\" && exit 0"
   },
-  "dependencies": {},
-  "devDependencies": {
-    "@qbcart/eshop-local-db": "^1.2.0",
+  "dependencies": {
+    "@qbcart/eshop-cart-hooks": "^1.0.0-alpha.1",
+    "@qbcart/eshop-inventory-hooks": "^1.0.0-beta.1",
+    "@qbcart/eshop-user-data-hooks": "^1.0.0-alpha.1",
     "@qbcart/types": "^2.0.0",
     "@qbcart/utils": "^1.0.0",
     "@types/bootstrap": "^4.6.0",
     "@types/jquery": "^3.5.5",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
-    "@types/styled-components": "^5.1.9",
+    "@types/styled-components": "^5.1.9"
+  },
+  "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.20.0",
     "@typescript-eslint/parser": "^4.20.0",
     "eslint": "^7.23.0",
