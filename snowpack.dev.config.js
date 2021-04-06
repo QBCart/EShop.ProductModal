@@ -14,6 +14,12 @@ module.exports = {
   },
   devOptions: {},
   buildOptions: {},
+  routes: [
+    {
+      src: '/sync/inventory',
+      dest: '/sync/inventory.json'
+    }
+  ],
   // prettier-ignore
   alias: {
     'react': 'https://qbcdemo.z13.web.core.windows.net/deps/react.js',
