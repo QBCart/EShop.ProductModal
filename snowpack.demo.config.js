@@ -18,10 +18,12 @@ module.exports = {
     'react': 'https://qbcdemo.z13.web.core.windows.net/deps/react.js',
     'react-dom': 'https://qbcdemo.z13.web.core.windows.net/deps/react-dom.js',
     'styled-components': 'https://qbcdemo.z13.web.core.windows.net/deps/styled-components.js',
-    '@qbcart/eshop-local-db': 'https://qbcdemo.z13.web.core.windows.net/eshop/localdb/index.js',
+    '@qbcart/eshop-inventory-hooks': 'https://qbcdemo.z13.web.core.windows.net/eshop/inventory-hooks/index.js',
+    '@qbcart/eshop-cart-hooks': 'https://qbcdemo.z13.web.core.windows.net/eshop/cart-hooks/index.js',
+    '@qbcart/eshop-user-data-hooks': 'https://qbcdemo.z13.web.core.windows.net/eshop/user-data-hooks/index.js',
     '@qbcart/utils': 'https://qbcdemo.z13.web.core.windows.net/utils/index.js',
-    '@qbcart/toast': 'https://qbcdemo.z13.web.core.windows.net/toast/index.js',
-    '@qbcart/alert-modal': 'https://qbcdemo.z13.web.core.windows.net/alert-modal/index.js',
+    '@qbcart/toast': 'https://qbcdemo.z13.web.core.windows.net/eshop/toast/index.js',
+    '@qbcart/alert-modal': 'https://qbcdemo.z13.web.core.windows.net/eshop/alert-modal/index.js',
     'product-modal': 'https://qbcdemo.z13.web.core.windows.net/eshop/product-modal/index.js'
   }
 };
