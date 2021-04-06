@@ -13,11 +13,13 @@ import ProductModal from './product-modal.js';
 (function () {
   const id = 'qbc-eshop-product-modal';
   const mountingDiv = document.getElementById(id)!;
-
   render(
     <ProductModal
       id={id}
-      imagesStorageUrl={mountingDiv.dataset.imagesStorageUrl!}
+      imagesStorageUrl={
+        document.getElementById('qbc-images')!.dataset.imagesStorageUrl!
+      }
+      userLoggedIn={Boolean(document.getElementById('qbc-user'))}
     />,
     mountingDiv
   );
