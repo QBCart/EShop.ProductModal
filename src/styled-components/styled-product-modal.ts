@@ -9,6 +9,8 @@
 import styled from 'styled-components';
 
 const StyledProductModal = styled.div`
+  color: black;
+
   /*******************/
   /* CAROUSEL STYLES */
   /*******************/
