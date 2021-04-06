@@ -23,13 +23,13 @@ interface Props {
 }
 
 const ProductModal: FC<Props> = (props: Props) => {
+  const addToCart = useAddToCart(props.userLoggedIn);
   const [item, changeItem] = useInventoryItem('');
   const [quantity, setQuantity] = useState('1');
   const [customPrice, changeCustomPrice] = useCustomPrice(
     props.userLoggedIn,
     ''
   );
-  const addToCart = useAddToCart(props.userLoggedIn);
 
   const price = customPrice ?? item?.SalesPrice ?? 0;
 
