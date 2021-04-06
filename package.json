@@ -13,12 +13,6 @@
     "Allan Mobley",
     "Michael Shea"
   ],
-  "main": "index.js",
-  "module": "index.js",
-  "types": "types/index.d.ts",
-  "exports": {
-    "import": "./index.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/QBCart/EShop.ProductModal.git"
