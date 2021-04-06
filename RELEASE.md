@@ -2,7 +2,7 @@
 
 ### New
 
-- none
+- Product modal component used across the QBCart EShop ecosystem.
 
 ### Fixes
 
