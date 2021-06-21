@@ -8,7 +8,7 @@
 
 import styled from 'styled-components';
 
-const StyledProductModalAdSpace = styled.div`
+const AdSpaceStyles = styled.div`
   display: block;
   width: auto;
   margin: 8px 0 0 0;
@@ -28,4 +28,4 @@ const StyledProductModalAdSpace = styled.div`
   }
 `;
 
-export default StyledProductModalAdSpace;
+export default AdSpaceStyles;

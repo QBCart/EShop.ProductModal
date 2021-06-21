@@ -8,7 +8,7 @@
 
 import styled from 'styled-components';
 
-const StyledProductModal = styled.div`
+const ModalStyles = styled.div`
   color: black;
 
   /*******************/
@@ -129,4 +129,4 @@ const StyledProductModal = styled.div`
   }
 `;
 
-export default StyledProductModal;
+export default ModalStyles;

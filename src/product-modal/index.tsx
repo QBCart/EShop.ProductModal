@@ -7,17 +7,19 @@
  */
 
 import React, { FC, useState, useEffect } from 'react';
-import { useInventoryItem } from '@qbcart/eshop-inventory-hooks';
+import {
+  useInventoryItem,
+  useCustomPricing
+} from '@qbcart/eshop-inventory-hooks';
 import { useAddToCart } from '@qbcart/eshop-cart-hooks';
-import { useCustomPrice } from '@qbcart/eshop-user-data-hooks';
 import { toUSCurrency } from '@qbcart/utils';
 
-import StyledProductModalBody from './styled-components/styled-product-modal-body.js';
-import StyledProductModal from './styled-components/styled-product-modal.js';
-import StyledProductModalAdSpace from './styled-components/styled-product-modal-ad-space.js';
+import ModalBodyStyles from './styles/modal-body-styles.js';
+import ModalStyles from './styles/modal-styles.js';
+import AdSpaceStyles from './styles/ad-space-styles.js';
 
 interface Props {
-  id: string;
+  namespace: string;
   imagesStorageUrl: string;
   userLoggedIn: boolean;
 }
@@ -26,7 +28,7 @@ const ProductModal: FC<Props> = (props: Props) => {
   const addToCart = useAddToCart(props.userLoggedIn);
   const [item, changeItem] = useInventoryItem('');
   const [quantity, setQuantity] = useState('1');
-  const [customPrice, changeCustomPrice] = useCustomPrice(
+  const [customPrice, changeCustomPrice] = useCustomPricing(
     props.userLoggedIn,
     ''
   );
@@ -34,36 +36,39 @@ const ProductModal: FC<Props> = (props: Props) => {
   const price = customPrice ?? item?.SalesPrice ?? 0;
 
   useEffect(() => {
-    $(`#${props.id}-view`).on('show.bs.modal', function (e: JQueryEventObject) {
-      const id = $(e.relatedTarget).data('id');
-      changeItem(id);
-      changeCustomPrice(id);
-      setQuantity('1');
-    });
-  }, [changeCustomPrice, changeItem, props.id]);
+    $(`#${props.namespace}-view`).on(
+      'show.bs.modal',
+      function (e: JQueryEventObject) {
+        const id = $(e.relatedTarget).data('id');
+        changeItem(id);
+        changeCustomPrice(id);
+        setQuantity('1');
+      }
+    );
+  }, [changeCustomPrice, changeItem, props.namespace]);
 
   async function submitToCart(id: string, quantity: string) {
     if (await addToCart(id, price, quantity)) {
-      $(`#${props.id}-view`).modal('hide');
+      $(`#${props.namespace}-view`).modal('hide');
     }
   }
 
   return (
-    <StyledProductModal
+    <ModalStyles
       className="modal fade"
-      id={`${props.id}-view`}
+      id={`${props.namespace}-view`}
       tabIndex={-1}
       aria-hidden="true"
     >
       <div className="modal-dialog modal-dialog-scrollable modal-xl modal-lg">
         <div className="modal-content">
-          <StyledProductModalBody className="modal-body">
+          <ModalBodyStyles className="modal-body">
             <div className="container">
               <div className="row">
                 <div className="col-12 col-lg-4">
                   {/* begin Carousel Section */}
                   <div
-                    id={`${props.id}-indicators`}
+                    id={`${props.namespace}-indicators`}
                     className="carousel slide"
                     data-ride="carousel"
                     data-interval="false"
@@ -71,7 +76,7 @@ const ProductModal: FC<Props> = (props: Props) => {
                     {item?.Images && item.Images.length > 0 ? (
                       <ol className="carousel-indicators">
                         <li
-                          data-target={`#${props.id}-indicators`}
+                          data-target={`#${props.namespace}-indicators`}
                           data-slide-to="0"
                           className="active"
                         ></li>
@@ -79,7 +84,7 @@ const ProductModal: FC<Props> = (props: Props) => {
                           return (
                             <li
                               key={`${item.id}-carousel-indicator-${index}`}
-                              data-target={`#${props.id}-indicators`}
+                              data-target={`#${props.namespace}-indicators`}
                               data-slide-to={index + 1}
                             ></li>
                           );
@@ -112,7 +117,7 @@ const ProductModal: FC<Props> = (props: Props) => {
                     <a
                       className="carousel-control-prev"
                       id="carousel-prev"
-                      href={`#${props.id}-indicators`}
+                      href={`#${props.namespace}-indicators`}
                       role="button"
                       data-slide="prev"
                     >
@@ -125,7 +130,7 @@ const ProductModal: FC<Props> = (props: Props) => {
                     <a
                       className="carousel-control-next"
                       id="carousel-prev"
-                      href={`#${props.id}-indicators`}
+                      href={`#${props.namespace}-indicators`}
                       role="button"
                       data-slide="next"
                     >
@@ -137,7 +142,7 @@ const ProductModal: FC<Props> = (props: Props) => {
                     </a>
                   </div>
                   {/* begin Add Space Section */}
-                  <StyledProductModalAdSpace className="row"></StyledProductModalAdSpace>
+                  <AdSpaceStyles className="row"></AdSpaceStyles>
                 </div>
                 {/* begin Scroll Box Section */}
                 <div className="col-12 col-lg-8">
@@ -226,7 +231,7 @@ const ProductModal: FC<Props> = (props: Props) => {
                 </div>
               </div>
             </div>
-          </StyledProductModalBody>
+          </ModalBodyStyles>
           {/* begin Footer Section */}
           <div className="modal-footer">
             <div className="col-6 d-flex justify-content-start">
@@ -262,7 +267,7 @@ const ProductModal: FC<Props> = (props: Props) => {
           </div>
         </div>
       </div>
-    </StyledProductModal>
+    </ModalStyles>
   );
 };
 

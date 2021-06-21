@@ -8,7 +8,7 @@
 
 import styled from 'styled-components';
 
-const StyledProductModalBody = styled.div`
+const ModalBodyStyles = styled.div`
   /* X-Large devices (large desktops, 1200px and up) */
   @media (min-width: 1200px) {
     overflow: visible;
@@ -28,4 +28,4 @@ const StyledProductModalBody = styled.div`
   }
 `;
 
-export default StyledProductModalBody;
+export default ModalBodyStyles;
