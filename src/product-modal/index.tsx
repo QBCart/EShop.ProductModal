@@ -14,9 +14,9 @@ import {
 import { useAddToCart } from '@qbcart/eshop-cart-hooks';
 import { toUSCurrency } from '@qbcart/utils';
 
-import StyledProductModalBody from './styled-components/styled-product-modal-body.js';
-import StyledProductModal from './styled-components/styled-product-modal.js';
-import StyledProductModalAdSpace from './styled-components/styled-product-modal-ad-space.js';
+import ModalBodyStyles from './styles/modal-body-styles.js';
+import ModalStyles from './styles/modal-styles.js';
+import AdSpaceStyles from './styles/ad-space-styles.js';
 
 interface Props {
   id: string;
@@ -51,7 +51,7 @@ const ProductModal: FC<Props> = (props: Props) => {
   }
 
   return (
-    <StyledProductModal
+    <ModalStyles
       className="modal fade"
       id={`${props.id}-view`}
       tabIndex={-1}
@@ -59,7 +59,7 @@ const ProductModal: FC<Props> = (props: Props) => {
     >
       <div className="modal-dialog modal-dialog-scrollable modal-xl modal-lg">
         <div className="modal-content">
-          <StyledProductModalBody className="modal-body">
+          <ModalBodyStyles className="modal-body">
             <div className="container">
               <div className="row">
                 <div className="col-12 col-lg-4">
@@ -139,7 +139,7 @@ const ProductModal: FC<Props> = (props: Props) => {
                     </a>
                   </div>
                   {/* begin Add Space Section */}
-                  <StyledProductModalAdSpace className="row"></StyledProductModalAdSpace>
+                  <AdSpaceStyles className="row"></AdSpaceStyles>
                 </div>
                 {/* begin Scroll Box Section */}
                 <div className="col-12 col-lg-8">
@@ -228,7 +228,7 @@ const ProductModal: FC<Props> = (props: Props) => {
                 </div>
               </div>
             </div>
-          </StyledProductModalBody>
+          </ModalBodyStyles>
           {/* begin Footer Section */}
           <div className="modal-footer">
             <div className="col-6 d-flex justify-content-start">
@@ -264,7 +264,7 @@ const ProductModal: FC<Props> = (props: Props) => {
           </div>
         </div>
       </div>
-    </StyledProductModal>
+    </ModalStyles>
   );
 };
 

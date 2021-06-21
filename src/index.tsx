@@ -8,7 +8,7 @@
 
 import React from 'react';
 import { render } from 'react-dom';
-import ProductModal from './product-modal.js';
+import ProductModal from './product-modal/index.js';
 
 (function () {
   const id = 'qbc-eshop-product-modal';
