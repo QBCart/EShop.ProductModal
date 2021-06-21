@@ -7,9 +7,11 @@
  */
 
 import React, { FC, useState, useEffect } from 'react';
-import { useInventoryItem } from '@qbcart/eshop-inventory-hooks';
+import {
+  useInventoryItem,
+  useCustomPricing
+} from '@qbcart/eshop-inventory-hooks';
 import { useAddToCart } from '@qbcart/eshop-cart-hooks';
-import { useCustomPrice } from '@qbcart/eshop-user-data-hooks';
 import { toUSCurrency } from '@qbcart/utils';
 
 import StyledProductModalBody from './styled-components/styled-product-modal-body.js';
@@ -26,7 +28,7 @@ const ProductModal: FC<Props> = (props: Props) => {
   const addToCart = useAddToCart(props.userLoggedIn);
   const [item, changeItem] = useInventoryItem('');
   const [quantity, setQuantity] = useState('1');
-  const [customPrice, changeCustomPrice] = useCustomPrice(
+  const [customPrice, changeCustomPrice] = useCustomPricing(
     props.userLoggedIn,
     ''
   );
