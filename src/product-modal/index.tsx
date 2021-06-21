@@ -7,10 +7,8 @@
  */
 
 import React, { FC, useState, useEffect } from 'react';
-import {
-  useInventoryItem,
-  useCustomPricing
-} from '@qbcart/eshop-inventory-hooks';
+// prettier-ignore
+import { useInventoryItem, useCustomPricing } from '@qbcart/eshop-inventory-hooks';
 import { useAddToCart } from '@qbcart/eshop-cart-hooks';
 import { toUSCurrency } from '@qbcart/utils';
 
