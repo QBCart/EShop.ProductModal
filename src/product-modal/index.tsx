@@ -19,7 +19,7 @@ import ModalStyles from './styles/modal-styles.js';
 import AdSpaceStyles from './styles/ad-space-styles.js';
 
 interface Props {
-  id: string;
+  namespace: string;
   imagesStorageUrl: string;
   userLoggedIn: boolean;
 }
@@ -36,24 +36,27 @@ const ProductModal: FC<Props> = (props: Props) => {
   const price = customPrice ?? item?.SalesPrice ?? 0;
 
   useEffect(() => {
-    $(`#${props.id}-view`).on('show.bs.modal', function (e: JQueryEventObject) {
-      const id = $(e.relatedTarget).data('id');
-      changeItem(id);
-      changeCustomPrice(id);
-      setQuantity('1');
-    });
-  }, [changeCustomPrice, changeItem, props.id]);
+    $(`#${props.namespace}-view`).on(
+      'show.bs.modal',
+      function (e: JQueryEventObject) {
+        const id = $(e.relatedTarget).data('id');
+        changeItem(id);
+        changeCustomPrice(id);
+        setQuantity('1');
+      }
+    );
+  }, [changeCustomPrice, changeItem, props.namespace]);
 
   async function submitToCart(id: string, quantity: string) {
     if (await addToCart(id, price, quantity)) {
-      $(`#${props.id}-view`).modal('hide');
+      $(`#${props.namespace}-view`).modal('hide');
     }
   }
 
   return (
     <ModalStyles
       className="modal fade"
-      id={`${props.id}-view`}
+      id={`${props.namespace}-view`}
       tabIndex={-1}
       aria-hidden="true"
     >
@@ -65,7 +68,7 @@ const ProductModal: FC<Props> = (props: Props) => {
                 <div className="col-12 col-lg-4">
                   {/* begin Carousel Section */}
                   <div
-                    id={`${props.id}-indicators`}
+                    id={`${props.namespace}-indicators`}
                     className="carousel slide"
                     data-ride="carousel"
                     data-interval="false"
@@ -73,7 +76,7 @@ const ProductModal: FC<Props> = (props: Props) => {
                     {item?.Images && item.Images.length > 0 ? (
                       <ol className="carousel-indicators">
                         <li
-                          data-target={`#${props.id}-indicators`}
+                          data-target={`#${props.namespace}-indicators`}
                           data-slide-to="0"
                           className="active"
                         ></li>
@@ -81,7 +84,7 @@ const ProductModal: FC<Props> = (props: Props) => {
                           return (
                             <li
                               key={`${item.id}-carousel-indicator-${index}`}
-                              data-target={`#${props.id}-indicators`}
+                              data-target={`#${props.namespace}-indicators`}
                               data-slide-to={index + 1}
                             ></li>
                           );
@@ -114,7 +117,7 @@ const ProductModal: FC<Props> = (props: Props) => {
                     <a
                       className="carousel-control-prev"
                       id="carousel-prev"
-                      href={`#${props.id}-indicators`}
+                      href={`#${props.namespace}-indicators`}
                       role="button"
                       data-slide="prev"
                     >
@@ -127,7 +130,7 @@ const ProductModal: FC<Props> = (props: Props) => {
                     <a
                       className="carousel-control-next"
                       id="carousel-prev"
-                      href={`#${props.id}-indicators`}
+                      href={`#${props.namespace}-indicators`}
                       role="button"
                       data-slide="next"
                     >
