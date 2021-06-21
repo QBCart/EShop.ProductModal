@@ -8,19 +8,25 @@
 
 import React from 'react';
 import { render } from 'react-dom';
+
 import ProductModal from './product-modal/index.js';
 
-(function () {
-  const id = 'qbc-eshop-product-modal';
-  const mountingDiv = document.getElementById(id)!;
-  render(
-    <ProductModal
-      id={id}
-      imagesStorageUrl={
-        document.getElementById('qbc-images')!.dataset.imagesStorageUrl!
-      }
-      userLoggedIn={Boolean(document.getElementById('qbc-user'))}
-    />,
-    mountingDiv
-  );
-})();
+const globalMountsContainer = document.getElementById(
+  'qbc-eshop-global-mounts'
+)!;
+const mountingDiv = document.createElement('div');
+
+mountingDiv.id = 'qbc-eshop-product-modal';
+globalMountsContainer.appendChild(mountingDiv);
+
+render(
+  <ProductModal
+    namespace={mountingDiv.id}
+    imagesStorageUrl={
+      document.getElementById('qbc-eshop-company-settings')!.dataset
+        .imagesStorageUrl!
+    }
+    userLoggedIn={Boolean(document.getElementById('qbc-eshop-user'))}
+  />,
+  mountingDiv
+);
