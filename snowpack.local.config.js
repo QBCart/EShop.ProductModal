@@ -6,7 +6,8 @@
 module.exports = {
   mount: {
     src: { url: '/src', resolve: true, static: false },
-    dev: { url: '/', resolve: true, static: false }
+    'dev/local': { url: '/', resolve: true, static: false },
+    'dev/sync': { url: '/', resolve: true, static: false }
   },
   plugins: [],
   packageOptions: {
@@ -17,7 +18,35 @@ module.exports = {
   routes: [
     {
       src: '/sync/inventory',
-      dest: '/sync/inventory.json'
+      dest: '/inventory.json'
+    },
+    {
+      src: '/sync/user',
+      dest: '/user.json'
+    },
+    {
+      src: '/Accessories',
+      dest: '/index.html'
+    },
+    {
+      src: '/Blades',
+      dest: '/index.html'
+    },
+    {
+      src: '/accessories',
+      dest: '/index.html'
+    },
+    {
+      src: '/blades',
+      dest: '/index.html'
+    },
+    {
+      src: '/Accessories/Adaptors',
+      dest: '/index.html'
+    },
+    {
+      src: '/accessories/adaptors',
+      dest: '/index.html'
     }
   ],
   // prettier-ignore
@@ -27,10 +56,6 @@ module.exports = {
     'styled-components': 'https://qbcdemo.z13.web.core.windows.net/deps/styled-components.js',
     '@qbcart/eshop-inventory-hooks': 'https://qbcdemo.z13.web.core.windows.net/eshop/inventory-hooks/index.js',
     '@qbcart/eshop-cart-hooks': 'https://qbcdemo.z13.web.core.windows.net/eshop/cart-hooks/index.js',
-    '@qbcart/eshop-user-data-hooks': 'https://qbcdemo.z13.web.core.windows.net/eshop/user-data-hooks/index.js',
-    '@qbcart/utils': 'https://qbcdemo.z13.web.core.windows.net/utils/index.js',
-    '@qbcart/toast': 'https://qbcdemo.z13.web.core.windows.net/eshop/toast/index.js',
-    '@qbcart/alert-modal': 'https://qbcdemo.z13.web.core.windows.net/eshop/alert-modal/index.js',
-    'product-modal': './src/index'
+    '@qbcart/utils': 'https://qbcdemo.z13.web.core.windows.net/utils/index.js'
   }
 };
