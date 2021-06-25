@@ -65,6 +65,10 @@ const ProductModalStyles = styled.div`
     background-color: white;
   }
 
+  .modal-body {
+    display: flex;
+  }
+
   /* Large devices (desktops, 992px and up) */
   @media (min-width: 992px) {
     .modal-body {
