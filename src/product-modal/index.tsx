@@ -56,7 +56,6 @@ const ProductModal: FC<Props> = (props: Props) => {
    *  Animation must be set when hiding modal to function properly.
    */
   const hideModal = () => {
-    console.log('hide modal');
     const modal = ref.current!;
     modal.style.animationName = 'var(--product-modal-hide)';
   };
