@@ -10,12 +10,13 @@ import React, { FC, useState, useEffect, useRef } from 'react';
 // prettier-ignore
 import { useInventoryItem, useCustomPricing, useProductModal, useRemoveProductModal } from '@qbcart/eshop-inventory-hooks';
 import { useAddToCart } from '@qbcart/eshop-cart-hooks';
-import { toUSCurrency } from '@qbcart/utils';
 
-import ModalBodyStyles from './styles/modal-body-styles.js';
-import ModalStyles from './styles/modal-styles.js';
-import AdSpaceStyles from './styles/ad-space-styles.js';
+import ProductModalStyles from './style.js';
+
+import AdSpace from './ad-space/index.js';
 import ImageCarousel from './image-carousel/index.js';
+import ScrollBox from './scroll-box/index.js';
+import Footer from './footer/index.js';
 
 interface Props {
   namespace: string;
@@ -77,130 +78,41 @@ const ProductModal: FC<Props> = (props: Props) => {
 
   async function submitToCart(id: string, quantity: string) {
     if (await addToCart(id, price, quantity)) {
-      //TODO: add modal hide animation sequence
       hideModal();
     }
   }
 
   return (
-    <ModalStyles
+    <ProductModalStyles
       ref={ref}
       onAnimationEnd={() => onAnimationEnd()}
       id={`${props.namespace}-view`}
     >
-      <ModalBodyStyles>
-        <div>
-          {/* begin Carousel Section */}
-          <ImageCarousel
-            item={item}
-            namespace={props.namespace}
-            imagesStorageUrl={props.imagesStorageUrl}
-          />
-          {/* begin Ad Space Section */}
-          <AdSpaceStyles></AdSpaceStyles>
-        </div>
-        {/* begin Scroll Box Section */}
-        <div>
-          <ul
-            className="nav-pill-scroll-box-header nav nav-pills mb-3"
-            id="pills-tab"
-            role="tablist"
-          >
-            <li className="nav-item" role="presentation">
-              <a
-                className="nav-link active"
-                id="pills-overview-tab"
-                data-toggle="pill"
-                href="#pills-overview"
-                role="tab"
-                aria-controls="pills-overview"
-                aria-selected="true"
-              >
-                Overview
-              </a>
-            </li>
-            <li className="nav-item" role="presentation">
-              <a
-                className="nav-link .scroll-box-tabs"
-                id="pills-specs-tab"
-                data-toggle="pill"
-                href="#pills-specs"
-                role="tab"
-                aria-controls="pills-specs"
-                aria-selected="false"
-              >
-                Specs
-              </a>
-            </li>
-            <li className="nav-item" role="presentation">
-              <a
-                className="nav-link .scroll-box-tabs"
-                href={item?.Href}
-                role="tab"
-                aria-controls="pills-specs"
-                aria-selected="false"
-              >
-                Visit Page
-              </a>
-            </li>
-          </ul>
-          <div className="nav-pill-scroll-box">
-            <div className="tab-content" id="pills-tabContent">
-              <div id="pills-overview">
-                <h3>Product ID: {item?.Name}</h3>
-                <h4>Description: {item?.SalesDesc}</h4>
-                <h4>Price: {toUSCurrency(price)}</h4>
-                <h4>Details:</h4>
-                <p>{item?.FullDesc}</p>
-              </div>
-              <div id="pills-specs">
-                {item?.Specs && item.Specs.length > 0 ? (
-                  item.Specs.map((textline, index) => {
-                    return (
-                      <div key={`${item.id}-specs-textline-${index}`}>
-                        {textline}
-                      </div>
-                    );
-                  })
-                ) : (
-                  <div>
-                    <h3>Sorry, we have no specs!</h3>
-                    <div>The specs for this item are not yet available.</div>
-                  </div>
-                )}
-              </div>
+      <div className="modal-wrapper">
+        <div className="modal-content">
+          <div className="modal-header"></div>
+          <div className="modal-body">
+            <div className="modal-body-left">
+              <ImageCarousel
+                item={item}
+                namespace={props.namespace}
+                imagesStorageUrl={props.imagesStorageUrl}
+              />
+              <AdSpace></AdSpace>
             </div>
+            <ScrollBox item={item} price={price} />
           </div>
-        </div>
-      </ModalBodyStyles>
-      {/* begin Footer Section */}
-      <div className="modal-footer">
-        <div>
-          <input
-            type="number"
-            step="1"
-            min="1"
-            onChange={(e) => setQuantity(e.target.value)}
-            value={quantity}
-          ></input>
-          <button
-            onClick={() => {
-              if (item?.id) {
-                submitToCart(item.id, quantity);
-              }
-            }}
-            type="button"
-          >
-            <span className="material-icons">add_shopping_cart</span>
-          </button>
-        </div>
-        <div>
-          <button type="button" onClick={hideModal}>
-            <span className="material-icons">close</span>
-          </button>
+          <Footer
+            item={item}
+            quantity={quantity}
+            setQuantity={setQuantity}
+            submitToCart={submitToCart}
+            hideModal={hideModal}
+          />
         </div>
       </div>
-    </ModalStyles>
+      <div className="modal-backdrop"></div>
+    </ProductModalStyles>
   );
 };
 

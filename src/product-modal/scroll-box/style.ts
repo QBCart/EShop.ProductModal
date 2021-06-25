@@ -6,33 +6,9 @@
  * LICENSE file in the root directory of this source repo.
  */
 
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
-const ProductModalShow = keyframes`
-   from {
-      opacity: 0;
-   }
-   to {
-      opacity: 1;
-   }
- `;
-
-const ProductModalHide = keyframes`
-   from {
-      opacity: 1;
-   }
-   to {
-      opacity: 0;
-   }
- `;
-
-const ModalStyles = styled.div`
-  --product-modal-show: ${ProductModalShow};
-  --product-modal-hide: ${ProductModalHide};
-  display: none;
-  animation-duration: 0.5s;
-  color: black;
-
+const ScrollBoxStyles = styled.div`
   /********************/
   /* SCROLLBOX STYLES */
   /********************/
@@ -76,26 +52,6 @@ const ModalStyles = styled.div`
       padding-bottom: 0;
     }
   }
-
-  /*****************/
-  /* FOOTER STYLES */
-  /*****************/
-
-  .modal-footer {
-    flex-wrap: nowrap;
-  }
-
-  .form-control-lg {
-    width: 110px;
-  }
-
-  /* Small to medium devices (landscape phones, 992px and below) */
-
-  @media (max-width: 991.98px) {
-    .modal-footer {
-      padding: 10px;
-    }
-  }
 `;
 
-export default ModalStyles;
+export default ScrollBoxStyles;
