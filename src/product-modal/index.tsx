@@ -15,6 +15,7 @@ import { toUSCurrency } from '@qbcart/utils';
 import ModalBodyStyles from './styles/modal-body-styles.js';
 import ModalStyles from './styles/modal-styles.js';
 import AdSpaceStyles from './styles/ad-space-styles.js';
+import ImageCarousel from './image-carousel/index.js';
 
 interface Props {
   namespace: string;
@@ -90,81 +91,12 @@ const ProductModal: FC<Props> = (props: Props) => {
       <ModalBodyStyles>
         <div>
           {/* begin Carousel Section */}
-          <div
-            id={`${props.namespace}-indicators`}
-            className="carousel slide"
-            data-ride="carousel"
-            data-interval="false"
-          >
-            {item?.Images && item.Images.length > 0 ? (
-              <ol className="carousel-indicators">
-                <li
-                  data-target={`#${props.namespace}-indicators`}
-                  data-slide-to="0"
-                  className="active"
-                ></li>
-                {item.Images.map((img, index) => {
-                  return (
-                    <li
-                      key={`${item.id}-carousel-indicator-${index}`}
-                      data-target={`#${props.namespace}-indicators`}
-                      data-slide-to={index + 1}
-                    ></li>
-                  );
-                })}
-              </ol>
-            ) : null}
-            <div className="carousel-inner">
-              <div
-                className="carousel-item active"
-                style={{
-                  backgroundImage: item?.id
-                    ? `url(${props.imagesStorageUrl}images/responsive/${item.id})`
-                    : ''
-                }}
-              ></div>
-              {item?.Images && item.Images.length > 0
-                ? item.Images.map((img, index) => {
-                    return (
-                      <div
-                        key={`${item.id}-carousel-img-${index}`}
-                        className="carousel-item"
-                        style={{
-                          backgroundImage: `url(${props.imagesStorageUrl}images/related/${item.id}/responsive/${img})`
-                        }}
-                      ></div>
-                    );
-                  })
-                : null}
-            </div>
-            <a
-              className="carousel-control-prev"
-              id="carousel-prev"
-              href={`#${props.namespace}-indicators`}
-              role="button"
-              data-slide="prev"
-            >
-              <span
-                className="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-              <span className="sr-only">Previous</span>
-            </a>
-            <a
-              className="carousel-control-next"
-              id="carousel-prev"
-              href={`#${props.namespace}-indicators`}
-              role="button"
-              data-slide="next"
-            >
-              <span
-                className="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
-              <span className="sr-only">Next</span>
-            </a>
-          </div>
-          {/* begin Add Space Section */}
+          <ImageCarousel
+            item={item}
+            namespace={props.namespace}
+            imagesStorageUrl={props.imagesStorageUrl}
+          />
+          {/* begin Ad Space Section */}
           <AdSpaceStyles></AdSpaceStyles>
         </div>
         {/* begin Scroll Box Section */}
