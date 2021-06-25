@@ -85,216 +85,187 @@ const ProductModal: FC<Props> = (props: Props) => {
     <ModalStyles
       ref={ref}
       onAnimationEnd={() => onAnimationEnd()}
-      className="modal fade"
       id={`${props.namespace}-view`}
-      tabIndex={-1}
-      aria-hidden="true"
     >
-      <div className="modal-dialog modal-dialog-scrollable modal-xl modal-lg">
-        <div className="modal-content">
-          <ModalBodyStyles className="modal-body">
-            <div className="container">
-              <div className="row">
-                <div className="col-12 col-lg-4">
-                  {/* begin Carousel Section */}
-                  <div
-                    id={`${props.namespace}-indicators`}
-                    className="carousel slide"
-                    data-ride="carousel"
-                    data-interval="false"
-                  >
-                    {item?.Images && item.Images.length > 0 ? (
-                      <ol className="carousel-indicators">
-                        <li
-                          data-target={`#${props.namespace}-indicators`}
-                          data-slide-to="0"
-                          className="active"
-                        ></li>
-                        {item.Images.map((img, index) => {
-                          return (
-                            <li
-                              key={`${item.id}-carousel-indicator-${index}`}
-                              data-target={`#${props.namespace}-indicators`}
-                              data-slide-to={index + 1}
-                            ></li>
-                          );
-                        })}
-                      </ol>
-                    ) : null}
-                    <div className="carousel-inner">
+      <ModalBodyStyles>
+        <div>
+          {/* begin Carousel Section */}
+          <div
+            id={`${props.namespace}-indicators`}
+            className="carousel slide"
+            data-ride="carousel"
+            data-interval="false"
+          >
+            {item?.Images && item.Images.length > 0 ? (
+              <ol className="carousel-indicators">
+                <li
+                  data-target={`#${props.namespace}-indicators`}
+                  data-slide-to="0"
+                  className="active"
+                ></li>
+                {item.Images.map((img, index) => {
+                  return (
+                    <li
+                      key={`${item.id}-carousel-indicator-${index}`}
+                      data-target={`#${props.namespace}-indicators`}
+                      data-slide-to={index + 1}
+                    ></li>
+                  );
+                })}
+              </ol>
+            ) : null}
+            <div className="carousel-inner">
+              <div
+                className="carousel-item active"
+                style={{
+                  backgroundImage: item?.id
+                    ? `url(${props.imagesStorageUrl}images/responsive/${item.id})`
+                    : ''
+                }}
+              ></div>
+              {item?.Images && item.Images.length > 0
+                ? item.Images.map((img, index) => {
+                    return (
                       <div
-                        className="carousel-item active"
+                        key={`${item.id}-carousel-img-${index}`}
+                        className="carousel-item"
                         style={{
-                          backgroundImage: item?.id
-                            ? `url(${props.imagesStorageUrl}images/responsive/${item.id})`
-                            : ''
+                          backgroundImage: `url(${props.imagesStorageUrl}images/related/${item.id}/responsive/${img})`
                         }}
                       ></div>
-                      {item?.Images && item.Images.length > 0
-                        ? item.Images.map((img, index) => {
-                            return (
-                              <div
-                                key={`${item.id}-carousel-img-${index}`}
-                                className="carousel-item"
-                                style={{
-                                  backgroundImage: `url(${props.imagesStorageUrl}images/related/${item.id}/responsive/${img})`
-                                }}
-                              ></div>
-                            );
-                          })
-                        : null}
-                    </div>
-                    <a
-                      className="carousel-control-prev"
-                      id="carousel-prev"
-                      href={`#${props.namespace}-indicators`}
-                      role="button"
-                      data-slide="prev"
-                    >
-                      <span
-                        className="carousel-control-prev-icon"
-                        aria-hidden="true"
-                      ></span>
-                      <span className="sr-only">Previous</span>
-                    </a>
-                    <a
-                      className="carousel-control-next"
-                      id="carousel-prev"
-                      href={`#${props.namespace}-indicators`}
-                      role="button"
-                      data-slide="next"
-                    >
-                      <span
-                        className="carousel-control-next-icon"
-                        aria-hidden="true"
-                      ></span>
-                      <span className="sr-only">Next</span>
-                    </a>
-                  </div>
-                  {/* begin Add Space Section */}
-                  <AdSpaceStyles className="row"></AdSpaceStyles>
-                </div>
-                {/* begin Scroll Box Section */}
-                <div className="col-12 col-lg-8">
-                  <ul
-                    className="nav-pill-scroll-box-header nav nav-pills mb-3"
-                    id="pills-tab"
-                    role="tablist"
-                  >
-                    <li className="nav-item" role="presentation">
-                      <a
-                        className="nav-link active"
-                        id="pills-overview-tab"
-                        data-toggle="pill"
-                        href="#pills-overview"
-                        role="tab"
-                        aria-controls="pills-overview"
-                        aria-selected="true"
-                      >
-                        Overview
-                      </a>
-                    </li>
-                    <li className="nav-item" role="presentation">
-                      <a
-                        className="nav-link .scroll-box-tabs"
-                        id="pills-specs-tab"
-                        data-toggle="pill"
-                        href="#pills-specs"
-                        role="tab"
-                        aria-controls="pills-specs"
-                        aria-selected="false"
-                      >
-                        Specs
-                      </a>
-                    </li>
-                    <li className="nav-item" role="presentation">
-                      <a
-                        className="nav-link .scroll-box-tabs"
-                        href={item?.Href}
-                        role="tab"
-                        aria-controls="pills-specs"
-                        aria-selected="false"
-                      >
-                        Visit Page
-                      </a>
-                    </li>
-                  </ul>
-                  <div className="nav-pill-scroll-box">
-                    <div className="tab-content" id="pills-tabContent">
-                      <div
-                        className="tab-pane fade show active"
-                        id="pills-overview"
-                        role="tabpanel"
-                        aria-labelledby="pills-overview-tab"
-                      >
-                        <h3>Product ID: {item?.Name}</h3>
-                        <h4>Description: {item?.SalesDesc}</h4>
-                        <h4>Price: {toUSCurrency(price)}</h4>
-                        <h4>Details:</h4>
-                        <p>{item?.FullDesc}</p>
+                    );
+                  })
+                : null}
+            </div>
+            <a
+              className="carousel-control-prev"
+              id="carousel-prev"
+              href={`#${props.namespace}-indicators`}
+              role="button"
+              data-slide="prev"
+            >
+              <span
+                className="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span className="sr-only">Previous</span>
+            </a>
+            <a
+              className="carousel-control-next"
+              id="carousel-prev"
+              href={`#${props.namespace}-indicators`}
+              role="button"
+              data-slide="next"
+            >
+              <span
+                className="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span className="sr-only">Next</span>
+            </a>
+          </div>
+          {/* begin Add Space Section */}
+          <AdSpaceStyles></AdSpaceStyles>
+        </div>
+        {/* begin Scroll Box Section */}
+        <div>
+          <ul
+            className="nav-pill-scroll-box-header nav nav-pills mb-3"
+            id="pills-tab"
+            role="tablist"
+          >
+            <li className="nav-item" role="presentation">
+              <a
+                className="nav-link active"
+                id="pills-overview-tab"
+                data-toggle="pill"
+                href="#pills-overview"
+                role="tab"
+                aria-controls="pills-overview"
+                aria-selected="true"
+              >
+                Overview
+              </a>
+            </li>
+            <li className="nav-item" role="presentation">
+              <a
+                className="nav-link .scroll-box-tabs"
+                id="pills-specs-tab"
+                data-toggle="pill"
+                href="#pills-specs"
+                role="tab"
+                aria-controls="pills-specs"
+                aria-selected="false"
+              >
+                Specs
+              </a>
+            </li>
+            <li className="nav-item" role="presentation">
+              <a
+                className="nav-link .scroll-box-tabs"
+                href={item?.Href}
+                role="tab"
+                aria-controls="pills-specs"
+                aria-selected="false"
+              >
+                Visit Page
+              </a>
+            </li>
+          </ul>
+          <div className="nav-pill-scroll-box">
+            <div className="tab-content" id="pills-tabContent">
+              <div id="pills-overview">
+                <h3>Product ID: {item?.Name}</h3>
+                <h4>Description: {item?.SalesDesc}</h4>
+                <h4>Price: {toUSCurrency(price)}</h4>
+                <h4>Details:</h4>
+                <p>{item?.FullDesc}</p>
+              </div>
+              <div id="pills-specs">
+                {item?.Specs && item.Specs.length > 0 ? (
+                  item.Specs.map((textline, index) => {
+                    return (
+                      <div key={`${item.id}-specs-textline-${index}`}>
+                        {textline}
                       </div>
-                      <div
-                        className="tab-pane fade"
-                        id="pills-specs"
-                        role="tabpanel"
-                        aria-labelledby="pills-specs-tab"
-                      >
-                        {item?.Specs && item.Specs.length > 0 ? (
-                          item.Specs.map((textline, index) => {
-                            return (
-                              <div key={`${item.id}-specs-textline-${index}`}>
-                                {textline}
-                              </div>
-                            );
-                          })
-                        ) : (
-                          <div>
-                            <h3>Sorry, we have no specs!</h3>
-                            <div>
-                              The specs for this item are not yet available.
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    </div>
+                    );
+                  })
+                ) : (
+                  <div>
+                    <h3>Sorry, we have no specs!</h3>
+                    <div>The specs for this item are not yet available.</div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
-          </ModalBodyStyles>
-          {/* begin Footer Section */}
-          <div className="modal-footer">
-            <div className="col-6 d-flex justify-content-start">
-              <input
-                type="number"
-                step="1"
-                min="1"
-                onChange={(e) => setQuantity(e.target.value)}
-                value={quantity}
-                className="form-control-lg ml-2 mr-1"
-              ></input>
-              <button
-                onClick={() => {
-                  if (item?.id) {
-                    submitToCart(item.id, quantity);
-                  }
-                }}
-                type="button"
-                className="btn btn-success"
-              >
-                <span className="material-icons">add_shopping_cart</span>
-              </button>
-            </div>
-            <div className="col-6 d-flex justify-content-end">
-              <button
-                type="button"
-                className="btn btn-danger"
-                onClick={hideModal}
-              >
-                <span className="material-icons">close</span>
-              </button>
-            </div>
           </div>
+        </div>
+      </ModalBodyStyles>
+      {/* begin Footer Section */}
+      <div className="modal-footer">
+        <div>
+          <input
+            type="number"
+            step="1"
+            min="1"
+            onChange={(e) => setQuantity(e.target.value)}
+            value={quantity}
+          ></input>
+          <button
+            onClick={() => {
+              if (item?.id) {
+                submitToCart(item.id, quantity);
+              }
+            }}
+            type="button"
+          >
+            <span className="material-icons">add_shopping_cart</span>
+          </button>
+        </div>
+        <div>
+          <button type="button" onClick={hideModal}>
+            <span className="material-icons">close</span>
+          </button>
         </div>
       </div>
     </ModalStyles>
