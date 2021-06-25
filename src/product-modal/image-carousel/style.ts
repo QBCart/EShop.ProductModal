@@ -8,6 +8,59 @@
 
 import styled from 'styled-components';
 
-const ImageCarouselStyles = styled.div``;
+const ImageCarouselStyles = styled.div`
+  /*******************/
+  /* CAROUSEL STYLES */
+  /*******************/
+
+  #carousel-next,
+  #carousel-prev {
+    filter: invert(100%);
+  }
+
+  .carousel-indicators li {
+    background-color: #999;
+    background-color: rgba(70, 70, 70, 0.25) !important;
+  }
+
+  .carousel-indicators .active {
+    background-color: #444 !important;
+  }
+
+  .carousel-item {
+    width: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* X-Large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+    .carousel .slide {
+      height: 300px !important;
+    }
+    .carousel-item {
+      height: 300px;
+    }
+  }
+  /* Large devices (desktops, 992px to 1200px) */
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    .carousel .slide {
+      height: 200px !important;
+    }
+    .carousel-item {
+      height: 200px;
+    }
+  }
+  /* Small to medium devices (landscape phones, 992px and below) */
+  @media (max-width: 991.98px) {
+    .carousel .slide {
+      height: 200px !important;
+    }
+    .carousel-item {
+      height: 200px;
+    }
+  }
+`;
 
 export default ImageCarouselStyles;
