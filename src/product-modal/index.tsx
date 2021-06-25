@@ -6,9 +6,9 @@
  * LICENSE file in the root directory of this source repo.
  */
 
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, useRef } from 'react';
 // prettier-ignore
-import { useInventoryItem, useCustomPricing } from '@qbcart/eshop-inventory-hooks';
+import { useInventoryItem, useCustomPricing, useProductModal, useRemoveProductModal } from '@qbcart/eshop-inventory-hooks';
 import { useAddToCart } from '@qbcart/eshop-cart-hooks';
 import { toUSCurrency } from '@qbcart/utils';
 
@@ -23,36 +23,68 @@ interface Props {
 }
 
 const ProductModal: FC<Props> = (props: Props) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const itemId = useProductModal();
+  const removeProductModal = useRemoveProductModal();
   const addToCart = useAddToCart(props.userLoggedIn);
-  const [item, changeItem] = useInventoryItem('');
+  const [item, changeItem] = useInventoryItem(itemId);
   const [quantity, setQuantity] = useState('1');
   const [customPrice, changeCustomPrice] = useCustomPricing(
     props.userLoggedIn,
-    ''
+    itemId
   );
 
   const price = customPrice ?? item?.SalesPrice ?? 0;
 
   useEffect(() => {
-    $(`#${props.namespace}-view`).on(
-      'show.bs.modal',
-      function (e: JQueryEventObject) {
-        const id = $(e.relatedTarget).data('id');
-        changeItem(id);
-        changeCustomPrice(id);
-        setQuantity('1');
+    changeItem(itemId);
+    changeCustomPrice(itemId);
+    setQuantity('1');
+  }, [itemId, changeCustomPrice, changeItem, props.namespace]);
+
+  useEffect(() => {
+    if (itemId) {
+      const modal = ref.current!;
+      modal.style.animationName = 'var(--product-modal-show)';
+      modal.style.display = 'block';
+    }
+  }, [itemId, ref]);
+
+  /*
+   *  Animation must be set when hiding modal to function properly.
+   */
+  const hideModal = () => {
+    console.log('hide modal');
+    const modal = ref.current!;
+    modal.style.animationName = 'var(--product-modal-hide)';
+  };
+
+  const onAnimationEnd = async (): Promise<void> => {
+    const modal = ref.current!;
+    modal.style.animationName = '';
+
+    if (modal.classList.contains('qbc-product-modal-visible')) {
+      modal.classList.remove('qbc-product-modal-visible');
+      modal.style.display = 'none';
+      if (itemId) {
+        removeProductModal(itemId);
       }
-    );
-  }, [changeCustomPrice, changeItem, props.namespace]);
+    } else {
+      modal.classList.add('qbc-product-modal-visible');
+    }
+  };
 
   async function submitToCart(id: string, quantity: string) {
     if (await addToCart(id, price, quantity)) {
-      $(`#${props.namespace}-view`).modal('hide');
+      //TODO: add modal hide animation sequence
+      hideModal();
     }
   }
 
   return (
     <ModalStyles
+      ref={ref}
+      onAnimationEnd={() => onAnimationEnd()}
       className="modal fade"
       id={`${props.namespace}-view`}
       tabIndex={-1}
@@ -257,7 +289,7 @@ const ProductModal: FC<Props> = (props: Props) => {
               <button
                 type="button"
                 className="btn btn-danger"
-                data-dismiss="modal"
+                onClick={hideModal}
               >
                 <span className="material-icons">close</span>
               </button>

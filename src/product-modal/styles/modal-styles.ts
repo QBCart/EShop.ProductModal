@@ -6,9 +6,31 @@
  * LICENSE file in the root directory of this source repo.
  */
 
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const ProductModalShow = keyframes`
+   from {
+      opacity: 0;
+   }
+   to {
+      opacity: 1;
+   }
+ `;
+
+const ProductModalHide = keyframes`
+   from {
+      opacity: 1;
+   }
+   to {
+      opacity: 0;
+   }
+ `;
 
 const ModalStyles = styled.div`
+  --product-modal-show: ${ProductModalShow};
+  --product-modal-hide: ${ProductModalHide};
+  display: none;
+  animation-duration: 0.5s;
   color: black;
 
   /*******************/
