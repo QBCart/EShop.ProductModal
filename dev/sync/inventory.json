@@ -1265,6 +1265,11 @@
         "BestSellerRank": 2,
         "IsFeatured": 1,
         "IsOnSale": 0,
+        "Images": [
+          "ITEM-8000028F-1269990123",
+          "ITEM-80000EC0-1469555022",
+          "broken id"
+        ],
         "Discriminator": "ItemInventory",
         "ListID": "8000028F-1269990123",
         "FullName": "Accessories:Adaptors:VA12GF2F",
