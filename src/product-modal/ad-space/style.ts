@@ -9,21 +9,20 @@
 import styled from 'styled-components';
 
 const AdSpaceStyles = styled.div`
+  --ad-space-width: calc(((var(--product-modal-width) / 3) - 10px));
+  --ad-space-height: calc((var(--modal-body-height) / 2) - 8px);
+
   display: block;
-  width: auto;
-  margin: 8px 0 0 0;
+  height: var(--ad-space-height);
+  width: var(--ad-space-width);
+  margin: 0 auto;
   background-color: lightgray;
 
   /* X-Large devices (large desktops, 1200px and up) */
   @media (min-width: 1200px) {
-    height: 300px;
   }
-  /* Large devices (desktops, 992px to 1200px) */
-  @media (min-width: 992px) and (max-width: 1199.98px) {
-    height: 200px;
-  }
-  /* Small to medium devices (landscape phones, 992px and below) */
-  @media (max-width: 991.98px) {
+  /* Small to medium devices (portrait phones, 576px and below) */
+  @media (max-width: 575.98px) {
     display: none;
   }
 `;

@@ -9,9 +9,9 @@
 import styled from 'styled-components';
 
 const ImageCarouselStyles = styled.div`
-  --arrow-height: 40px;
-  --carousel-width: calc((var(--product-modal-width) / 3) - 12px);
-  --carousel-height: var(--carousel-width);
+  --carousel-width: calc((var(--product-modal-width) / 3));
+  --carousel-height: calc((var(--modal-body-height) / 2) - 5px);
+  --arrow-height: calc(var(--carousel-width) / 8);
   position: relative;
   overflow: hidden;
   width: var(--carousel-width);
@@ -22,20 +22,15 @@ const ImageCarouselStyles = styled.div`
   align-items: center;
 
   .slide-image {
-    width: calc(100% - 2px);
-    height: calc(100% - 2px);
+    width: var(--carousel-height);
+    height: var(--carousel-height);
   }
 
-  .slide-image:hover {
-    width: 100%;
-    height: 100%;
-    border: 1px solid lightgray;
-  }
   .arrow {
     position: absolute;
     height: var(--arrow-height);
     width: 40px;
-    font-size: 40px;
+    font-size: var(--arrow-height);
     top: calc(50% - (var(--arrow-height) / 2));
     color: rgba(0, 0, 0, 0.6);
     cursor: pointer;
@@ -45,10 +40,10 @@ const ImageCarouselStyles = styled.div`
     color: black;
   }
   .left-arrow {
-    left: 10px;
+    left: calc(var(--arrow-height) / 8);
   }
   .right-arrow {
-    right: 10px;
+    right: calc(var(--arrow-height) / 8);
   }
   .slide-inactive {
     opacity: 0;
@@ -56,7 +51,7 @@ const ImageCarouselStyles = styled.div`
   .slide-active {
     width: 100%;
     opacity: 1;
-    animation: slide-fade 5s;
+    /* animation: slide-fade 5s; */
   }
   @keyframes slide-fade {
     0% {

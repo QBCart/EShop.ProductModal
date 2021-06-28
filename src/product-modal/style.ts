@@ -31,6 +31,7 @@ const ProductModalStyles = styled.div`
   --product-modal-hide: ${ProductModalHide};
   --product-modal-width: calc(100vw - 300px);
   --product-modal-height: calc(var(--product-modal-width) * 0.7);
+  --modal-body-height: calc(var(--product-modal-height) - 60px);
   display: none;
   animation-duration: 0.5s;
   color: black;
@@ -70,7 +71,7 @@ const ProductModalStyles = styled.div`
   .modal-body {
     display: flex;
     width: var(--product-modal-width);
-    height: calc(var(--product-modal-height) - 60px);
+    height: var(--modal-body-height);
     padding: 10px;
   }
 
@@ -86,22 +87,14 @@ const ProductModalStyles = styled.div`
 
   /* Large devices (desktops, 992px and up) */
   @media (min-width: 992px) {
-    .modal-body {
-      overflow: visible;
-      overflow-y: hidden;
-    }
   }
 
   /* Small to medium devices (landscape phones, 992px and below) */
   @media (max-width: 991.98px) {
     --product-modal-width: calc(100vw - 50px);
-    .modal-body {
-      overflow: visible;
-      overflow-y: auto;
-    }
   }
 
-  /* Small to medium devices (landscape phones, 576px and below) */
+  /* Small to medium devices (portrait phones, 576px and below) */
   @media (max-width: 575.98px) {
     --product-modal-width: calc(100vw - 10px);
   }
