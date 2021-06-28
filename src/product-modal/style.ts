@@ -90,6 +90,7 @@ const ProductModalStyles = styled.div`
 
   /* Small to medium devices (landscape phones, 992px and below) */
   @media (max-width: 991.98px) {
+    --product-modal-width: calc(100vw - 50px);
     .modal-body {
       overflow: visible;
       overflow-y: auto;

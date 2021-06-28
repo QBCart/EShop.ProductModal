@@ -21,31 +21,35 @@ interface Props {
 const ProductModal: FC<Props> = (props: Props) => {
   return (
     <FooterStyles>
-      <div className="modal-footer">
-        <div>
-          <input
-            type="number"
-            step="1"
-            min="1"
-            onChange={(e) => props.setQuantity(e.target.value)}
-            value={props.quantity}
-          ></input>
-          <button
-            onClick={() => {
-              if (props.item?.id) {
-                props.submitToCart(props.item.id, props.quantity);
-              }
-            }}
-            type="button"
-          >
-            <span className="material-icons">add_shopping_cart</span>
-          </button>
-        </div>
-        <div>
-          <button type="button" onClick={props.hideModal}>
-            <span className="material-icons">close</span>
-          </button>
-        </div>
+      <div className="footer-left">
+        <input
+          className="quantity-input"
+          type="number"
+          step="1"
+          min="1"
+          onChange={(e) => props.setQuantity(e.target.value)}
+          value={props.quantity}
+        ></input>
+        <button
+          className="add-to-cart-button"
+          onClick={() => {
+            if (props.item?.id) {
+              props.submitToCart(props.item.id, props.quantity);
+            }
+          }}
+          type="button"
+        >
+          <span className="material-icons">add_shopping_cart</span>
+        </button>
+      </div>
+      <div className="footer-right">
+        <button
+          className="close-button"
+          type="button"
+          onClick={props.hideModal}
+        >
+          <span className="material-icons">close</span>
+        </button>
       </div>
     </FooterStyles>
   );
