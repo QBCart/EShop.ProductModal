@@ -64,6 +64,7 @@ document.write(
         import 'https://qbcdemo.z13.web.core.windows.net/eshop/search-bar/index.js';
         import 'https://qbcdemo.z13.web.core.windows.net/eshop/toast/index.js';
         import 'https://qbcdemo.z13.web.core.windows.net/eshop/alert-modal/index.js';
+        import 'https://qbcdemo.z13.web.core.windows.net/eshop/banner-carousel/index.js';
         import 'https://qbcdemo.z13.web.core.windows.net/eshop/product-slider/index.js';
         import 'https://qbcdemo.z13.web.core.windows.net/eshop/category-boxes/index.js';
         import 'https://qbcdemo.z13.web.core.windows.net/eshop/product-boxes/index.js';
