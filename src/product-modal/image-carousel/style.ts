@@ -10,13 +10,12 @@ import styled from 'styled-components';
 
 const ImageCarouselStyles = styled.div`
   --carousel-width: calc((var(--product-modal-width) / 3));
-  --carousel-height: calc((var(--modal-body-height) / 2) - 5px);
-  --arrow-height: calc(var(--carousel-width) / 8);
+  --carousel-height: calc(((var(--modal-body-height) -15px) / 2) - 5px);
+  --arrow-height: calc(var(--carousel-height) / 6);
   position: relative;
   overflow: hidden;
   width: var(--carousel-width);
   height: var(--carousel-height);
-  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,7 +50,8 @@ const ImageCarouselStyles = styled.div`
   .slide-active {
     width: 100%;
     opacity: 1;
-    /* animation: slide-fade 5s; */
+    display: flex;
+    justify-content: center;
   }
   @keyframes slide-fade {
     0% {
@@ -99,6 +99,12 @@ const ImageCarouselStyles = styled.div`
   }
   /* Small to medium devices (landscape phones, 992px and below) */
   @media (max-width: 991.98px) {
+  }
+  /* Small to medium devices (portrait phones, 576px and below) */
+  @media (max-width: 575.98px) {
+    --carousel-width: calc(var(--product-modal-width) - 100px);
+    --carousel-height: calc(var(--carousel-width));
+    --arrow-height: calc(var(--carousel-height) / 10);
   }
 `;
 

@@ -10,12 +10,12 @@ import styled from 'styled-components';
 
 const AdSpaceStyles = styled.div`
   --ad-space-width: calc(((var(--product-modal-width) / 3) - 10px));
-  --ad-space-height: calc((var(--modal-body-height) / 2) - 8px);
+  --ad-space-height: calc(((var(--modal-body-height) - 15px) / 2) - 10px);
 
   display: block;
   height: var(--ad-space-height);
   width: var(--ad-space-width);
-  margin: 0 auto;
+  margin-top: 5px;
   background-color: lightgray;
 
   /* X-Large devices (large desktops, 1200px and up) */

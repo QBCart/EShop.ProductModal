@@ -77,7 +77,11 @@ const ProductModalStyles = styled.div`
 
   .modal-body-left {
     width: calc(var(--product-modal-width) / 3);
-    height: calc(var(--product-modal-height) - 65px);
+    height: calc(var(--modal-body-height) - 15px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   /* Large devices (desktops, 1200px and up) */
@@ -97,6 +101,18 @@ const ProductModalStyles = styled.div`
   /* Small to medium devices (portrait phones, 576px and below) */
   @media (max-width: 575.98px) {
     --product-modal-width: calc(100vw - 10px);
+    --product-modal-height: calc(100vh - 124px);
+
+    .modal-body {
+      flex-direction: column;
+      overflow-y: auto;
+      padding: 0;
+    }
+
+    .modal-body-left {
+      width: var(--product-modal-width);
+      height: unset;
+    }
   }
 `;
 

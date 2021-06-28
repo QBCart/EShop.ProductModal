@@ -9,10 +9,6 @@
 import styled from 'styled-components';
 
 const ScrollBoxStyles = styled.div`
-  /********************/
-  /* SCROLLBOX STYLES */
-  /********************/
-
   --scroll-box-height: calc(var(--modal-body-height) - 5px);
 
   display: block;
@@ -98,6 +94,13 @@ const ScrollBoxStyles = styled.div`
       overflow: visible;
     }
   }
+
+  /* Small to medium devices (portrait phones, 576px and below) */
+  @media (max-width: 575.98px) {
+    --scroll-box-height: unset;
+  }
+
+  width: calc(var(--product-modal-width) - 10px);
 `;
 
 export default ScrollBoxStyles;
