@@ -94,7 +94,6 @@ const ProductModal: FC<Props> = (props: Props) => {
             <div className="modal-body-left">
               <ImageCarousel
                 item={item}
-                namespace={props.namespace}
                 imagesStorageUrl={props.imagesStorageUrl}
               />
               <AdSpace></AdSpace>

@@ -13,12 +13,12 @@ const ScrollBoxStyles = styled.div`
   /* SCROLLBOX STYLES */
   /********************/
 
-  --scroll-box-height: calc(var(--product-modal-height) - 60px);
+  --scroll-box-height: calc(var(--product-modal-height) - 65px);
 
   display: block;
-  width: calc(var(--product-modal-width) * (2 / 3));
+  width: 100%;
   height: var(--scroll-box-height);
-  padding: 5px;
+  padding-left: 5px;
 
   .scroll-box-header {
     display: flex;

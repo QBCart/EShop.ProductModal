@@ -69,12 +69,14 @@ const ProductModalStyles = styled.div`
 
   .modal-body {
     display: flex;
+    width: var(--product-modal-width);
     height: calc(var(--product-modal-height) - 60px);
+    padding: 10px;
   }
 
   .modal-body-left {
     width: calc(var(--product-modal-width) / 3);
-    padding: 10px;
+    height: calc(var(--product-modal-height) - 65px);
   }
 
   /* Large devices (desktops, 1200px and up) */

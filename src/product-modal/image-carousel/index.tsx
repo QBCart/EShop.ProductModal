@@ -6,92 +6,84 @@
  * LICENSE file in the root directory of this source repo.
  */
 
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 // prettier-ignore
 import ImageCarouselStyles from './style.js'
 interface Props {
   item: any;
-  namespace: string;
   imagesStorageUrl: string;
 }
 
 const ImageCarousel: FC<Props> = (props: Props) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  function nextSlide() {
+    setCurrentSlide(
+      currentSlide === props.item.Images?.length - 1 ? 0 : currentSlide + 1
+    );
+  }
+
+  function prevSlide() {
+    setCurrentSlide(
+      currentSlide === 0 ? props.item.Images?.length - 1 : currentSlide - 1
+    );
+  }
+
+  if (!props.item) {
+    return null;
+  }
+
+  if ((props.item.Images?.length ?? 0) < 1) {
+    return (
+      <ImageCarouselStyles>
+        <img
+          src={props.imagesStorageUrl + 'images/responsive/' + props.item.id}
+          className="slide-image"
+        />
+      </ImageCarouselStyles>
+    );
+  }
+
+  if (props.item.Images && props.item.Images.length === 1) {
+    return (
+      <ImageCarouselStyles>
+        <img
+          src={
+            props.imagesStorageUrl + 'images/responsive/' + props.item.Images[0]
+          }
+          className="slide-image"
+        ></img>
+      </ImageCarouselStyles>
+    );
+  }
+
   return (
     <ImageCarouselStyles>
-      <div
-        id={`${props.namespace}-indicators`}
-        className="carousel slide"
-        data-ride="carousel"
-        data-interval="false"
-      >
-        {props.item?.Images && props.item.Images.length > 0 ? (
-          <ol className="carousel-indicators">
-            <li
-              data-target={`#${props.namespace}-indicators`}
-              data-slide-to="0"
-              className="active"
-            ></li>
-            {props.item.Images.map((img, index) => {
-              return (
-                <li
-                  key={`${props.item.id}-carousel-indicator-${index}`}
-                  data-target={`#${props.namespace}-indicators`}
-                  data-slide-to={index + 1}
-                ></li>
-              );
-            })}
-          </ol>
-        ) : null}
-        <div className="carousel-inner">
+      <span className="material-icons arrow left-arrow" onClick={prevSlide}>
+        arrow_back_ios_new
+      </span>
+      <span className="material-icons arrow right-arrow" onClick={nextSlide}>
+        arrow_forward_ios_new
+      </span>
+
+      {props.item.Images?.map((image, index) => {
+        return (
           <div
-            className="carousel-item active"
-            style={{
-              backgroundImage: props.item?.id
-                ? `url(${props.imagesStorageUrl}images/responsive/${props.item.id})`
-                : ''
-            }}
-          ></div>
-          {props.item?.Images && props.item.Images.length > 0
-            ? props.item.Images.map((img, index) => {
-                return (
-                  <div
-                    key={`${props.item.id}-carousel-img-${index}`}
-                    className="carousel-item"
-                    style={{
-                      backgroundImage: `url(${props.imagesStorageUrl}images/related/${props.item.id}/responsive/${img})`
-                    }}
-                  ></div>
-                );
-              })
-            : null}
-        </div>
-        <a
-          className="carousel-control-prev"
-          id="carousel-prev"
-          href={`#${props.namespace}-indicators`}
-          role="button"
-          data-slide="prev"
-        >
-          <span
-            className="carousel-control-prev-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="sr-only">Previous</span>
-        </a>
-        <a
-          className="carousel-control-next"
-          id="carousel-prev"
-          href={`#${props.namespace}-indicators`}
-          role="button"
-          data-slide="next"
-        >
-          <span
-            className="carousel-control-next-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="sr-only">Next</span>
-        </a>
-      </div>
+            className={
+              index === currentSlide ? 'slide-active' : 'slide-inactive'
+            }
+            key={index}
+          >
+            {index === currentSlide && (
+              <img
+                src={props.imagesStorageUrl + 'images/responsive/' + image}
+                alt={`carousel ` + index}
+                className="slide-image"
+              ></img>
+            )}
+          </div>
+        );
+      })}
     </ImageCarouselStyles>
   );
 };
