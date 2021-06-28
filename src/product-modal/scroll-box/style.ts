@@ -13,46 +13,89 @@ const ScrollBoxStyles = styled.div`
   /* SCROLLBOX STYLES */
   /********************/
 
+  --scroll-box-height: calc(var(--product-modal-height) - 60px);
+
   display: block;
   width: calc(var(--product-modal-width) * (2 / 3));
+  height: var(--scroll-box-height);
+  padding: 5px;
 
-  .nav-pill-scroll-box-header {
-    border-bottom: 2px solid #007bff;
+  .scroll-box-header {
+    display: flex;
+    height: 40px;
+    border-bottom: 2px solid rgb(0, 123, 255);
   }
 
-  .nav-pills .nav-link {
-    border-top-left-radius: 0.25rem;
-    border-top-right-radius: 0.25rem;
+  .header-tab-active {
+    padding: 10px;
+    background-color: rgb(0, 123, 255);
+    color: white;
+    text-decoration: none;
+    margin-bottom: -2px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
 
+  .header-tab-inactive {
+    padding: 10px;
+    color: grey;
+    text-decoration: none;
+    margin-bottom: -2px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .header-tab-active:hover {
+    background-color: rgb(0, 173, 265);
+    color: white;
+  }
+
+  .header-tab-inactive:hover {
+    background-color: rgb(0, 173, 265);
+    color: white;
+  }
+
+  .product-page-anchor {
+    display: flex;
+    padding: 10px;
+    text-decoration: none;
+    color: #007bff;
+  }
+
+  .product-page-anchor:hover .anchor-text {
+    text-decoration: underline;
+  }
+
+  .product-page-anchor .material-icons {
+    font-size: 18px;
+    margin: 0 3px;
+  }
+
+  .scroll-box-body {
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    padding: 12px;
+    overflow-y: auto;
+    height: calc(var(--scroll-box-height) - 48px);
+  }
+
   /* X-Large devices (large desktops, 1200px and up) */
   @media (min-width: 1200px) {
-    .nav-pill-scroll-box {
-      overflow-y: auto;
-      border: 1px solid lightgray;
-      border-radius: 2px;
-      padding: 12px;
-      height: 550px;
-    }
   }
   /* Large devices (desktops, 992px to 1200px) */
   @media (min-width: 992px) and (max-width: 1199.98px) {
-    .nav-pill-scroll-box {
-      overflow-y: auto;
-      border: 1px solid lightgray;
-      border-radius: 2px;
-      padding: 12px;
-      height: 350px;
-    }
   }
   /* Small to medium devices (landscape phones, 992px and below) */
   @media (max-width: 991.98px) {
-    .nav-pill-scroll-box {
+    .scroll-box-body {
       overflow: visible;
-      border: none;
-      padding-bottom: 0;
     }
   }
 `;

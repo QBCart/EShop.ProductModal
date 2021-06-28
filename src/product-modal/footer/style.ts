@@ -24,6 +24,7 @@ const FooterStyles = styled.div`
   .quantity-input {
     width: 60px;
     height: 30px;
+    padding: 5px;
   }
 
   .add-to-cart-button {

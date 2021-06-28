@@ -6,7 +6,7 @@
  * LICENSE file in the root directory of this source repo.
  */
 
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 
 import { toUSCurrency } from '@qbcart/utils';
 
@@ -18,53 +18,36 @@ interface Props {
 }
 
 const ScrollBox: FC<Props> = (props: Props) => {
+  const [boxDisplay, setBoxDisplay] = useState('overview');
+
   return (
     <ScrollBoxStyles>
-      <ul
-        className="nav-pill-scroll-box-header nav nav-pills mb-3"
-        id="pills-tab"
-        role="tablist"
-      >
-        <li className="nav-item" role="presentation">
-          <a
-            className="nav-link active"
-            id="pills-overview-tab"
-            data-toggle="pill"
-            href="#pills-overview"
-            role="tab"
-            aria-controls="pills-overview"
-            aria-selected="true"
-          >
-            Overview
-          </a>
-        </li>
-        <li className="nav-item" role="presentation">
-          <a
-            className="nav-link .scroll-box-tabs"
-            id="pills-specs-tab"
-            data-toggle="pill"
-            href="#pills-specs"
-            role="tab"
-            aria-controls="pills-specs"
-            aria-selected="false"
-          >
-            Specs
-          </a>
-        </li>
-        <li className="nav-item" role="presentation">
-          <a
-            className="nav-link .scroll-box-tabs"
-            href={props.item?.Href}
-            role="tab"
-            aria-controls="pills-specs"
-            aria-selected="false"
-          >
-            Visit Page
-          </a>
-        </li>
-      </ul>
-      <div className="nav-pill-scroll-box">
-        <div className="tab-content" id="pills-tabContent">
+      <div className="scroll-box-header">
+        <div
+          className={
+            boxDisplay === 'overview'
+              ? `header-tab-active`
+              : `header-tab-inactive`
+          }
+          onClick={() => setBoxDisplay('overview')}
+        >
+          Overview
+        </div>
+        <div
+          className={
+            boxDisplay === 'specs' ? `header-tab-active` : `header-tab-inactive`
+          }
+          onClick={() => setBoxDisplay('specs')}
+        >
+          Specs
+        </div>
+        <a className="product-page-anchor" href={props.item?.Href}>
+          <span className="anchor-text">Visit Page</span>
+          <span className="material-icons">open_in_new</span>
+        </a>
+      </div>
+      <div className="scroll-box-body">
+        {boxDisplay === 'overview' ? (
           <div id="pills-overview">
             <h3>Product ID: {props.item?.Name}</h3>
             <h4>Description: {props.item?.SalesDesc}</h4>
@@ -72,6 +55,7 @@ const ScrollBox: FC<Props> = (props: Props) => {
             <h4>Details:</h4>
             <p>{props.item?.FullDesc}</p>
           </div>
+        ) : (
           <div id="pills-specs">
             {props.item?.Specs && props.item.Specs.length > 0 ? (
               props.item.Specs.map((textline, index) => {
@@ -88,7 +72,7 @@ const ScrollBox: FC<Props> = (props: Props) => {
               </div>
             )}
           </div>
-        </div>
+        )}
       </div>
     </ScrollBoxStyles>
   );

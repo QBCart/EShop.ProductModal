@@ -69,10 +69,12 @@ const ProductModalStyles = styled.div`
 
   .modal-body {
     display: flex;
+    height: calc(var(--product-modal-height) - 60px);
   }
 
   .modal-body-left {
     width: calc(var(--product-modal-width) / 3);
+    padding: 10px;
   }
 
   /* Large devices (desktops, 1200px and up) */
@@ -95,6 +97,11 @@ const ProductModalStyles = styled.div`
       overflow: visible;
       overflow-y: auto;
     }
+  }
+
+  /* Small to medium devices (landscape phones, 576px and below) */
+  @media (max-width: 575.98px) {
+    --product-modal-width: calc(100vw - 10px);
   }
 `;
 
