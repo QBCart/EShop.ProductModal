@@ -53,14 +53,6 @@ const FooterStyles = styled.div`
   .close-button:hover {
     background-color: rgba(208, 30, 60);
   }
-
-  /* Small to medium devices (landscape phones, 992px and below) */
-
-  @media (max-width: 991.98px) {
-    .modal-footer {
-      padding: 10px;
-    }
-  }
 `;
 
 export default FooterStyles;

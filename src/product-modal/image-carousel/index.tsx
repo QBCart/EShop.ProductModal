@@ -72,7 +72,7 @@ const ImageCarousel: FC<Props> = (props: Props) => {
             className={
               index === currentSlide ? 'slide-active' : 'slide-inactive'
             }
-            key={index}
+            key={image}
           >
             {index === currentSlide && (
               <img

@@ -48,7 +48,7 @@ const ScrollBox: FC<Props> = (props: Props) => {
       </div>
       <div className="scroll-box-body">
         {boxDisplay === 'overview' ? (
-          <div id="pills-overview">
+          <div>
             <h3>Product ID: {props.item?.Name}</h3>
             <h4>Description: {props.item?.SalesDesc}</h4>
             <h4>Price: {toUSCurrency(props.price)}</h4>
@@ -56,7 +56,7 @@ const ScrollBox: FC<Props> = (props: Props) => {
             <p>{props.item?.FullDesc}</p>
           </div>
         ) : (
-          <div id="pills-specs">
+          <div>
             {props.item?.Specs && props.item.Specs.length > 0 ? (
               props.item.Specs.map((textline, index) => {
                 return (

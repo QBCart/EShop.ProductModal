@@ -89,10 +89,6 @@ const ProductModalStyles = styled.div`
     --product-modal-width: 900px;
   }
 
-  /* Large devices (desktops, 992px and up) */
-  @media (min-width: 992px) {
-  }
-
   /* Small to medium devices (landscape phones, 992px and below) */
   @media (max-width: 991.98px) {
     --product-modal-width: calc(100vw - 50px);

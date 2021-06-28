@@ -59,7 +59,7 @@ const ScrollBoxStyles = styled.div`
     display: flex;
     padding: 10px;
     text-decoration: none;
-    color: #007bff;
+    color: rgb(0, 123, 255);
   }
 
   .product-page-anchor:hover .anchor-text {
@@ -78,21 +78,8 @@ const ScrollBoxStyles = styled.div`
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
     padding: 12px;
-    overflow-y: auto;
+    overflow: auto;
     height: calc(var(--scroll-box-height) - 48px);
-  }
-
-  /* X-Large devices (large desktops, 1200px and up) */
-  @media (min-width: 1200px) {
-  }
-  /* Large devices (desktops, 992px to 1200px) */
-  @media (min-width: 992px) and (max-width: 1199.98px) {
-  }
-  /* Small to medium devices (landscape phones, 992px and below) */
-  @media (max-width: 991.98px) {
-    .scroll-box-body {
-      overflow: visible;
-    }
   }
 
   /* Small to medium devices (portrait phones, 576px and below) */
