@@ -29,6 +29,8 @@ const ProductModalHide = keyframes`
 const ProductModalStyles = styled.div`
   --product-modal-show: ${ProductModalShow};
   --product-modal-hide: ${ProductModalHide};
+  --product-modal-width: calc(100vw - 300px);
+  --product-modal-height: calc(var(--product-modal-width) * 0.7);
   display: none;
   animation-duration: 0.5s;
   color: black;
@@ -58,8 +60,8 @@ const ProductModalStyles = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: calc(100vw - 20px);
-    max-width: 800px;
+    width: var(--product-modal-width);
+    height: var(--product-modal-height);
     border: 2px solid black;
     border-radius: 4px;
     background-color: white;
@@ -67,6 +69,15 @@ const ProductModalStyles = styled.div`
 
   .modal-body {
     display: flex;
+  }
+
+  .modal-body-left {
+    width: calc(var(--product-modal-width) / 3);
+  }
+
+  /* Large devices (desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+    --product-modal-width: 900px;
   }
 
   /* Large devices (desktops, 992px and up) */

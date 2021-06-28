@@ -13,6 +13,9 @@ const ScrollBoxStyles = styled.div`
   /* SCROLLBOX STYLES */
   /********************/
 
+  display: block;
+  width: calc(var(--product-modal-width) * (2 / 3));
+
   .nav-pill-scroll-box-header {
     border-bottom: 2px solid #007bff;
   }
