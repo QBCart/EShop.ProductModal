@@ -9,9 +9,8 @@
 import React, { FC } from 'react';
 // prettier-ignore
 import AdSpaceStyles from './style.js'
-interface Props {}
 
-const AdSpace: FC<Props> = (props: Props) => {
+const AdSpace: FC = () => {
   return <AdSpaceStyles></AdSpaceStyles>;
 };
 
