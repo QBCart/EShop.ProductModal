@@ -19,7 +19,6 @@ import ScrollBox from './scroll-box/index.js';
 import Footer from './footer/index.js';
 
 interface Props {
-  namespace: string;
   imagesStorageUrl: string;
   userLoggedIn: boolean;
 }
@@ -42,7 +41,7 @@ const ProductModal: FC<Props> = (props: Props) => {
     changeItem(itemId);
     changeCustomPrice(itemId);
     setQuantity('1');
-  }, [itemId, changeCustomPrice, changeItem, props.namespace]);
+  }, [itemId, changeCustomPrice, changeItem]);
 
   useEffect(() => {
     if (itemId) {
@@ -82,11 +81,7 @@ const ProductModal: FC<Props> = (props: Props) => {
   }
 
   return (
-    <ProductModalStyles
-      ref={ref}
-      onAnimationEnd={() => onAnimationEnd()}
-      id={`${props.namespace}-view`}
-    >
+    <ProductModalStyles ref={ref} onAnimationEnd={() => onAnimationEnd()}>
       <div className="modal-wrapper">
         <div className="modal-content">
           <div className="modal-header"></div>
