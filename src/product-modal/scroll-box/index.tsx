@@ -6,8 +6,7 @@
  * LICENSE file in the root directory of this source repo.
  */
 
-import React, { FC, useState } from 'react';
-
+import React, { FC, useEffect, useState } from 'react';
 import { toUSCurrency } from '@qbcart/utils';
 
 import ScrollBoxStyles from './style.js';
@@ -19,6 +18,9 @@ interface Props {
 
 const ScrollBox: FC<Props> = (props: Props) => {
   const [boxDisplay, setBoxDisplay] = useState('overview');
+  useEffect(() => {
+    setBoxDisplay('overview');
+  }, [props.item]);
 
   return (
     <ScrollBoxStyles>
