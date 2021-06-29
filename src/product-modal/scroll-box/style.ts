@@ -88,6 +88,10 @@ const ScrollBoxStyles = styled.div`
   }
 
   width: calc(var(--product-modal-width) - 10px);
+
+  .scroll-box-body {
+    border: none;
+  }
 `;
 
 export default ScrollBoxStyles;
