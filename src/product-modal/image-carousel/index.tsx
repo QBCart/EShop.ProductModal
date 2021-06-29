@@ -36,10 +36,12 @@ const ImageCarousel: FC<Props> = (props: Props) => {
   if ((props.item.Images?.length ?? 0) < 1) {
     return (
       <ImageCarouselStyles>
-        <img
-          src={props.imagesStorageUrl + 'images/responsive/' + props.item.id}
+        <div
           className="slide-image"
-        />
+          style={{
+            backgroundImage: `url(${props.imagesStorageUrl}images/responsive/${props.item.id})`
+          }}
+        ></div>
       </ImageCarouselStyles>
     );
   }
@@ -47,12 +49,12 @@ const ImageCarousel: FC<Props> = (props: Props) => {
   if (props.item.Images && props.item.Images.length === 1) {
     return (
       <ImageCarouselStyles>
-        <img
-          src={
-            props.imagesStorageUrl + 'images/responsive/' + props.item.Images[0]
-          }
+        <div
           className="slide-image"
-        ></img>
+          style={{
+            backgroundImage: `url(${props.imagesStorageUrl}images/responsive/${props.item.Images[0]})`
+          }}
+        ></div>
       </ImageCarouselStyles>
     );
   }
@@ -75,11 +77,12 @@ const ImageCarousel: FC<Props> = (props: Props) => {
             key={image}
           >
             {index === currentSlide && (
-              <img
-                src={props.imagesStorageUrl + 'images/responsive/' + image}
-                alt={`carousel ` + index}
+              <div
                 className="slide-image"
-              ></img>
+                style={{
+                  backgroundImage: `url(${props.imagesStorageUrl}images/responsive/${image})`
+                }}
+              ></div>
             )}
           </div>
         );
