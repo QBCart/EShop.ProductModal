@@ -85,12 +85,11 @@ const ScrollBoxStyles = styled.div`
   /* Small to medium devices (portrait phones, 576px and below) */
   @media (max-width: 575.98px) {
     --scroll-box-height: unset;
-  }
+    width: calc(var(--product-modal-width) - 10px);
 
-  width: calc(var(--product-modal-width) - 10px);
-
-  .scroll-box-body {
-    border: none;
+    .scroll-box-body {
+      border: none;
+    }
   }
 `;
 

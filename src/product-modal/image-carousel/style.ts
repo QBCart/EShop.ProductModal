@@ -9,9 +9,12 @@
 import styled from 'styled-components';
 
 const ImageCarouselStyles = styled.div`
-  width: calc((var(--product-modal-width) / 3));
-  height: calc(((var(--modal-body-height) -15px) / 2) - 5px);
-  --arrow-height: calc((var(--product-modal-width) / 18));
+  --arrow-height: calc((var(--product-modal-width) / 24));
+  --carousel-width: calc((var(--product-modal-width) / 3));
+  --carousel-height: calc(((var(--product-modal-height) - 75px) / 2) - 5px);
+
+  width: var(--carousel-width);
+  height: var(--carousel-height);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -19,8 +22,8 @@ const ImageCarouselStyles = styled.div`
   align-items: center;
 
   .slide-image {
-    width: calc((var(--product-modal-width) / 3));
-    height: calc((var(--product-modal-width) / 3));
+    width: var(--carousel-height);
+    height: var(--carousel-height);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -28,10 +31,10 @@ const ImageCarouselStyles = styled.div`
 
   .arrow {
     position: absolute;
-    height: calc((var(--product-modal-width) / 24));
-    width: calc((var(--product-modal-width) / 24));
-    font-size: calc((var(--product-modal-width) / 24));
-    top: calc(50% - (var(--product-modal-width) / 48));
+    height: var(--arrow-height);
+    width: var(--arrow-height);
+    font-size: var(--arrow-height);
+    top: calc(50% - (var(--arrow-height) / 2));
     color: rgba(0, 0, 0, 0.6);
     cursor: pointer;
     user-select: none;
@@ -40,10 +43,10 @@ const ImageCarouselStyles = styled.div`
     color: black;
   }
   .left-arrow {
-    left: calc((var(--product-modal-width) / 180));
+    left: calc((var(--arrow-height) / 10));
   }
   .right-arrow {
-    right: calc((var(--product-modal-width) / 180));
+    right: calc((var(--arrow-height) / 10));
   }
   .slide-inactive {
     opacity: 0;
@@ -57,18 +60,13 @@ const ImageCarouselStyles = styled.div`
 
   /* Small to medium devices (portrait phones, 576px and below) */
   @media (max-width: 575.98px) {
-    width: calc(var(--product-modal-width) - 100px);
-    height: calc(var(--carousel-width));
-    .arrow {
-      height: calc((var(--product-modal-width) / 15));
-      width: calc((var(--product-modal-width) / 15));
-      font-size: calc((var(--product-modal-width) / 15));
-      top: calc(50% - (var(--product-modal-width) / 30));
+    --carousel-width: calc((var(--product-modal-width)));
+    --arrow-height: calc((var(--product-modal-width) / 15));
+    .left-arrow {
+      left: var(--arrow-height);
     }
-
-    .slide-image {
-      width: calc((var(--product-modal-width) - 100px));
-      height: calc((var(--product-modal-width) - 100px));
+    .right-arrow {
+      right: var(--arrow-height);
     }
   }
 `;
