@@ -9,28 +9,29 @@
 import styled from 'styled-components';
 
 const ImageCarouselStyles = styled.div`
-  --carousel-width: calc((var(--product-modal-width) / 3));
-  --carousel-height: calc(((var(--modal-body-height) -15px) / 2) - 5px);
-  --arrow-height: calc(var(--carousel-height) / 6);
+  width: calc((var(--product-modal-width) / 3));
+  height: calc(((var(--modal-body-height) -15px) / 2) - 5px);
+  --arrow-height: calc((var(--product-modal-width) / 18));
   position: relative;
   overflow: hidden;
-  width: var(--carousel-width);
-  height: var(--carousel-height);
   display: flex;
   justify-content: center;
   align-items: center;
 
   .slide-image {
-    width: var(--carousel-height);
-    height: var(--carousel-height);
+    width: calc((var(--product-modal-width) / 3));
+    height: calc((var(--product-modal-width) / 3));
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   .arrow {
     position: absolute;
-    height: var(--arrow-height);
-    width: var(--arrow-height);
-    font-size: var(--arrow-height);
-    top: calc(50% - (var(--arrow-height) / 2));
+    height: calc((var(--product-modal-width) / 24));
+    width: calc((var(--product-modal-width) / 24));
+    font-size: calc((var(--product-modal-width) / 24));
+    top: calc(50% - (var(--product-modal-width) / 48));
     color: rgba(0, 0, 0, 0.6);
     cursor: pointer;
     user-select: none;
@@ -39,10 +40,10 @@ const ImageCarouselStyles = styled.div`
     color: black;
   }
   .left-arrow {
-    left: calc(var(--arrow-height) / 8);
+    left: calc((var(--product-modal-width) / 180));
   }
   .right-arrow {
-    right: calc(var(--arrow-height) / 8);
+    right: calc((var(--product-modal-width) / 180));
   }
   .slide-inactive {
     opacity: 0;
@@ -56,9 +57,19 @@ const ImageCarouselStyles = styled.div`
 
   /* Small to medium devices (portrait phones, 576px and below) */
   @media (max-width: 575.98px) {
-    --carousel-width: calc(var(--product-modal-width) - 100px);
-    --carousel-height: calc(var(--carousel-width));
-    --arrow-height: calc(var(--carousel-height) / 10);
+    width: calc(var(--product-modal-width) - 100px);
+    height: calc(var(--carousel-width));
+    .arrow {
+      height: calc((var(--product-modal-width) / 15));
+      width: calc((var(--product-modal-width) / 15));
+      font-size: calc((var(--product-modal-width) / 15));
+      top: calc(50% - (var(--product-modal-width) / 30));
+    }
+
+    .slide-image {
+      width: calc((var(--product-modal-width) - 100px));
+      height: calc((var(--product-modal-width) - 100px));
+    }
   }
 `;
 
