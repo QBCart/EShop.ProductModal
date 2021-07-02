@@ -1262,13 +1262,46 @@
         "_ts": 1606822911
       },
       {
-        "BestSellerRank": 2,
-        "IsFeatured": 1,
+        "BestSellerRank": 1,
+        "IsFeatured": 0,
         "IsOnSale": 0,
-        "Images": [
-          "ITEM-8000028F-1269990123",
-          "ITEM-80000EC0-1469555022",
-          "broken id"
+        "Images": ["ITEM-8000028F-1269990123", "ITEM-80000EC0-1469555022"],
+        "Specs": [
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value",
+          "THis is a specs line for Dev Purposes: Here is the default spec value"
         ],
         "Discriminator": "ItemInventory",
         "ListID": "8000028F-1269990123",
@@ -1337,43 +1370,6 @@
         "TimeModified": "2020-10-23T15:20:35-04:00",
         "EditSequence": "1603222157",
         "Name": "VA12GF2F",
-        "Specs": [
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value",
-          "THis is a specs line for Dev Purposes: Here is the default spec value"
-        ],
         "IsActive": true,
         "id": "ITEM-8000028F-1269990123",
         "Created": "0001-01-01T00:00:00",
@@ -1388,8 +1384,12 @@
       },
       {
         "BestSellerRank": 2,
-        "IsFeatured": 1,
+        "IsFeatured": 0,
         "IsOnSale": 0,
+        "Images": ["ITEM-800004E2-1313778339"],
+        "Specs": [
+          "This is a specs line for Dev Purposes: Here is a very long description. This is a specs line for Dev Purposes: Here is a very long description. This is a specs line for Dev Purposes: Here is a very long description. This is a specs line for Dev Purposes: Here is a very long description. This is a specs line for Dev Purposes: Here is a very long description. This is a specs line for Dev Purposes: Here is a very long description."
+        ],
         "Discriminator": "ItemInventory",
         "ListID": "800004E2-1313778339",
         "FullName": "Accessories:Adaptors:VA12GM2M",
@@ -1437,7 +1437,6 @@
         "ExternalGUID": null,
         "CustomerPrice": null,
         "HasSiteLocation": true,
-        "Images": ["ITEM-800004E2-1313778339"],
         "IsPublic": true,
         "IsCategory": false,
         "IsItemList": false,
@@ -1471,8 +1470,8 @@
         "_ts": 1606822910
       },
       {
-        "BestSellerRank": 2,
-        "IsFeatured": 1,
+        "BestSellerRank": 3,
+        "IsFeatured": 0,
         "IsOnSale": 0,
         "Discriminator": "ItemInventory",
         "ListID": "80000EC0-1469555022",
@@ -1554,7 +1553,7 @@
         "_ts": 1606822910
       },
       {
-        "BestSellerRank": 2,
+        "BestSellerRank": 4,
         "IsFeatured": 1,
         "IsOnSale": 0,
         "Discriminator": "ItemInventory",
@@ -1637,7 +1636,7 @@
         "_ts": 1606822910
       },
       {
-        "BestSellerRank": 2,
+        "BestSellerRank": 5,
         "IsFeatured": 1,
         "IsOnSale": 0,
         "Discriminator": "ItemInventory",
@@ -1720,7 +1719,7 @@
         "_ts": 1606822910
       },
       {
-        "BestSellerRank": 2,
+        "BestSellerRank": 6,
         "IsFeatured": 1,
         "IsOnSale": 0,
         "Discriminator": "ItemInventory",
@@ -1803,9 +1802,9 @@
         "_ts": 1606822910
       },
       {
-        "BestSellerRank": 2,
-        "IsFeatured": 1,
-        "IsOnSale": 0,
+        "BestSellerRank": 7,
+        "IsFeatured": 0,
+        "IsOnSale": 1,
         "Discriminator": "ItemInventory",
         "ListID": "D0000-997204756",
         "FullName": "Accessories:Adaptors:VFA",
@@ -1886,9 +1885,9 @@
         "_ts": 1606822910
       },
       {
-        "BestSellerRank": 2,
-        "IsFeatured": 1,
-        "IsOnSale": 0,
+        "BestSellerRank": 8,
+        "IsFeatured": 0,
+        "IsOnSale": 1,
         "Discriminator": "ItemInventory",
         "ListID": "80000F84-1478721024",
         "FullName": "Accessories:Adaptors:VFAH20",
@@ -1969,9 +1968,9 @@
         "_ts": 1606822910
       },
       {
-        "BestSellerRank": 2,
-        "IsFeatured": 1,
-        "IsOnSale": 0,
+        "BestSellerRank": 9,
+        "IsFeatured": 0,
+        "IsOnSale": 1,
         "Discriminator": "ItemInventory",
         "ListID": "80000801-1363285327",
         "FullName": "Accessories:Adaptors:VR100",
@@ -2049,7 +2048,7 @@
         "_ts": 1606822910
       },
       {
-        "BestSellerRank": 2,
+        "BestSellerRank": 10,
         "IsFeatured": 1,
         "IsOnSale": 0,
         "Discriminator": "ItemInventory",
@@ -2129,7 +2128,7 @@
         "_ts": 1606822910
       },
       {
-        "BestSellerRank": 2,
+        "BestSellerRank": 11,
         "IsFeatured": 1,
         "IsOnSale": 0,
         "Discriminator": "ItemInventory",
@@ -2209,7 +2208,7 @@
         "_ts": 1606822941
       },
       {
-        "BestSellerRank": 2,
+        "BestSellerRank": 12,
         "IsFeatured": 1,
         "IsOnSale": 0,
         "Discriminator": "ItemInventory",
@@ -4692,7 +4691,7 @@
         "_ts": 1606822912
       },
       {
-        "BestSellerRank": 2,
+        "BestSellerRank": 13,
         "IsFeatured": 1,
         "IsOnSale": 0,
         "Discriminator": "ItemInventory",
