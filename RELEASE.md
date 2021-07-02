@@ -6,7 +6,7 @@
 
 ### Fixes
 
-- none
+- Add cache-control header to speed up cdn purge.
 
 ### Breaking
 
