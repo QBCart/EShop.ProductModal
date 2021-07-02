@@ -62,7 +62,7 @@ document.write(
       <script type="module" defer>
         import 'https://qbcdemo.z13.web.core.windows.net/eshop/app-shell/index.js';
         import 'https://qbcdemo.z13.web.core.windows.net/eshop/sync-component/index.js';
-        //import 'https://qbcdemo.z13.web.core.windows.net/eshop/cart/index.js';
+        import 'https://qbcdemo.z13.web.core.windows.net/eshop/cart/index.js';
         import 'https://qbcdemo.z13.web.core.windows.net/eshop/search-bar/index.js';
         import 'https://qbcdemo.z13.web.core.windows.net/eshop/toast/index.js';
         import 'https://qbcdemo.z13.web.core.windows.net/eshop/alert-modal/index.js';
