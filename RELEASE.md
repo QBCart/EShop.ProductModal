@@ -2,7 +2,7 @@
 
 ### New
 
-- none
+- Use javascript for page navigation.
 
 ### Fixes
 
