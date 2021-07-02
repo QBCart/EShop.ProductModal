@@ -7,10 +7,12 @@
  */
 
 import React, { FC, useState } from 'react';
-// prettier-ignore
-import ImageCarouselStyles from './style.js'
+import type { ItemInventory } from '@qbcart/types';
+
+import ImageCarouselStyles from './style.js';
+
 interface Props {
-  item: any;
+  item?: ItemInventory;
   imagesStorageUrl: string;
 }
 
@@ -19,13 +21,17 @@ const ImageCarousel: FC<Props> = (props: Props) => {
 
   function nextSlide() {
     setCurrentSlide(
-      currentSlide === props.item.Images?.length - 1 ? 0 : currentSlide + 1
+      currentSlide === (props.item?.Images?.length ?? 0) - 1
+        ? 0
+        : currentSlide + 1
     );
   }
 
   function prevSlide() {
     setCurrentSlide(
-      currentSlide === 0 ? props.item.Images?.length - 1 : currentSlide - 1
+      currentSlide === 0
+        ? (props.item?.Images?.length ?? 0) - 1
+        : currentSlide - 1
     );
   }
 
