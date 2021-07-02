@@ -7,20 +7,31 @@
  */
 
 import React, { FC, useEffect, useState } from 'react';
+import { useRemoveProductModal } from '@qbcart/eshop-inventory-hooks';
 import { toUSCurrency } from '@qbcart/utils';
+import type { ItemInventory } from '@qbcart/types';
 
 import ScrollBoxStyles from './style.js';
 
 interface Props {
-  item: any;
-  price: any;
+  item?: ItemInventory;
+  price: number;
 }
 
 const ScrollBox: FC<Props> = (props: Props) => {
   const [boxDisplay, setBoxDisplay] = useState('overview');
+  const removeProductModal = useRemoveProductModal();
+
   useEffect(() => {
     setBoxDisplay('overview');
   }, [props.item]);
+
+  const navigate = async () => {
+    if (props.item) {
+      await removeProductModal(props.item.id);
+      window.location.assign(props.item.Href);
+    }
+  };
 
   return (
     <ScrollBoxStyles>
@@ -43,7 +54,7 @@ const ScrollBox: FC<Props> = (props: Props) => {
         >
           Specs
         </div>
-        <a className="product-page-anchor" href={props.item?.Href}>
+        <a className="product-page-anchor" onClick={() => navigate()}>
           <span className="anchor-text">Visit Page</span>
           <span className="material-icons">open_in_new</span>
         </a>
@@ -62,7 +73,7 @@ const ScrollBox: FC<Props> = (props: Props) => {
             {props.item?.Specs && props.item.Specs.length > 0 ? (
               props.item.Specs.map((textline, index) => {
                 return (
-                  <div key={`${props.item.id}-specs-textline-${index}`}>
+                  <div key={`${props.item?.id}-specs-textline-${index}`}>
                     {textline}
                   </div>
                 );
