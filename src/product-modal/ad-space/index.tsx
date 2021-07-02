@@ -7,8 +7,8 @@
  */
 
 import React, { FC } from 'react';
-// prettier-ignore
-import AdSpaceStyles from './style.js'
+
+import AdSpaceStyles from './style.js';
 
 const AdSpace: FC = () => {
   return <AdSpaceStyles></AdSpaceStyles>;
