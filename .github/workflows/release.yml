@@ -6,6 +6,7 @@ name: Release
 on:
   push:
     branches:
+      - main
       - 'v[0-9]+.[0-9]+.[0-9]+-alpha.[0-9]+'
       - 'v[0-9]+.[0-9]+.[0-9]+-beta.[0-9]+'
       - 'v[0-9]+.[0-9]+.[0-9]+'
@@ -99,19 +100,19 @@ jobs:
         run: |
           az account set --subscription ${{ env.SUBSCRIPTION_ID }}
           az storage blob delete-batch --account-name ${{ env.STORAGE_NAME }} --source '$web' --pattern 'eshop/product-modal/*'
-          az storage blob upload-batch --account-name ${{ env.STORAGE_NAME }} --source 'publish_esm' --destination '$web/eshop/product-modal' --auth-mode key --content-cache max-age=3600
+          az storage blob upload-batch --account-name ${{ env.STORAGE_NAME }} --source 'publish_esm' --destination '$web/eshop/product-modal' --auth-mode key --content-cache 'max-age=3600, must-revalidate'
 
       #########################
       # Create GitHub Release #
       #########################
-      - name: Create GitHub Release
-        id: create_release
-        uses: actions/create-release@v1
-        with:
-          tag_name: ${{ env.new_version }}
-          release_name: ${{ env.new_version }}
-          body_path: RELEASE.md
-          draft: false
-          prerelease: ${{ contains(env.new_version, 'alpha') || contains(env.new_version, 'beta') }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Create GitHub Release
+      #   id: create_release
+      #   uses: actions/create-release@v1
+      #   with:
+      #     tag_name: ${{ env.new_version }}
+      #     release_name: ${{ env.new_version }}
+      #     body_path: RELEASE.md
+      #     draft: false
+      #     prerelease: ${{ contains(env.new_version, 'alpha') || contains(env.new_version, 'beta') }}
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
