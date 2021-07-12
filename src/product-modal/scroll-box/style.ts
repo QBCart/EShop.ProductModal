@@ -82,6 +82,75 @@ const ScrollBoxStyles = styled.div`
     height: calc(var(--scroll-box-height) - 48px);
   }
 
+  .price-container {
+    display: flex;
+    margin-top: calc(var(--box-height) * 0.0125);
+  }
+
+  .retail-price {
+    font-size: calc(var(--box-height) / 24);
+    font-weight: 500;
+  }
+
+  .price-slash {
+    text-decoration: line-through;
+  }
+
+  .product-price {
+    font-size: calc(var(--box-height) / 24);
+    font-weight: 500;
+    margin-left: 10px;
+    color: green;
+  }
+
+  .ribbon-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: calc(var(--box-width) * 0.05);
+  }
+
+  .ribbon {
+    --ribbon-width: calc((var(--box-width) * 0.25));
+
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    width: var(--ribbon-width);
+    height: calc(var(--ribbon-width) * 0.2);
+    /* margin: 15px -18px; */
+    margin: calc(var(--box-height) * 0.025)
+      calc(0px - calc(var(--ribbon-width) * 0.25));
+    /* for 45 deg rotation */
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+
+  .ribbon span {
+    /* text wrapper dimensions & position */
+    display: flex;
+    height: calc((var(--box-width) * 0.05) - 2px);
+    width: 100%;
+    border-top: 1px solid #faa;
+    border-bottom: 1px solid #faa;
+
+    /* text dimensions & position */
+    justify-content: center;
+    align-items: center;
+    line-height: calc((var(--box-width) * 0.035));
+    font-size: calc((var(--box-width) * 0.035));
+
+    /* font styles */
+    font-weight: bold;
+    color: #fff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    text-shadow: 0 0 5px #444;
+  }
+
   /* Small to medium devices (portrait phones, 576px and below) */
   @media (max-width: 575.98px) {
     --scroll-box-height: unset;

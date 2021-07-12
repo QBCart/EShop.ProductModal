@@ -21,6 +21,12 @@ import Footer from './footer/index.js';
 interface Props {
   imagesStorageUrl: string;
   userLoggedIn: boolean;
+  bestSellersRibbonBGColor: string;
+  bestSellersRibbonTextColor: string;
+  featuredItemsRibbonBGColor: string;
+  featuredItemsRibbonTextColor: string;
+  itemsOnSaleRibbonBGColor: string;
+  itemsOnSaleRibbonTextColor: string;
 }
 
 const ProductModal: FC<Props> = (props: Props) => {
@@ -35,7 +41,7 @@ const ProductModal: FC<Props> = (props: Props) => {
     itemId
   );
 
-  const price = customPrice ?? item?.SalesPrice ?? 0;
+  // const price = customPrice ?? item?.SalesPrice ?? 0;
 
   useEffect(() => {
     changeItem(itemId);
@@ -50,6 +56,14 @@ const ProductModal: FC<Props> = (props: Props) => {
       modal.style.display = 'block';
     }
   }, [itemId, ref]);
+
+  const price = item?.IsOnSale
+    ? item?.OnSalePrice
+      ? customPrice && customPrice < item?.OnSalePrice
+        ? customPrice
+        : item?.OnSalePrice
+      : customPrice
+    : customPrice;
 
   /*
    *  Animation must be set when hiding modal to function properly.
@@ -80,6 +94,10 @@ const ProductModal: FC<Props> = (props: Props) => {
     }
   }
 
+  if (!itemId) {
+    return null;
+  }
+
   return (
     <ProductModalStyles ref={ref} onAnimationEnd={() => onAnimationEnd()}>
       <div className="modal-wrapper">
@@ -93,7 +111,17 @@ const ProductModal: FC<Props> = (props: Props) => {
               />
               <AdSpace></AdSpace>
             </div>
-            <ScrollBox item={item} price={price} />
+            <ScrollBox
+              item={item}
+              price={price}
+              userLoggedIn={props.userLoggedIn}
+              bestSellersRibbonBGColor={props.bestSellersRibbonBGColor}
+              bestSellersRibbonTextColor={props.bestSellersRibbonTextColor}
+              featuredItemsRibbonBGColor={props.featuredItemsRibbonBGColor}
+              featuredItemsRibbonTextColor={props.featuredItemsRibbonTextColor}
+              itemsOnSaleRibbonBGColor={props.itemsOnSaleRibbonBGColor}
+              itemsOnSaleRibbonTextColor={props.itemsOnSaleRibbonTextColor}
+            />
           </div>
           <Footer
             item={item}
