@@ -6,16 +6,17 @@
  * LICENSE file in the root directory of this source repo.
  */
 
-import React, { FC } from 'react';
+import type { ItemInventory } from '@qbcart/types';
+import React, { FC, Dispatch, SetStateAction } from 'react';
 
 import FooterStyles from './style.js';
 
 interface Props {
-  item: any;
-  quantity: any;
-  setQuantity: any;
-  submitToCart: any;
-  hideModal;
+  item?: ItemInventory;
+  quantity: string;
+  setQuantity: Dispatch<SetStateAction<string>>;
+  submitToCart: (id: string, quantity: string) => Promise<void>;
+  hideModal: () => void;
 }
 
 const ProductModal: FC<Props> = (props: Props) => {

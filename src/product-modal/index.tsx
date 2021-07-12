@@ -12,7 +12,6 @@ import { useInventoryItem, useCustomPricing, useProductModal, useRemoveProductMo
 import { useAddToCart } from '@qbcart/eshop-cart-hooks';
 
 import ProductModalStyles from './style.js';
-
 import AdSpace from './ad-space/index.js';
 import ImageCarousel from './image-carousel/index.js';
 import ScrollBox from './scroll-box/index.js';

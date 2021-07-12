@@ -39,6 +39,7 @@ const FooterStyles = styled.div`
 
   .add-to-cart-button:hover {
     background-color: rgba(40, 160, 60);
+    cursor: pointer;
   }
 
   .close-button {
@@ -52,6 +53,7 @@ const FooterStyles = styled.div`
 
   .close-button:hover {
     background-color: rgba(208, 30, 60);
+    cursor: pointer;
   }
 `;
 

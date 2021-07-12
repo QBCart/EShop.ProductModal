@@ -62,6 +62,12 @@ const ScrollBoxStyles = styled.div`
     color: rgb(0, 123, 255);
   }
 
+  .product-page-anchor:hover,
+  .header-tab-active:hover,
+  .header-tab-inactive:hover {
+    cursor: pointer;
+  }
+
   .product-page-anchor:hover .anchor-text {
     text-decoration: underline;
   }
