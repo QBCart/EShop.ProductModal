@@ -88,7 +88,7 @@ const ProductModal: FC<Props> = (props: Props) => {
   };
 
   async function submitToCart(id: string, quantity: string) {
-    if (await addToCart(id, price, quantity)) {
+    if (await addToCart(id, price ?? item!.SalesPrice, quantity)) {
       hideModal();
     }
   }
@@ -111,8 +111,8 @@ const ProductModal: FC<Props> = (props: Props) => {
               <AdSpace></AdSpace>
             </div>
             <ScrollBox
-              item={item}
-              price={price}
+              item={item!}
+              price={price!}
               userLoggedIn={props.userLoggedIn}
               bestSellersRibbonBGColor={props.bestSellersRibbonBGColor}
               bestSellersRibbonTextColor={props.bestSellersRibbonTextColor}
