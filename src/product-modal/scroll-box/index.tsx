@@ -79,70 +79,74 @@ const ScrollBox: FC<Props> = (props: Props) => {
           <div>
             <h3>{props.item?.SalesDesc}</h3>
             <h4>Product SKU: {props.item?.Name}</h4>
-            <div className="price-container">
-              <div
-                className={`retail-price ${props.price ? 'price-slash' : ''}`}
-              >
-                {toUSCurrency(props.item.SalesPrice)}
+            <div className="flex-row-space-between">
+              <div className="price-container">
+                <div
+                  className={`retail-price ${props.price ? 'price-slash' : ''}`}
+                >
+                  {toUSCurrency(props.item.SalesPrice)}
+                </div>
+                {props.price ? (
+                  <div className="product-price">
+                    {toUSCurrency(props.price)}
+                  </div>
+                ) : null}
               </div>
-              {props.price ? (
-                <div className="product-price">{toUSCurrency(props.price)}</div>
+              {showBanners ? (
+                <div className="ribbon-container">
+                  {props.item.BestSellerRank &&
+                  props.item.BestSellerRank > 0 ? (
+                    <div
+                      className="ribbon"
+                      style={{
+                        backgroundColor: props.bestSellersRibbonBGColor
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: props.bestSellersRibbonTextColor
+                        }}
+                      >
+                        Best Seller
+                      </span>
+                    </div>
+                  ) : null}
+                  {props.item.IsOnSale ? (
+                    <div
+                      className="ribbon"
+                      style={{
+                        backgroundColor: props.itemsOnSaleRibbonBGColor
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: props.itemsOnSaleRibbonTextColor
+                        }}
+                      >
+                        On Sale
+                      </span>
+                    </div>
+                  ) : null}
+
+                  {props.item.IsFeatured ? (
+                    <div
+                      className="ribbon"
+                      style={{
+                        backgroundColor: props.featuredItemsRibbonBGColor
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: props.featuredItemsRibbonTextColor
+                        }}
+                      >
+                        Featured
+                      </span>
+                    </div>
+                  ) : null}
+                </div>
               ) : null}
             </div>
-
-            {showBanners ? (
-              <div className="ribbon-container">
-                {props.item.BestSellerRank && props.item.BestSellerRank > 0 ? (
-                  <div
-                    className="ribbon"
-                    style={{
-                      backgroundColor: props.bestSellersRibbonBGColor
-                    }}
-                  >
-                    <span
-                      style={{
-                        color: props.bestSellersRibbonTextColor
-                      }}
-                    >
-                      Best Seller
-                    </span>
-                  </div>
-                ) : null}
-                {props.item.IsOnSale ? (
-                  <div
-                    className="ribbon"
-                    style={{
-                      backgroundColor: props.itemsOnSaleRibbonBGColor
-                    }}
-                  >
-                    <span
-                      style={{
-                        color: props.itemsOnSaleRibbonTextColor
-                      }}
-                    >
-                      On Sale
-                    </span>
-                  </div>
-                ) : null}
-
-                {props.item.IsFeatured ? (
-                  <div
-                    className="ribbon"
-                    style={{
-                      backgroundColor: props.featuredItemsRibbonBGColor
-                    }}
-                  >
-                    <span
-                      style={{
-                        color: props.featuredItemsRibbonTextColor
-                      }}
-                    >
-                      Featured
-                    </span>
-                  </div>
-                ) : null}
-              </div>
-            ) : null}
 
             <h4>Details:</h4>
             <p>{props.item?.FullDesc}</p>
