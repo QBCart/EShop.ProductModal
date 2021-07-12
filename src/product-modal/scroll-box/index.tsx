@@ -14,7 +14,7 @@ import type { ItemInventory } from '@qbcart/types';
 import ScrollBoxStyles from './style.js';
 
 interface Props {
-  item: any;
+  item: ItemInventory;
   price: number;
   userLoggedIn: boolean;
   bestSellersRibbonBGColor: string;
