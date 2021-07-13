@@ -1,6 +1,7 @@
 {
   "banners": {
     "lastSynced": 98437491,
+    "lastForcedUpdate": 1000,
     "items": [
       {
         "id": "ssdkfsdfa",
@@ -54,6 +55,7 @@
   },
   "inventory": {
     "lastSynced": 98437491,
+    "lastForcedUpdate": 1000,
     "items": [
       {
         "BestSellerRank": 0,
