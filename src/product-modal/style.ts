@@ -97,10 +97,14 @@ const ProductModalStyles = styled.div`
   /* Small to medium devices (portrait phones, 576px and below) */
   @media (max-width: 575.98px) {
     --product-modal-width: calc(100vw - 10px);
-    --product-modal-height: 70vh;
+    --product-modal-height: 85vh;
 
     .modal-wrapper {
       align-items: flex-start;
+    }
+
+    .modal-content {
+      margin-top: 5px;
     }
 
     .modal-body {
