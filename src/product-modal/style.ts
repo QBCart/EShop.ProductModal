@@ -99,6 +99,10 @@ const ProductModalStyles = styled.div`
     --product-modal-width: calc(100vw - 10px);
     --product-modal-height: 70vh;
 
+    .modal-wrapper {
+      align-items: flex-start;
+    }
+
     .modal-body {
       flex-direction: column;
       overflow-y: auto;
