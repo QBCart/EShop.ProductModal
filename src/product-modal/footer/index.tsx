@@ -23,25 +23,29 @@ const ProductModal: FC<Props> = (props: Props) => {
   return (
     <FooterStyles>
       <div className="footer-left">
-        <input
-          className="quantity-input"
-          type="number"
-          step="1"
-          min="1"
-          onChange={(e) => props.setQuantity(e.target.value)}
-          value={props.quantity}
-        ></input>
-        <button
-          className="add-to-cart-button"
-          onClick={() => {
-            if (props.item?.id) {
-              props.submitToCart(props.item.id, props.quantity);
-            }
-          }}
-          type="button"
-        >
-          <span className="material-icons">add_shopping_cart</span>
-        </button>
+        {props.item ? (
+          <>
+            <input
+              className="quantity-input"
+              type="number"
+              step="1"
+              min="1"
+              onChange={(e) => props.setQuantity(e.target.value)}
+              value={props.quantity}
+            />
+            <button
+              className="add-to-cart-button"
+              onClick={() => {
+                if (props.item?.id) {
+                  props.submitToCart(props.item.id, props.quantity);
+                }
+              }}
+              type="button"
+            >
+              <span className="material-icons">add_shopping_cart</span>
+            </button>
+          </>
+        ) : null}
       </div>
       <div className="footer-right">
         <button
