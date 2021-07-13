@@ -36,7 +36,16 @@ const ImageCarousel: FC<Props> = (props: Props) => {
   }
 
   if (!props.item) {
-    return null;
+    return (
+      <ImageCarouselStyles>
+        <div
+          className="slide-image"
+          style={{
+            backgroundImage: `url(${props.imagesStorageUrl}images/product-not-available.png)`
+          }}
+        ></div>
+      </ImageCarouselStyles>
+    );
   }
 
   if ((props.item.Images?.length ?? 0) < 1) {
