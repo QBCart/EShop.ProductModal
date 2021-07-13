@@ -78,7 +78,7 @@ const ScrollBox: FC<Props> = (props: Props) => {
         {boxDisplay === 'overview' ? (
           <div>
             <h3>{props.item?.SalesDesc}</h3>
-            <h4>Product SKU: {props.item?.Name}</h4>
+            <h4>SKU: {props.item?.Name}</h4>
             <div className="flex-row-space-between">
               <div className="price-container">
                 <div
