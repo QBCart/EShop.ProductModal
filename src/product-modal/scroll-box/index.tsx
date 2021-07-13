@@ -14,8 +14,8 @@ import type { ItemInventory } from '@qbcart/types';
 import ScrollBoxStyles from './style.js';
 
 interface Props {
-  item: ItemInventory;
-  price: number;
+  item?: ItemInventory;
+  price?: number;
   userLoggedIn: boolean;
   bestSellersRibbonBGColor: string;
   bestSellersRibbonTextColor: string;
@@ -39,7 +39,7 @@ const ScrollBox: FC<Props> = (props: Props) => {
   const showBanners =
     props.item?.IsFeatured ||
     props.item?.IsOnSale ||
-    props.item?.BestSellerRank > 0;
+    (props.item?.BestSellerRank ?? 0) > 0;
 
   if (!props.item) {
     return null;

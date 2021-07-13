@@ -119,8 +119,8 @@ const ProductModal: FC<Props> = (props: Props) => {
               <AdSpace></AdSpace>
             </div>
             <ScrollBox
-              item={item!}
-              price={price!}
+              item={item}
+              price={price}
               priceColor={priceColor}
               userLoggedIn={props.userLoggedIn}
               bestSellersRibbonBGColor={props.bestSellersRibbonBGColor}
