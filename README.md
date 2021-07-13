@@ -2,10 +2,8 @@
 
 Product modal component used across the QBCart EShop ecosystem.
 
-### Deployments
-
-| Continuos Integration | Staging | Release |
-| --- | --- | --- |
-| ![CI](https://github.com/QBCart/EShop.ProductModal/workflows/CI/badge.svg) | ![Demo](https://github.com/QBCart/EShop.ProductModal/workflows/Demo/badge.svg) | ![Release](https://github.com/QBCart/EShop.ProductModal/workflows/Release/badge.svg) |
+| Continuos Integration |Release |
+| --- | --- |
+| ![CI](https://github.com/QBCart/EShop.ProductModal/workflows/CI/badge.svg) | ![Release](https://github.com/QBCart/EShop.ProductModal/workflows/Release/badge.svg) |
 
 ###### Licensed under MIT - Copyright (c) 2021 QBCart Inc. All rights reserved.
