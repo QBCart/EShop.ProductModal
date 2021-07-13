@@ -15,7 +15,17 @@ import ScrollBoxStyles from './style.js';
 
 interface Props {
   item?: ItemInventory;
-  price: number;
+  price?: number;
+  userLoggedIn: boolean;
+  bestSellersRibbonBGColor: string;
+  bestSellersRibbonTextColor: string;
+  featuredItemsRibbonBGColor: string;
+  featuredItemsRibbonTextColor: string;
+  itemsOnSaleRibbonBGColor: string;
+  itemsOnSaleRibbonTextColor: string;
+  customPriceTextColor: string;
+  onSalePriceTextColor: string;
+  priceColor: string;
 }
 
 const ScrollBox: FC<Props> = (props: Props) => {
@@ -26,6 +36,11 @@ const ScrollBox: FC<Props> = (props: Props) => {
     setBoxDisplay('overview');
   }, [props.item]);
 
+  const showBanners =
+    props.item?.IsFeatured ||
+    props.item?.IsOnSale ||
+    (props.item?.BestSellerRank ?? 0) > 0;
+
   const navigate = async () => {
     if (props.item) {
       await removeProductModal(props.item.id);
@@ -33,7 +48,7 @@ const ScrollBox: FC<Props> = (props: Props) => {
     }
   };
 
-  return (
+  return props.item ? (
     <ScrollBoxStyles>
       <div className="scroll-box-header">
         <div
@@ -61,13 +76,86 @@ const ScrollBox: FC<Props> = (props: Props) => {
       </div>
       <div className="scroll-box-body">
         {boxDisplay === 'overview' ? (
-          <div>
-            <h3>Product ID: {props.item?.Name}</h3>
-            <h4>Description: {props.item?.SalesDesc}</h4>
-            <h4>Price: {toUSCurrency(props.price)}</h4>
+          <>
+            <h3>{props.item?.SalesDesc}</h3>
+            <h4>SKU: {props.item?.Name}</h4>
+            <div className="flex-row-space-between">
+              <div className="price-container">
+                <div
+                  className={`retail-price ${props.price ? 'price-slash' : ''}`}
+                >
+                  {toUSCurrency(props.item.SalesPrice)}
+                </div>
+                {props.price ? (
+                  <div
+                    className="product-price"
+                    style={{
+                      color: props.price ? props.priceColor : 'black'
+                    }}
+                  >
+                    {toUSCurrency(props.price)}
+                  </div>
+                ) : null}
+              </div>
+              {showBanners ? (
+                <div className="ribbon-container">
+                  {props.item.BestSellerRank &&
+                  props.item.BestSellerRank > 0 ? (
+                    <div
+                      className="ribbon"
+                      style={{
+                        backgroundColor: props.bestSellersRibbonBGColor
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: props.bestSellersRibbonTextColor
+                        }}
+                      >
+                        Best Seller
+                      </span>
+                    </div>
+                  ) : null}
+                  {props.item.IsOnSale ? (
+                    <div
+                      className="ribbon"
+                      style={{
+                        backgroundColor: props.itemsOnSaleRibbonBGColor
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: props.itemsOnSaleRibbonTextColor
+                        }}
+                      >
+                        On Sale
+                      </span>
+                    </div>
+                  ) : null}
+
+                  {props.item.IsFeatured ? (
+                    <div
+                      className="ribbon"
+                      style={{
+                        backgroundColor: props.featuredItemsRibbonBGColor
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: props.featuredItemsRibbonTextColor
+                        }}
+                      >
+                        Featured
+                      </span>
+                    </div>
+                  ) : null}
+                </div>
+              ) : null}
+            </div>
+
             <h4>Details:</h4>
             <p>{props.item?.FullDesc}</p>
-          </div>
+          </>
         ) : (
           <div>
             {props.item?.Specs && props.item.Specs.length > 0 ? (
@@ -86,6 +174,15 @@ const ScrollBox: FC<Props> = (props: Props) => {
             )}
           </div>
         )}
+      </div>
+    </ScrollBoxStyles>
+  ) : (
+    <ScrollBoxStyles>
+      <div className="scroll-box-header">
+        <div className="header-tab-active">Not Available</div>
+      </div>
+      <div className="scroll-box-body">
+        <h3>Sorry, the item you were viewing is no longer available.</h3>
       </div>
     </ScrollBoxStyles>
   );

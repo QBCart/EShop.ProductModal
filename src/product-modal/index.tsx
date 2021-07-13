@@ -20,6 +20,14 @@ import Footer from './footer/index.js';
 interface Props {
   imagesStorageUrl: string;
   userLoggedIn: boolean;
+  bestSellersRibbonBGColor: string;
+  bestSellersRibbonTextColor: string;
+  featuredItemsRibbonBGColor: string;
+  featuredItemsRibbonTextColor: string;
+  itemsOnSaleRibbonBGColor: string;
+  itemsOnSaleRibbonTextColor: string;
+  customPriceTextColor: string;
+  onSalePriceTextColor: string;
 }
 
 const ProductModal: FC<Props> = (props: Props) => {
@@ -34,8 +42,6 @@ const ProductModal: FC<Props> = (props: Props) => {
     itemId
   );
 
-  const price = customPrice ?? item?.SalesPrice ?? 0;
-
   useEffect(() => {
     changeItem(itemId);
     changeCustomPrice(itemId);
@@ -49,6 +55,22 @@ const ProductModal: FC<Props> = (props: Props) => {
       modal.style.display = 'block';
     }
   }, [itemId, ref]);
+
+  const price = item?.IsOnSale
+    ? item?.OnSalePrice
+      ? customPrice && customPrice < item?.OnSalePrice
+        ? customPrice
+        : item?.OnSalePrice
+      : customPrice
+    : customPrice;
+
+  const priceColor = item?.IsOnSale
+    ? item?.OnSalePrice
+      ? customPrice && customPrice < item?.OnSalePrice
+        ? props.customPriceTextColor
+        : props.onSalePriceTextColor
+      : props.customPriceTextColor
+    : props.customPriceTextColor;
 
   /*
    *  Animation must be set when hiding modal to function properly.
@@ -74,9 +96,13 @@ const ProductModal: FC<Props> = (props: Props) => {
   };
 
   async function submitToCart(id: string, quantity: string) {
-    if (await addToCart(id, price, quantity)) {
+    if (await addToCart(id, price ?? item!.SalesPrice, quantity)) {
       hideModal();
     }
+  }
+
+  if (!itemId) {
+    return null;
   }
 
   return (
@@ -92,7 +118,20 @@ const ProductModal: FC<Props> = (props: Props) => {
               />
               <AdSpace></AdSpace>
             </div>
-            <ScrollBox item={item} price={price} />
+            <ScrollBox
+              item={item}
+              price={price}
+              priceColor={priceColor}
+              userLoggedIn={props.userLoggedIn}
+              bestSellersRibbonBGColor={props.bestSellersRibbonBGColor}
+              bestSellersRibbonTextColor={props.bestSellersRibbonTextColor}
+              featuredItemsRibbonBGColor={props.featuredItemsRibbonBGColor}
+              featuredItemsRibbonTextColor={props.featuredItemsRibbonTextColor}
+              itemsOnSaleRibbonBGColor={props.itemsOnSaleRibbonBGColor}
+              itemsOnSaleRibbonTextColor={props.itemsOnSaleRibbonTextColor}
+              customPriceTextColor={props.customPriceTextColor}
+              onSalePriceTextColor={props.onSalePriceTextColor}
+            />
           </div>
           <Footer
             item={item}

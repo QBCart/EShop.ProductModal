@@ -28,32 +28,54 @@ const FooterStyles = styled.div`
   }
 
   .add-to-cart-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 30px;
     width: 40px;
     margin: 0 5px;
     color: white;
-    background-color: rgba(49, 171, 69);
+    background-color: rgb(49, 171, 69);
     border: none;
     border-radius: 2px;
   }
 
+  .add-to-cart-button span {
+    height: 22px;
+    width: 22px;
+    line-height: 22px;
+  }
+
   .add-to-cart-button:hover {
-    background-color: rgba(40, 160, 60);
+    background-color: rgb(40, 138, 57);
     cursor: pointer;
   }
 
   .close-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 30px;
     width: 40px;
     color: white;
-    background-color: rgba(218, 40, 70);
+    background-color: rgb(108, 117, 125);
     border: none;
     border-radius: 2px;
   }
 
   .close-button:hover {
-    background-color: rgba(208, 30, 60);
+    background-color: rgb(83, 90, 95);
     cursor: pointer;
+  }
+
+  button span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 17px;
+    width: 16px;
+    text-align: center;
+    line-height: 17px;
   }
 `;
 

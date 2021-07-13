@@ -88,6 +88,78 @@ const ScrollBoxStyles = styled.div`
     height: calc(var(--scroll-box-height) - 48px);
   }
 
+  .flex-row-space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .price-container {
+    display: flex;
+    margin-top: -20px;
+  }
+
+  .retail-price {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .price-slash {
+    text-decoration: line-through;
+  }
+
+  .product-price {
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 10px;
+  }
+
+  .ribbon-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+  }
+
+  .ribbon {
+    --ribbon-width: 80px;
+
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    width: var(--ribbon-width);
+    height: calc(var(--ribbon-width) * 0.2);
+    margin: 15px -18px;
+    /* for 45 deg rotation */
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+
+  .ribbon span {
+    /* text wrapper dimensions & position */
+    display: flex;
+    height: 14px;
+    width: 100%;
+    border-top: 1px solid #faa;
+    border-bottom: 1px solid #faa;
+
+    /* text dimensions & position */
+    justify-content: center;
+    align-items: center;
+    line-height: 11px;
+    font-size: 11px;
+
+    /* font styles */
+    font-weight: bold;
+    color: #fff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    text-shadow: 0 0 5px #444;
+  }
+
   /* Small to medium devices (portrait phones, 576px and below) */
   @media (max-width: 575.98px) {
     --scroll-box-height: unset;
@@ -95,6 +167,20 @@ const ScrollBoxStyles = styled.div`
 
     .scroll-box-body {
       border: none;
+    }
+  }
+
+  /* Small to medium devices (portrait phones, 375px and below) */
+  @media (max-width: 375px) {
+    .ribbon {
+      --ribbon-width: 60px;
+      margin: 15px -17px;
+    }
+
+    .ribbon span {
+      height: 10px;
+      line-height: 8px;
+      font-size: 8px;
     }
   }
 `;

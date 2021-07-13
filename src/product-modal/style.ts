@@ -63,7 +63,7 @@ const ProductModalStyles = styled.div`
     justify-content: space-between;
     width: var(--product-modal-width);
     height: var(--product-modal-height);
-    border: 2px solid black;
+    border: 1px solid lightgrey;
     border-radius: 4px;
     background-color: white;
   }
@@ -97,7 +97,15 @@ const ProductModalStyles = styled.div`
   /* Small to medium devices (portrait phones, 576px and below) */
   @media (max-width: 575.98px) {
     --product-modal-width: calc(100vw - 10px);
-    --product-modal-height: calc(100vh - 124px);
+    --product-modal-height: 85vh;
+
+    .modal-wrapper {
+      align-items: flex-start;
+    }
+
+    .modal-content {
+      margin-top: 5px;
+    }
 
     .modal-body {
       flex-direction: column;
