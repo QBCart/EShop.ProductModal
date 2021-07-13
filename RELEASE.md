@@ -2,11 +2,14 @@
 
 ### New
 
-- none
+- added support to display special pricing
+- added support for ribbons & price coloring
+- added support for view if item becomes unavailable
 
 ### Fixes
 
-- none
+- added style to account for safari mobile bottom bar
+- added styles to better position material icons in safari
 
 ### Breaking
 
