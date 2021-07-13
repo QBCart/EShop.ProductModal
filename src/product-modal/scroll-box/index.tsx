@@ -41,9 +41,6 @@ const ScrollBox: FC<Props> = (props: Props) => {
     props.item?.IsOnSale ||
     (props.item?.BestSellerRank ?? 0) > 0;
 
-  if (!props.item) {
-    return null;
-  }
   const navigate = async () => {
     if (props.item) {
       await removeProductModal(props.item.id);
@@ -51,7 +48,7 @@ const ScrollBox: FC<Props> = (props: Props) => {
     }
   };
 
-  return (
+  return props.item ? (
     <ScrollBoxStyles>
       <div className="scroll-box-header">
         <div
@@ -79,7 +76,7 @@ const ScrollBox: FC<Props> = (props: Props) => {
       </div>
       <div className="scroll-box-body">
         {boxDisplay === 'overview' ? (
-          <div>
+          <>
             <h3>{props.item?.SalesDesc}</h3>
             <h4>SKU: {props.item?.Name}</h4>
             <div className="flex-row-space-between">
@@ -158,7 +155,7 @@ const ScrollBox: FC<Props> = (props: Props) => {
 
             <h4>Details:</h4>
             <p>{props.item?.FullDesc}</p>
-          </div>
+          </>
         ) : (
           <div>
             {props.item?.Specs && props.item.Specs.length > 0 ? (
@@ -177,6 +174,15 @@ const ScrollBox: FC<Props> = (props: Props) => {
             )}
           </div>
         )}
+      </div>
+    </ScrollBoxStyles>
+  ) : (
+    <ScrollBoxStyles>
+      <div className="scroll-box-header">
+        <div className="header-tab-active">Not Available</div>
+      </div>
+      <div className="scroll-box-body">
+        <h3>Sorry, the item you were viewing is no longer available.</h3>
       </div>
     </ScrollBoxStyles>
   );
