@@ -15,17 +15,16 @@ const globalMountsContainer = document.getElementById(
   'qbc-eshop-global-mounts'
 )!;
 const mountingDiv = document.createElement('div');
-const companySettings = document.getElementById('qbc-eshop-company-settings')!;
+const companySettings = document.getElementById(
+  'qbc-eshop-company-settings'
+) as HTMLDivElement;
 
 mountingDiv.id = 'qbc-eshop-product-modal';
 globalMountsContainer.appendChild(mountingDiv);
 
 render(
   <ProductModal
-    imagesStorageUrl={
-      document.getElementById('qbc-eshop-company-settings')!.dataset
-        .imagesStorageUrl!
-    }
+    imagesStorageUrl={companySettings.dataset.imagesStorageUrl!}
     userLoggedIn={Boolean(document.getElementById('qbc-eshop-user'))}
     bestSellersRibbonBGColor={
       companySettings.dataset.sliderBestSellersRibbonBGColor || 'green'
