@@ -112,7 +112,6 @@ const ScrollBoxStyles = styled.div`
     font-size: 20px;
     font-weight: 500;
     margin-left: 10px;
-    color: green;
   }
 
   .ribbon-container {

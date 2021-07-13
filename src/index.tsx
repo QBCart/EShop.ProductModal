@@ -44,6 +44,10 @@ render(
     itemsOnSaleRibbonTextColor={
       companySettings.dataset.sliderItemsOnSaleRibbonTextColor || 'white'
     }
+    customPriceTextColor={
+      companySettings.dataset.customPriceTextColor || 'green'
+    }
+    onSalePriceTextColor={companySettings.dataset.onSalePriceTextColor || 'red'}
   />,
   mountingDiv
 );

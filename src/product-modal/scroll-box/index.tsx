@@ -23,6 +23,9 @@ interface Props {
   featuredItemsRibbonTextColor: string;
   itemsOnSaleRibbonBGColor: string;
   itemsOnSaleRibbonTextColor: string;
+  customPriceTextColor: string;
+  onSalePriceTextColor: string;
+  priceColor: string;
 }
 
 const ScrollBox: FC<Props> = (props: Props) => {
@@ -87,7 +90,12 @@ const ScrollBox: FC<Props> = (props: Props) => {
                   {toUSCurrency(props.item.SalesPrice)}
                 </div>
                 {props.price ? (
-                  <div className="product-price">
+                  <div
+                    className="product-price"
+                    style={{
+                      color: props.price ? props.priceColor : 'black'
+                    }}
+                  >
                     {toUSCurrency(props.price)}
                   </div>
                 ) : null}

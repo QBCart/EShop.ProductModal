@@ -26,6 +26,8 @@ interface Props {
   featuredItemsRibbonTextColor: string;
   itemsOnSaleRibbonBGColor: string;
   itemsOnSaleRibbonTextColor: string;
+  customPriceTextColor: string;
+  onSalePriceTextColor: string;
 }
 
 const ProductModal: FC<Props> = (props: Props) => {
@@ -39,8 +41,6 @@ const ProductModal: FC<Props> = (props: Props) => {
     props.userLoggedIn,
     itemId
   );
-
-  // const price = customPrice ?? item?.SalesPrice ?? 0;
 
   useEffect(() => {
     changeItem(itemId);
@@ -63,6 +63,14 @@ const ProductModal: FC<Props> = (props: Props) => {
         : item?.OnSalePrice
       : customPrice
     : customPrice;
+
+  const priceColor = item?.IsOnSale
+    ? item?.OnSalePrice
+      ? customPrice && customPrice < item?.OnSalePrice
+        ? props.customPriceTextColor
+        : props.onSalePriceTextColor
+      : props.customPriceTextColor
+    : props.customPriceTextColor;
 
   /*
    *  Animation must be set when hiding modal to function properly.
@@ -113,6 +121,7 @@ const ProductModal: FC<Props> = (props: Props) => {
             <ScrollBox
               item={item!}
               price={price!}
+              priceColor={priceColor}
               userLoggedIn={props.userLoggedIn}
               bestSellersRibbonBGColor={props.bestSellersRibbonBGColor}
               bestSellersRibbonTextColor={props.bestSellersRibbonTextColor}
@@ -120,6 +129,8 @@ const ProductModal: FC<Props> = (props: Props) => {
               featuredItemsRibbonTextColor={props.featuredItemsRibbonTextColor}
               itemsOnSaleRibbonBGColor={props.itemsOnSaleRibbonBGColor}
               itemsOnSaleRibbonTextColor={props.itemsOnSaleRibbonTextColor}
+              customPriceTextColor={props.customPriceTextColor}
+              onSalePriceTextColor={props.onSalePriceTextColor}
             />
           </div>
           <Footer
