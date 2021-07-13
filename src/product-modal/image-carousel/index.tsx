@@ -41,7 +41,7 @@ const ImageCarousel: FC<Props> = (props: Props) => {
         <div
           className="slide-image"
           style={{
-            backgroundImage: `url(${props.imagesStorageUrl}images/product-not-available.png)`
+            backgroundImage: `url(${props.imagesStorageUrl}images/product-not-available.jpg)`
           }}
         ></div>
       </ImageCarouselStyles>
