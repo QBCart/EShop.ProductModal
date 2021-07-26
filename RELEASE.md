@@ -10,6 +10,6 @@
 
 ### Breaking
 
-- none
+- Removed Custom Pricing hook
 
 ###### Licensed under MIT - Copyright (c) 2021 QBCart Inc. All rights reserved.
