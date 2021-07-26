@@ -54,11 +54,11 @@ module.exports = {
   ],
   // prettier-ignore
   alias: {
-    'react': 'https://qbcdemo.z13.web.core.windows.net/deps/react.js',
-    'react-dom': 'https://qbcdemo.z13.web.core.windows.net/deps/react-dom.js',
-    'styled-components': 'https://qbcdemo.z13.web.core.windows.net/deps/styled-components.js',
-    '@qbcart/eshop-inventory-hooks': 'https://qbcdemo.z13.web.core.windows.net/eshop/inventory-hooks/index.js',
-    '@qbcart/eshop-cart-hooks': 'https://qbcdemo.z13.web.core.windows.net/eshop/cart-hooks/index.js',
-    '@qbcart/utils': 'https://qbcdemo.z13.web.core.windows.net/utils/index.js'
+    'react': `${process.env.SNOWPACK_PUBLIC_STREAMING_URL}/deps/react.js`,
+    'react-dom': `${process.env.SNOWPACK_PUBLIC_STREAMING_URL}/deps/react-dom.js`,
+    'styled-components': `${process.env.SNOWPACK_PUBLIC_STREAMING_URL}/deps/styled-components.js`,
+    '@qbcart/eshop-inventory-hooks': `${process.env.SNOWPACK_PUBLIC_STREAMING_URL}/eshop/inventory-hooks/index.js`,
+    '@qbcart/eshop-cart-hooks': `${process.env.SNOWPACK_PUBLIC_STREAMING_URL}/eshop/cart-hooks/index.js`,
+    '@qbcart/utils': `${process.env.SNOWPACK_PUBLIC_STREAMING_URL}/utils/index.js`,
   }
 };

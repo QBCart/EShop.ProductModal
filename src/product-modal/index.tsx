@@ -8,7 +8,7 @@
 
 import React, { FC, useState, useEffect, useRef } from 'react';
 // prettier-ignore
-import { useInventoryItem, useCustomPricing, useProductModal, useRemoveProductModal } from '@qbcart/eshop-inventory-hooks';
+import { useInventoryItem, useProductModal, useRemoveProductModal } from '@qbcart/eshop-inventory-hooks';
 import { useAddToCart } from '@qbcart/eshop-cart-hooks';
 
 import ProductModalStyles from './style.js';
@@ -37,16 +37,11 @@ const ProductModal: FC<Props> = (props: Props) => {
   const addToCart = useAddToCart(props.userLoggedIn);
   const [item, changeItem] = useInventoryItem(itemId);
   const [quantity, setQuantity] = useState('1');
-  const [customPrice, changeCustomPrice] = useCustomPricing(
-    props.userLoggedIn,
-    itemId
-  );
 
   useEffect(() => {
     changeItem(itemId);
-    changeCustomPrice(itemId);
     setQuantity('1');
-  }, [itemId, changeCustomPrice, changeItem]);
+  }, [itemId]);
 
   useEffect(() => {
     if (itemId) {
@@ -54,23 +49,23 @@ const ProductModal: FC<Props> = (props: Props) => {
       modal.style.animationName = 'var(--product-modal-show)';
       modal.style.display = 'block';
     }
-  }, [itemId, ref]);
+  }, [itemId]);
 
-  const price = item?.IsOnSale
-    ? item?.OnSalePrice
-      ? customPrice && customPrice < item?.OnSalePrice
-        ? customPrice
-        : item?.OnSalePrice
-      : customPrice
-    : customPrice;
-
-  const priceColor = item?.IsOnSale
-    ? item?.OnSalePrice
-      ? customPrice && customPrice < item?.OnSalePrice
+  const customerPrice = props.userLoggedIn ? item?.CustomerPrice : undefined;
+  const price = item
+    ? item.IsOnSale && item.OnSalePrice
+      ? customerPrice && customerPrice < item.OnSalePrice
+        ? customerPrice
+        : item.OnSalePrice
+      : customerPrice
+    : undefined;
+  const priceColor = item
+    ? item.IsOnSale && item.OnSalePrice
+      ? customerPrice && customerPrice < item.OnSalePrice
         ? props.customPriceTextColor
         : props.onSalePriceTextColor
       : props.customPriceTextColor
-    : props.customPriceTextColor;
+    : '';
 
   /*
    *  Animation must be set when hiding modal to function properly.

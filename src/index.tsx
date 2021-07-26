@@ -13,7 +13,7 @@ import ProductModal from './product-modal/index.js';
 
 const globalMountsContainer = document.getElementById(
   'qbc-eshop-global-mounts'
-)!;
+) as HTMLDivElement;
 const mountingDiv = document.createElement('div');
 const companySettings = document.getElementById(
   'qbc-eshop-company-settings'
@@ -24,7 +24,7 @@ globalMountsContainer.appendChild(mountingDiv);
 
 render(
   <ProductModal
-    imagesStorageUrl={companySettings.dataset.imagesStorageUrl!}
+    imagesStorageUrl={companySettings.dataset.imagesStorageUrl as string}
     userLoggedIn={Boolean(document.getElementById('qbc-eshop-user'))}
     bestSellersRibbonBGColor={
       companySettings.dataset.sliderBestSellersRibbonBGColor || 'green'
