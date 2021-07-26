@@ -11,7 +11,7 @@ on:
     paths:
       - 'src/**'
       - 'snowpack.config.js'
-      - '.github\workflows\continuous-integration.yml'
+      - '\.github\workflows\continuous-integration.yml'
 
 ############
 # Set Jobs #
