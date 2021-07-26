@@ -20,12 +20,11 @@ document.write(
     appDrawerActions: actions,
     imagesStorageUrl:
       'https://qbcimagesmns4oocsxwl6w.z13.web.core.windows.net/',
-    siteUrl: '',
-    siteName: 'Vector Tools',
+    siteName: 'EShop Dev Demo',
     userLoggedIn: true,
-    username: '',
+    username: 'Bobbert the Hobbert',
     isB2C: false,
-    syncInterval: 10000,
+    syncInterval: 60000,
     sliderSettings: null,
     meta: html`
       <meta charset="UTF-8" />
@@ -49,7 +48,7 @@ document.write(
       />
     `,
     scripts: html`
-      <script
+      <!-- <script
         type="module"
         integrity="sha384-ZsG+E+8Q6Yh0v98Nd0SfOT1bOX82TJaNaBS1npTZYuq4oD09c6rDD2R9pXqMvter"
         src="/_snowpack/hmr-client.js"
@@ -58,18 +57,18 @@ document.write(
         type="module"
         integrity="sha384-LH/mFhEGRB4jHedP0nqOoIUwc4VX8eWJxEL+qTGWtroqiLJ2vxX169J0oSBMHL5o"
         src="/_snowpack/hmr-error-overlay.js"
-      ></script>
+      ></script> -->
       <script type="module" defer>
         import 'https://qbcdemo.z13.web.core.windows.net/eshop/app-shell/index.js';
         import 'https://qbcdemo.z13.web.core.windows.net/eshop/sync-component/index.js';
-        import 'https://qbcdemo.z13.web.core.windows.net/eshop/cart/index.js';
-        import 'https://qbcdemo.z13.web.core.windows.net/eshop/search-bar/index.js';
-        import 'https://qbcdemo.z13.web.core.windows.net/eshop/toast/index.js';
-        import 'https://qbcdemo.z13.web.core.windows.net/eshop/alert-modal/index.js';
-        import 'https://qbcdemo.z13.web.core.windows.net/eshop/banner-carousel/index.js';
+        //import 'https://qbcdemo.z13.web.core.windows.net/eshop/cart/index.js';
+        //import 'https://qbcdemo.z13.web.core.windows.net/eshop/search-bar/index.js';
+        //import 'https://qbcdemo.z13.web.core.windows.net/eshop/toast/index.js';
+        //import 'https://qbcdemo.z13.web.core.windows.net/eshop/alert-modal/index.js';
+        //import 'https://qbcdemo.z13.web.core.windows.net/eshop/banner-carousel/index.js';
         import 'https://qbcdemo.z13.web.core.windows.net/eshop/product-slider/index.js';
-        import 'https://qbcdemo.z13.web.core.windows.net/eshop/category-boxes/index.js';
-        import 'https://qbcdemo.z13.web.core.windows.net/eshop/product-boxes/index.js';
+        //import 'https://qbcdemo.z13.web.core.windows.net/eshop/category-boxes/index.js';
+        //import 'https://qbcdemo.z13.web.core.windows.net/eshop/product-boxes/index.js';
         import '/src/index.js';
       </script>
     `
