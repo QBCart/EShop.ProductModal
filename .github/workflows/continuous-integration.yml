@@ -11,6 +11,7 @@ on:
     paths:
       - 'src/**'
       - 'snowpack.config.js'
+      - '.github\workflows\continuous-integration.yml'
 
 ############
 # Set Jobs #
@@ -72,6 +73,8 @@ jobs:
         working-directory: .
         shell: bash
         run: npm run build
+        env:
+          SNOWPACK_PUBLIC_STREAMING_URL: ${{ fromJSON(secrets.DEV_ESM).storageUrl }}
 
       #############
       # Run Tests #
